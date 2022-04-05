@@ -1,0 +1,39 @@
+# Work Breakdown Agreement
+## Assignment 1 Deliverables
+
+### Sara
+Due Thursday 7th: To be reviewed by Timothy
+- UML Class design for Magical Items
+- Sequence Diagram for a feature related to Magical Items
+- Design rationale for Magical Items
+    - Should include some analysis of alternatives, pros/cons etc.
+
+### Peter
+Due Thursday 7th: To be reviewed by Sara
+- UML Class design for Jump
+- Sequence Diagram for Jump
+- Design rationale for Jump
+    - Should include some analysis of alternatives, pros/cons etc.
+
+### Timothy
+Due Thursday 7th: To be reviewed by Peter
+- UML Class design for Monologue
+- Sequence Diagram for a feature related to Monologue
+- Design rationale for Monologue
+    - Should include some analysis of alternatives, pros/cons etc.
+
+### As a team on Thursday 7pm
+- Review each other's work
+- Write design rationale for:
+    - Trees
+    - Trading
+    - Enemies
+    - Reset
+- Produce a sequence diagram for one of the above features
+- Work out how to split up the UML diagrams into small, more understandable diagrams
+- Work out which sequence diagrams to submit
+
+Spot to write "I accept this WBA":
+Sara:
+Timothy:
+Peter: I accept this WBA.
