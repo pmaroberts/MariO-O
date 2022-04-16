@@ -21,20 +21,20 @@ public class SuperMushroom extends Item {
     /**
      * responsible for permanently increasing the maxHP by 50 for the actor
      * and sets the players HP to the max HP
-     * @param player the actor who consumed the mushroom
+     * @param actor the actor who consumed the mushroom
      */
-    public void increaseHPSuperMushroom(Player player){
+    public void increaseHPSuperMushroom(Actor actor){
 
-        player.increaseMaxHp(superMushroomHPBonus);
-        player.heal(99999); //arbitrarily large number since heal caps at maxHP
+        actor.increaseMaxHp(superMushroomHPBonus);
+        actor.heal(99999); //arbitrarily large number since heal caps at maxHP
     }
 
     /**
      * this method is responsible for changing the display character for Mario from m to M
-     * @param player the actor who consumed the super mushroom
+     * @param actor the actor who consumed the super mushroom
      */
-    public void updatePlayerDisplayCharacter(Player player){
-        player.addCapability(Status.TALL); //updating enum
+    public void updatePlayerDisplayCharacter(Actor actor){
+        actor.addCapability(Status.TALL); //updating enum
         //actor.setDisplayChar(Character.toUpperCase(getDisplayChar())); // setDisplayChar hasn't yet been extended into actor
     }
 
@@ -60,13 +60,13 @@ public class SuperMushroom extends Item {
      *
      * @see Action#execute(Actor, GameMap)
      * @param superMushroom the instance of the superMushroom picked up
-     * @param player The actor performing the action.
+     * @param actor The actor performing the action.
      * @param map The map the actor is on.
      * @return a suitable description to display in the UI
      */
-    public String pickupSuperMushroom(SuperMushroom superMushroom, Player player, GameMap map){
+    public String pickupSuperMushroom(SuperMushroom superMushroom, Actor actor, GameMap map){
         PickUpItemAction pickUpItemAction = new PickUpItemAction(superMushroom);//adds the item to the class
-        return pickUpItemAction.execute(player, map); //return statement to be shown to user
+        return pickUpItemAction.execute(actor, map); //return statement to be shown to user
     }
 
 }
