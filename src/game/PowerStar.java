@@ -4,6 +4,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
+import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
 
 public class PowerStar extends Item {
@@ -48,10 +49,15 @@ public class PowerStar extends Item {
     }
 
     public WeaponItem addInstantKill(Actor actor){
-        WeaponItem weaponItem = new WeaponItem('PowerStarInstantKill', '~', 999999, "PowerStar InstantKill", 100);
+        WeaponItem weaponItem = new WeaponItem("PowerStarInstantKill", '~', 999999, "PowerStar InstantKill", 100);
         actor.addItemToInventory(weaponItem);
         return weaponItem;
     }
+
+    public void instantKill(){
+        IntrinsicWeapon instaKill = new IntrinsicWeapon(999999, "POWERSTAR_INSTAKILL");
+    }
+    
 
     public void removeInstantKill(Actor actor, WeaponItem weaponItem){
         actor.removeItemFromInventory(weaponItem);
