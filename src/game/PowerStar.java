@@ -2,26 +2,28 @@ package game;
 
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
+import edu.monash.fit2099.engine.items.PickUpItemAction;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
-import edu.monash.fit2099.engine.weapons.WeaponItem;
 
 public class PowerStar extends Item {
     public static final int price = 600;
     private int turns;
 
     /**
-     * this is the constructor for powerStar item, it will be instantiated as a weapon item, therefore will have access to all
-     * item and weaponItem methods. When created will be made as a Weapon and when the player collects or purchases the powerStar,
-     * then it will be added to inventory for 10 turns. I.e., the player will have instant kill for 10 turns
-     * the damage is set as an arbitrarily high number to ensure that any implemented enemy will be killed by the player while
-     * the powerStar booster is active
+     * when the player collects or purchases the powerStar,then it will be added to inventory for 10 turns.
+     * I.e., the player will have instant kill for 10 turns, the damage is set as an arbitrarily high number to ensure
+     * that any implemented enemy will be killed by the player while the powerStar booster is active
      */
     PowerStar(boolean portable){
         super("PowerStarInstantKill", '*', portable);
         turns = 0;
     }
+
+    public int getPrice(){return PowerStar.price;}
+
+    public int getTurns(){return this.turns;}
 
     /**
      * this is responsible for increasing the player HP by 200
@@ -32,7 +34,7 @@ public class PowerStar extends Item {
     }
 
     @Override
-    public void tick(Location location, GameMap map, Actor actor){
+    public String tick(Location location, GameMap map, Actor actor){
         turns++;
         if(turns == 10){
             map.locationOf(actor).removeItem(this); // shouldnt need to be an actor.
@@ -41,27 +43,21 @@ public class PowerStar extends Item {
         }
     }
 
-    @Override
-    public String execute(Actor actor, GameMap map) {
-
-        actor.addItemToInventory(item);
-        return menuDescription(actor);
+    public String pickUp(PowerStar powerStar, Actor actor, GameMap gameMap) {
+        PickUpItemAction pickUpItemAction = new PickUpItemAction(powerStar);
+        return pickUpItemAction.execute(actor, gameMap);
     }
 
-    public WeaponItem addInstantKill(Actor actor){
-        WeaponItem weaponItem = new WeaponItem("PowerStarInstantKill", '~', 999999, "PowerStar InstantKill", 100);
-        actor.addItemToInventory(weaponItem);
-        return weaponItem;
-    }
 
     public void instantKill(){
         IntrinsicWeapon instaKill = new IntrinsicWeapon(999999, "POWERSTAR_INSTAKILL");
     }
     
 
-    public void removeInstantKill(Actor actor, WeaponItem weaponItem){
-        actor.removeItemFromInventory(weaponItem);
+    public void removeInstantKill(Actor actor){
+        IntrinsicWeapon instaKill = new IntrinsicWeapon(5, "punch");
     }
+
 
 }
 
