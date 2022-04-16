@@ -1,6 +1,9 @@
 package game;
 
-public class PurchaseAction {
+import edu.monash.fit2099.engine.actions.Action;
+import edu.monash.fit2099.engine.actors.Actor;
+
+public class PurchaseAction extends Action {
 
 
 
@@ -12,4 +15,9 @@ public class PurchaseAction {
         Coin coin = new Coin(player);
         coin.checkBalance(superMushroom.getPrice());
     } */
+
+    @Override
+    public String menuDescription(Actor actor) {
+        return actor + " purchases " + item ;
+    }
 }
