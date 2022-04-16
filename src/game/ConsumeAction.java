@@ -19,8 +19,8 @@ public class ConsumeAction extends Action {
     }
 
     @Override
-    public String execute(Player player, /*GameMap map */) {
-        player.removeItemFromInventory(item);
+    public String execute(Actor actor, GameMap map ) {
+        actor.removeItemFromInventory(item);
 
         ActionList magicalItems = new ActionList();
 
@@ -29,22 +29,20 @@ public class ConsumeAction extends Action {
 
         if (item.toString().equals("SuperMushroom")){
             SuperMushroom superMushroom = new SuperMushroom(true);
-            superMushroom.increaseHPSuperMushroom(player);
-            superMushroom.updatePlayerDisplayCharacter(player);
-            return menuDescription(player);
+            superMushroom.increaseHPSuperMushroom(actor);
+            superMushroom.updatePlayerDisplayCharacter(actor);
+            return menuDescription(actor);
         }
         else if(item.toString().equals("PowerStar")){
             PowerStar powerStar = new PowerStar(true);
-            powerStar.healPlayer(player);
-            powerStar.
+            powerStar.healPlayer(actor);
+            //powerStar.
+            return "";
         }
-
-
-    }
-
-
-
-
+        else {
+            return "";
+        }
+        }
 
 
     @Override
