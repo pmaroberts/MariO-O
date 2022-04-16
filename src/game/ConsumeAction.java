@@ -25,13 +25,20 @@ public class ConsumeAction extends Action {
         ActionList magicalItems = new ActionList();
 
        // magicalItems.add(this.item); APPARENTLY CANNOT ADD ITEMS TO ACTION LIST????????
-        return menuDescription(player);
+
 
         if (item.toString().equals("SuperMushroom")){
             SuperMushroom superMushroom = new SuperMushroom(true);
             superMushroom.increaseHPSuperMushroom(player);
+            superMushroom.updatePlayerDisplayCharacter(player);
+            return menuDescription(player);
         }
-        return "hi";
+        else if(item.toString().equals("PowerStar")){
+            PowerStar powerStar = new PowerStar(true);
+            powerStar.healPlayer(player);
+            powerStar.
+        }
+
 
     }
 
@@ -45,4 +52,4 @@ public class ConsumeAction extends Action {
         return actor + " consumes " + item ;
     }
 }
-}
+
