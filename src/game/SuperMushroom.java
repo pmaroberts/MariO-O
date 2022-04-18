@@ -9,8 +9,8 @@ import edu.monash.fit2099.engine.positions.Location;
 
 public class SuperMushroom extends Item {
 
-    private static final int superMushroomHPBonus = 50; //add 50 max HP everytime superMushroom consumed
-    private static final int price = 400;
+    private static final int SUPER_MUSHROOM_HP_BONUS = 50; //add 50 max HP everytime superMushroom consumed
+    private static final int PRICE = 400;
 
 
     SuperMushroom(boolean portable){ //idk about this, how to tell if traded or picked up?
@@ -25,7 +25,7 @@ public class SuperMushroom extends Item {
      */
     public void increaseHPSuperMushroom(Actor actor){
 
-        actor.increaseMaxHp(superMushroomHPBonus);
+        actor.increaseMaxHp(SUPER_MUSHROOM_HP_BONUS);
         actor.heal(99999); //arbitrarily large number since heal caps at maxHP
     }
 
@@ -38,7 +38,11 @@ public class SuperMushroom extends Item {
         //actor.setDisplayChar(Character.toUpperCase(getDisplayChar())); // setDisplayChar hasn't yet been extended into actor
     }
 
-    public int getPrice(){return SuperMushroom.price;}
+    public void addSuperMushroomAction(Action action){
+        this.addAction(action);
+    }
+
+    public int getPrice(){return SuperMushroom.PRICE;}
 
 
     /**

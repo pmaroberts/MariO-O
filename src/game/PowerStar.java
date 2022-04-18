@@ -9,7 +9,7 @@ import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 
 public class PowerStar extends Item {
-    public static final int price = 600;
+    public static final int PRICE = 600;
     private int turns;
 
     /**
@@ -22,7 +22,7 @@ public class PowerStar extends Item {
         turns = 0;
     }
 
-    public int getPrice(){return PowerStar.price;}
+    public int getPrice(){return PowerStar.PRICE;}
 
     public int getTurns(){return this.turns;}
 

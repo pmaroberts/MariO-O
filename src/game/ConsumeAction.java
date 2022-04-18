@@ -1,7 +1,6 @@
 package game;
 
 import edu.monash.fit2099.engine.actions.Action;
-import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
@@ -22,21 +21,20 @@ public class ConsumeAction extends Action {
     public String execute(Actor actor, GameMap map ) {
         actor.removeItemFromInventory(item);
 
-        ActionList magicalItems = new ActionList();
-
-       // magicalItems.add(this.item); APPARENTLY CANNOT ADD ITEMS TO ACTION LIST????????
-
 
         if (item.toString().equals("SuperMushroom")){
             SuperMushroom superMushroom = new SuperMushroom(true);
             superMushroom.increaseHPSuperMushroom(actor);
             superMushroom.updatePlayerDisplayCharacter(actor);
             return menuDescription(actor);
+
         }
         else if(item.toString().equals("PowerStar")){
             PowerStar powerStar = new PowerStar(true);
             powerStar.healPlayer(actor);
-            //powerStar.
+            powerStar.updateStatus(actor, Status.POWERSTAR);
+            //more powerStar methods here if neccessary?
+            // i think other capabilities will be in other classes tho, enemy, trees?
             return "";
         }
         else {
