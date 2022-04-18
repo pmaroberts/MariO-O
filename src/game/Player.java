@@ -47,4 +47,8 @@ public class Player extends Actor  {
 	public void addMoney(Coin coin){
 		this.wallet = this.wallet + coin.getValue();
 	}
+
+	public void editBalance(int amount){
+		this.wallet = this.wallet + amount;
+	}
 }
