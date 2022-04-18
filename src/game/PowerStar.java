@@ -53,7 +53,6 @@ public class PowerStar extends Item {
         }
     }
 
-
     public String pickUp(PowerStar powerStar, Actor actor, GameMap gameMap) {
         PickUpItemAction pickUpItemAction = new PickUpItemAction(powerStar);
         return pickUpItemAction.execute(actor, gameMap);
@@ -73,15 +72,26 @@ public class PowerStar extends Item {
         this.addAction(action);
     }
 
+    public void updateStatus(Actor actor, Status status){
+        actor.addCapability(status);
+    }
+
+
+    //this method doesn't check for consumption bc it doesn't matter, the timer counts on the ground and in
+    //inventory too
+    public void checkPowerStar(Actor actor){
+        if (this.turns == 10){
+            updateStatus(actor, Status.HOSTILE_TO_ENEMY);
+            removeInstantKill(actor);
+        }
+    }
+
 
 }
 
 
 
 /*
-Power Star * cannot stay in the game forever. It will fade away and be removed from the game within 10 turns
-(regardless it is on the ground or in the actor's inventory). Anyone that consumes a Power Star will be healed by 200 hit points and will become invincible.
-The invincible effect replaces fading duration (aka, fading turn's ticker stops). Here, the invincible effect lasts for 10 turns.
 
 Higher Grounds. The actor does not need to jump to higher level ground (can walk normally).
 If the actor steps on high ground, it will automatically destroy (convert) ground to Dirt.
