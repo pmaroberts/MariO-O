@@ -15,14 +15,6 @@ public class Coin extends Item {
     }
 
 
-    public boolean checkBalance(int price, Player player){
-        if (player.getWalletBalance() >= price) {
-            return true;
-        }
-        else{
-            return false;
-        }
-    }
 
     public String removeCoin(Coin coin, Actor actor, GameMap gameMap){
         PickUpItemAction pickUpItemAction = new PickUpItemAction(coin);
