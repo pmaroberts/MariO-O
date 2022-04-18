@@ -1,5 +1,6 @@
 package game;
 
+import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.items.PickUpItemAction;
@@ -34,14 +35,24 @@ public class PowerStar extends Item {
     }
 
     @Override
-    public String tick(Location location, GameMap map, Actor actor){
-        turns++;
-        if(turns == 10){
-            map.locationOf(actor).removeItem(this); // shouldnt need to be an actor.
-        }else if (turns <= 10){
-            return "PowerStar ( " + (10 - turns) + " turns left )";
+    public void tick(Location location){
+        this.turns++;
+        if(this.turns == 10){
+            location.removeItem(this);
         }
     }
+
+    public void tick(Location location, Actor actor){
+        for (int i = 0; i < actor.getInventory().size(); i++){
+            if(actor.getInventory().get(i).toString().equals("PowerStar")){
+                this.turns++;
+                if(this.turns == 10){
+                    actor.removeItemFromInventory(actor.getInventory().get(i));
+                }
+            }
+        }
+    }
+
 
     public String pickUp(PowerStar powerStar, Actor actor, GameMap gameMap) {
         PickUpItemAction pickUpItemAction = new PickUpItemAction(powerStar);
@@ -56,6 +67,10 @@ public class PowerStar extends Item {
 
     public void removeInstantKill(Actor actor){
         IntrinsicWeapon instaKill = new IntrinsicWeapon(5, "punch");
+    }
+
+    public void addPowerStarAction(Action action){
+        this.addAction(action);
     }
 
 
