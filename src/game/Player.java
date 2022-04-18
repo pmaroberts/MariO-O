@@ -13,6 +13,7 @@ import edu.monash.fit2099.engine.displays.Menu;
 public class Player extends Actor  {
 
 	private final Menu menu = new Menu();
+	private int wallet = 0;
 
 	/**
 	 * Constructor.
@@ -39,5 +40,11 @@ public class Player extends Actor  {
 	@Override
 	public char getDisplayChar(){
 		return this.hasCapability(Status.TALL) ? Character.toUpperCase(super.getDisplayChar()): super.getDisplayChar();
+	}
+
+	public int getWalletBalance(){return this.wallet;}
+
+	public void addMoney(Coin coin){
+		this.wallet = this.wallet + coin.getValue();
 	}
 }
