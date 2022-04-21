@@ -5,18 +5,19 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.items.PickUpItemAction;
 import edu.monash.fit2099.engine.positions.GameMap;
-import edu.monash.fit2099.engine.positions.Location;
 
 public class SuperMushroom extends Item {
 
     private static final int SUPER_MUSHROOM_HP_BONUS = 50; //add 50 max HP everytime superMushroom consumed
-    private static final int PRICE = 400;
+    private static final int PRICE = 400; //$400 to purchase from Toad
 
-
+    /**
+     * constructor
+     * @param portable whether or not the item is able to be carried by player
+     */
     SuperMushroom(boolean portable){ //idk about this, how to tell if traded or picked up?
         super("SuperMushroom", '^', portable);
     }
-
 
     /**
      * responsible for permanently increasing the maxHP by 50 for the actor
@@ -35,29 +36,24 @@ public class SuperMushroom extends Item {
      */
     public void updatePlayerDisplayCharacter(Actor actor){
         actor.addCapability(Status.TALL); //updating enum
-        //actor.setDisplayChar(Character.toUpperCase(getDisplayChar())); // setDisplayChar hasn't yet been extended into actor
+        actor.setDisplayChar(Character.toUpperCase(getDisplayChar())); // setDisplayChar hasn't yet been extended into actor
     }
-
-    public void addSuperMushroomAction(Action action){
-        this.addAction(action);
-    }
-
-    public int getPrice(){return SuperMushroom.PRICE;}
-
 
     /**
-     * this method is to be used by Koopa enemy class when shell is broken and this method will be
-     * responsible for adding the item to the map display
-     * @param map the current map being used from gameMap class, generated in application class
-     * @param koopaXCoordinate the x coordinate integer of where koopa "dies"
-     * @param koopaYCoordinate the y coordinate integer of where koopa "dies"
+     * this adds the consume action to the action list of allowable actions if the SuperMushroom is in the players inventory
+     * @param actor the actor who consumes the mushroom
      */
-    public void addSuperMushroomDrop(GameMap map, int koopaXCoordinate, int koopaYCoordinate){
-        Location location = new Location(map, koopaXCoordinate, koopaYCoordinate);
-        location.addItem(new SuperMushroom(false));
+    public void addSuperMushroomAction(Actor actor){
+        if (actor.getInventory().toString().equals("SuperMushroom")){
+            this.addAction(new ConsumeAction(this));
+        }
     }
 
-
+    /**
+     * getter for private price attribute
+     * @return static price attribute
+     */
+    public int getPrice(){return SuperMushroom.PRICE;}
 
     /**
      * Add the item to the actor's inventory.
