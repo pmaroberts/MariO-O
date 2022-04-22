@@ -19,7 +19,7 @@ public class Application {
 
 			World world = new World(new Display());
 
-			FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new Tree());
+			FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new Sprout());
 
 			List<String> map = Arrays.asList(
 				"..........................................##..........+.........................",
@@ -49,7 +49,7 @@ public class Application {
 			world.addPlayer(mario, gameMap.at(42, 10));
 
 			// FIXME: the Goomba should be generated from the Tree
-			gameMap.at(35, 10).addActor(new Goomba());
+			//gameMap.at(35, 10).addActor(new Goomba());
 
 			world.run();
 
