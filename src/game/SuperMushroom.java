@@ -34,9 +34,8 @@ public class SuperMushroom extends Item {
      * this method is responsible for changing the display character for Mario from m to M
      * @param actor the actor who consumed the super mushroom
      */
-    public void updatePlayerDisplayCharacter(Actor actor){
+    public void updatePlayerDisplayCharacter(Actor actor) {
         actor.addCapability(Status.TALL); //updating enum
-        actor.setDisplayChar(Character.toUpperCase(getDisplayChar())); // setDisplayChar hasn't yet been extended into actor
     }
 
     /**
