@@ -93,7 +93,7 @@ public class PowerStar extends Item {
 
     /**
      * responsible for adding action to the action list in powerStar item attribute
-     * @param action
+     * @param action the action to be added
      */
     public void addPowerStarAction(Action action) {
         this.addAction(action);
@@ -115,11 +115,11 @@ public class PowerStar extends Item {
 
     /**
      *
-     * @param actor
+     * @param actor the actor who has an active powerstar booster
      */
     public void checkPowerStar(Actor actor) {
         if (this.turns == 10) {
-            updateStatus(actor, Status.HOSTILE_TO_ENEMY);
+            updateStatus(Status.HOSTILE_TO_ENEMY);
             removeInstantKill(actor);
         }
     }
