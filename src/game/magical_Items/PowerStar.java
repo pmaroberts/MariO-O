@@ -17,7 +17,7 @@ public class PowerStar extends Item {
      * @param portable a boolean variable to indicate whether the item can be moved/ carried
      */
     public PowerStar(boolean portable) {
-        super("PowerStarInstantKill", '*', portable);
+        super("PowerStar", '*', portable);
         turns = 0;
     }
 

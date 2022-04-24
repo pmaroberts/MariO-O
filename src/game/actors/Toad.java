@@ -9,7 +9,7 @@ import edu.monash.fit2099.engine.positions.GameMap;
 
 public class Toad extends Actor {
 
-    Toad() {
+    public Toad() {
         super("Toad", 'T', 999999999);
     }
 
