@@ -63,10 +63,12 @@ public class Application {
 			SuperMushroom superMushroom = new SuperMushroom(true);
 			//superMushroom.addSuperMushroomAction(new PickUpItemAction(superMushroom));
 			gameMap.at(rand.nextInt(39), rand.nextInt(19)).addItem(superMushroom);
+			gameMap.at(42, 10).addItem(superMushroom);
 
 			PowerStar powerStar = new PowerStar(true);
 			powerStar.addPowerStarAction(new PickUpItemAction(powerStar));
 			gameMap.at(rand.nextInt(39), rand.nextInt(19)).addItem(powerStar);
+			gameMap.at(42, 10).addItem(powerStar);
 
 			// FIXME: the Goomba should be generated from the Tree
 			gameMap.at(35, 10).addActor(new Goomba());
