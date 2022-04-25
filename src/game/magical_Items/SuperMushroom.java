@@ -5,7 +5,6 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.items.PickUpItemAction;
 import edu.monash.fit2099.engine.positions.GameMap;
-import game.actions.ConsumeAction;
 import game.actors.Status;
 
 public class SuperMushroom extends Item {
@@ -40,15 +39,6 @@ public class SuperMushroom extends Item {
         actor.addCapability(Status.TALL); //updating enum
     }
 
-    /**
-     * this adds the consume action to the action list of allowable actions if the SuperMushroom is in the players inventory
-     * @param actor the actor who consumes the mushroom
-     */
-    public void addSuperMushroomConsumeAction(Actor actor){
-        if (actor.getInventory().toString().equals("SuperMushroom")){
-            this.addAction(new ConsumeAction(this));
-        }
-    }
 
     public void addSuperMushroomAction(Action action) {
         this.addAction(action);

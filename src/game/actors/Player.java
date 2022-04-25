@@ -6,7 +6,9 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.displays.Menu;
+import game.actions.ConsumeAction;
 import game.magical_Items.Coin;
+import game.magical_Items.SuperMushroom;
 
 /**
  * Class representing the Player.
@@ -31,8 +33,12 @@ public class Player extends Actor  {
 	@Override
 	public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
 		// Handle multi-turn Actions
+		SuperMushroom superMushroom = new SuperMushroom(true);
+		if(this.getInventory().toString().equals("SuperMushroom"))
+			superMushroom.addSuperMushroomAction(new ConsumeAction(superMushroom));
 		if (lastAction.getNextAction() != null)
 			return lastAction.getNextAction();
+
 
 		// return/print the console menu
 		return menu.showMenu(this, actions, display);
