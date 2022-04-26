@@ -4,7 +4,7 @@ import edu.monash.fit2099.engine.positions.Location;
 
 public class Sprout extends Tree{
 
-    private final double GOOMBA_ODDS = 0.1;
+    private final double GOOMBA_ODDS = 0.0; // Should be 0.1 as per Assignment 1.
     private final int GROW_UP_AGE = 10;
 
 

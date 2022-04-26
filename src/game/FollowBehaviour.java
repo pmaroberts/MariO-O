@@ -15,7 +15,6 @@ import edu.monash.fit2099.engine.actions.MoveActorAction;
 public class FollowBehaviour implements Behaviour {
 
 	private final Actor target;
-
 	/**
 	 * Constructor.
 	 * 
