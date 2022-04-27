@@ -10,6 +10,7 @@ public class ConsumeSuperMushroom extends ConsumeAction{
     public ConsumeSuperMushroom(SuperMushroom superMushroom){
         super();
         this.superMushroom = superMushroom;
+
     }
 
     @Override
@@ -20,6 +21,18 @@ public class ConsumeSuperMushroom extends ConsumeAction{
         this.superMushroom.removeActionSuperMushroom(superMushroom.getSuperMushroomConsume());
         return menuDescription(actor);
 
-        }
     }
+
+    /**
+     * creates a string about the actors action
+     * @param actor The actor performing the action.
+     * @return a string that describes the consumption that can be printed to the user
+     */
+    @Override
+    public String menuDescription(Actor actor) {
+        return actor + " consumes " + this;
+    }
+
+
+}
 

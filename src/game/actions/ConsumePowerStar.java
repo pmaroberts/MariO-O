@@ -8,20 +8,30 @@ import game.magical_Items.PowerStar;
 public class ConsumePowerStar extends ConsumeAction{
     PowerStar powerStar;
 
-        public ConsumePowerStar(PowerStar powerStar){
-            super();
-            this.powerStar = powerStar;
-        }
-
-        @Override
-        public String execute(Actor actor, GameMap map ){
-            actor.removeItemFromInventory(this.powerStar);
-            this.powerStar.healPlayer(actor);
-            this.powerStar.updateStatus(Status.POWERSTAR);
-            this.powerStar.instantKill();
-            this.powerStar.removeActionPowerStar(powerStar.getPowerStarConsume());
-            return menuDescription(actor);
-
-        }
+    public ConsumePowerStar(PowerStar powerStar){
+        super();
+        this.powerStar = powerStar;
     }
+
+    @Override
+    public String execute(Actor actor, GameMap map ){
+        actor.removeItemFromInventory(this.powerStar);
+        this.powerStar.healPlayer(actor);
+        this.powerStar.updateStatus(Status.POWERSTAR);
+        this.powerStar.instantKill();
+        this.powerStar.removeActionPowerStar(powerStar.getPowerStarConsume());
+        return menuDescription(actor);
+
+    }
+
+    /**
+     * creates a string about the actors action
+     * @param actor The actor performing the action.
+     * @return a string that describes the consumption that can be printed to the user
+     */
+    @Override
+    public String menuDescription(Actor actor) {
+        return actor + " consumes " + this;
+    }
+}
 
