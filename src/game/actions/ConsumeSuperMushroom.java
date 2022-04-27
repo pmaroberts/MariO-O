@@ -19,6 +19,7 @@ public class ConsumeSuperMushroom extends ConsumeAction{
         this.superMushroom.increaseHPSuperMushroom(actor);
         this.superMushroom.updatePlayerDisplayCharacter(actor);
         this.superMushroom.removeActionSuperMushroom(superMushroom.getSuperMushroomConsume());
+        map.locationOf(actor).removeItem(superMushroom);
         return menuDescription(actor);
 
     }
@@ -30,7 +31,7 @@ public class ConsumeSuperMushroom extends ConsumeAction{
      */
     @Override
     public String menuDescription(Actor actor) {
-        return actor + " consumes " + this;
+        return actor + " consumes " + this.superMushroom.toString();
     }
 
 

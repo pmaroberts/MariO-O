@@ -20,6 +20,7 @@ public class ConsumePowerStar extends ConsumeAction{
         this.powerStar.updateStatus(Status.POWERSTAR);
         this.powerStar.instantKill();
         this.powerStar.removeActionPowerStar(powerStar.getPowerStarConsume());
+        map.locationOf(actor).removeItem(powerStar);
         return menuDescription(actor);
 
     }
@@ -31,7 +32,7 @@ public class ConsumePowerStar extends ConsumeAction{
      */
     @Override
     public String menuDescription(Actor actor) {
-        return actor + " consumes " + this;
+        return actor + " consumes " + this.powerStar.toString();
     }
 }
 
