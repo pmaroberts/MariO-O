@@ -5,26 +5,29 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
-import game.actions.ConsumeAction;
+import game.actions.ConsumePowerStar;
 import game.actors.Status;
 
 public class PowerStar extends Item {
     public static final int PRICE = 600;
     private int turns;
-
+    private ConsumePowerStar consumePowerStar;
 
     /**
      * constructor for PowerStar item, initialises turns (age counter) to zero
+     *
      * @param portable a boolean variable to indicate whether the item can be moved/ carried
      */
     public PowerStar(boolean portable) {
         super("PowerStar", '*', portable);
         turns = 0;
-        //this.addAction(new ConsumeAction(this));
+        this.consumePowerStar = new ConsumePowerStar(this);
+        this.addAction(consumePowerStar);
     }
 
     /**
      * getter for private class price attribute
+     *
      * @return the static price attribute, references class instance not created object instance.
      */
     public int getPrice() {
@@ -33,6 +36,7 @@ public class PowerStar extends Item {
 
     /**
      * getter for turns counter, private 'age; attribute for PowerStar item
+     *
      * @return an integer indicating item age
      */
     public int getTurns() {
@@ -51,6 +55,7 @@ public class PowerStar extends Item {
     /**
      * overridden tick method from item class. added a counter, turns attribute, which will track the amount of
      * time (turns) that have passed since the initialisation of the particular instance
+     *
      * @param location the location at which the item is (on the floor)
      */
     @Override
@@ -64,8 +69,9 @@ public class PowerStar extends Item {
     /**
      * overriding second tick method in item abstract class. this one tracks the passing of time of a carried
      * item (one in the actor's inventory). once it
+     *
      * @param location the location that the actor is at
-     * @param actor The actor carrying this Item.
+     * @param actor    The actor carrying this Item.
      */
     @Override
     public void tick(Location location, Actor actor) {
@@ -98,6 +104,7 @@ public class PowerStar extends Item {
 
     /**
      * responsible for adding action to the action list in powerStar item attribute
+     *
      * @param action the action to be added
      */
     public void addPowerStarAction(Action action) {
@@ -106,21 +113,19 @@ public class PowerStar extends Item {
 
     /**
      * updates player status enum with capability selected
+     *
      * @param status chosen status, multipurpose method as any status can be updated
      */
     public void updateStatus(Status status) {
         this.addCapability(status);
     }
 
-    /**
-     * this method is responsible for adding the consume action to the item actionList of allowable actions.
-     * only consume action is needed in class as Toad actor should handle purchase action list?
-     * @param actor the actor that is in proximity and prompted to consume item
-     */
-    //public void addPowerStarAction(Actor actor) {
-        //if (actor.getInventory().toString().equals("PowerStar")) {
-            //this.addAction(new ConsumeAction(this));
-        //}
-    //}
+    public ConsumePowerStar getPowerStarConsume(){
+        return this.consumePowerStar;
+    }
 
+
+    public void removeActionPowerStar(Action action){
+        this.removeAction(action);
+    }
 }
