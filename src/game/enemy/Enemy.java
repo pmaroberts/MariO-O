@@ -2,7 +2,7 @@ package game.enemy;
 
 import edu.monash.fit2099.engine.actors.Actor;
 
-abstract class Enemy extends Actor {
+public abstract class Enemy extends Actor {
     /**
      * Constructor.
      *

@@ -1,6 +1,9 @@
 package game.reset;
 
 import com.sun.source.tree.Tree;
+import game.actors.Player;
+import game.enemy.Enemy;
+import game.magical_Items.Coin;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,10 +55,21 @@ public class ResetManager {
             if(resettableList.get(i) instanceof Tree){
                 Random r = new Random();
                 if(r.nextBoolean()){
+                    //get location of the tree and if true set that location to dirt
                  //resettableList.get(i)
                 }
-
             }
+            else if(resettableList.get(i) instanceof Enemy){
+                //kill enemy here
+                //resettableList.get(i).
+            }
+            else if(resettableList.get(i) instanceof Player){
+                //reset player status and HP
+            }
+            else if(resettableList.get(i) instanceof Coin){
+                //remove coin from ground
+            }
+
         }
     }
 
