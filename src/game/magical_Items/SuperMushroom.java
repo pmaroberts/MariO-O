@@ -3,8 +3,6 @@ package game.magical_Items;
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
-import edu.monash.fit2099.engine.items.PickUpItemAction;
-import edu.monash.fit2099.engine.positions.GameMap;
 import game.actions.ConsumeSuperMushroom;
 import game.actors.Status;
 
@@ -18,7 +16,7 @@ public class SuperMushroom extends Item {
      * constructor
      * @param portable whether or not the item is able to be carried by player
      */
-    public SuperMushroom(boolean portable){ //idk about this, how to tell if traded or picked up?
+    public SuperMushroom(boolean portable){
         super("SuperMushroom", '^', portable);
         consumeSuperMushroom = new ConsumeSuperMushroom(this);
         this.addAction(consumeSuperMushroom);
