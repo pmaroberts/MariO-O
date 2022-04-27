@@ -76,7 +76,7 @@ public class PowerStar extends Item {
     @Override
     public void tick(Location location, Actor actor) {
         for (int i = 0; i < actor.getInventory().size(); i++) {
-            if (actor.getInventory().get(i).toString().equals("PowerStar")) {
+            if (actor.hasCapability(Status.POWERSTAR)) {
                 this.turns++;
                 if (this.turns == 10) {
                     actor.removeItemFromInventory(actor.getInventory().get(i));
