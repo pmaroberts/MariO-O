@@ -13,8 +13,8 @@ public class Koopa extends Enemy {
      * @param displayChar the character that will represent the Actor in the display
      * @param hitPoints   the Actor's starting hit points
      */
-    public Koopa(String name, char displayChar, int hitPoints) {
-        super(name, displayChar, hitPoints);
+    public Koopa( int hitPoints) {
+        super("Koopa", 'K', hitPoints);
     }
 
     @Override
