@@ -5,8 +5,9 @@ import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.items.PickUpItemAction;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.actors.Player;
+import game.reset.Resettable;
 
-public class Coin extends Item {
+public class Coin extends Item implements Resettable {
     private final int value;
 
     /**
@@ -20,6 +21,7 @@ public class Coin extends Item {
     Coin(int value, boolean portable) {
         super("Coin $" + value, '$', portable);
         this.value = value;
+        this.registerInstance();
     }
 
     /**
@@ -49,5 +51,15 @@ public class Coin extends Item {
      */
     public void addCoinAction(Action action) {
         this.addAction(action);
+    }
+
+    @Override
+    public void resetInstance() {
+
+    }
+
+    @Override
+    public void registerInstance() {
+        Resettable.super.registerInstance();
     }
 }
