@@ -11,6 +11,7 @@ import edu.monash.fit2099.engine.positions.World;
 import game.actors.Player;
 import game.actors.Toad;
 import game.enemy.Goomba;
+import game.enemy.Koopa;
 import game.ground.Dirt;
 import game.ground.Floor;
 import game.ground.Wall;
