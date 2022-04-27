@@ -8,7 +8,6 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.World;
-import game.actions.ConsumeAction;
 import game.actors.Player;
 import game.actors.Toad;
 import game.enemy.Goomba;
@@ -61,12 +60,12 @@ public class Application {
 			world.addPlayer(mario, gameMap.at(42, 10));
 
 			Actor toad = new Toad();
-			world.addPlayer(toad, gameMap.at(44, 9));
+			//world.addPlayer(toad, gameMap.at(42, 9)); //44 9
 
 			Random rand = new Random();
 			SuperMushroom superMushroom = new SuperMushroom(true);
-			gameMap.at(rand.nextInt(39), rand.nextInt(19)).addItem(superMushroom);
-			gameMap.at(42, 10).addItem(superMushroom);
+			//gameMap.at(rand.nextInt(39), rand.nextInt(19)).addItem(superMushroom);
+			gameMap.at(42, 9).addItem(superMushroom);
 
 			PowerStar powerStar = new PowerStar(true);
 			gameMap.at(rand.nextInt(39), rand.nextInt(19)).addItem(powerStar);

@@ -4,6 +4,7 @@ import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.items.PickUpItemAction;
 import edu.monash.fit2099.engine.positions.GameMap;
+import game.actions.ConsumeAction;
 import game.actors.Player;
 
 public class Coin extends Item {
@@ -20,6 +21,7 @@ public class Coin extends Item {
     Coin(int value, boolean portable) {
         super("Coin $" + value, '$', portable);
         this.value = value;
+        //this.addAction(new ConsumeAction(this));
     }
 
     /**
@@ -37,10 +39,8 @@ public class Coin extends Item {
      * @param gameMap the gameMap that the coin is found on
      * @return the menu description of the pickup action
      */
-    public String removeCoin(Player player, GameMap gameMap) {
-        PickUpItemAction pickUpItemAction = new PickUpItemAction(this);
+    public void removeCoin(Player player) {
         player.editBalance(this.getValue());
-        return pickUpItemAction.execute(player, gameMap);
         }
 
     /**

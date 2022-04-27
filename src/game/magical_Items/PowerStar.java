@@ -20,6 +20,7 @@ public class PowerStar extends Item {
     public PowerStar(boolean portable) {
         super("PowerStar", '*', portable);
         turns = 0;
+        //this.addAction(new ConsumeAction(this));
     }
 
     /**
@@ -116,10 +117,10 @@ public class PowerStar extends Item {
      * only consume action is needed in class as Toad actor should handle purchase action list?
      * @param actor the actor that is in proximity and prompted to consume item
      */
-    public void addPowerStarAction(Actor actor) {
-        if (actor.getInventory().toString().equals("PowerStar")) {
-            this.addAction(new ConsumeAction(this));
-        }
-    }
+    //public void addPowerStarAction(Actor actor) {
+        //if (actor.getInventory().toString().equals("PowerStar")) {
+            //this.addAction(new ConsumeAction(this));
+        //}
+    //}
 
 }
