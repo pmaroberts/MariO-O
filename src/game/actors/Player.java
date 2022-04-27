@@ -4,6 +4,8 @@ import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
+import edu.monash.fit2099.engine.items.Item;
+import edu.monash.fit2099.engine.items.PickUpItemAction;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.displays.Menu;
 import game.actions.ConsumeAction;
@@ -34,6 +36,19 @@ public class Player extends Actor  {
 	public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
 		// Handle multi-turn Actions
 		SuperMushroom superMushroom = new SuperMushroom(true);
+		for (Item item : this.getInventory()){
+			if (item.getAllowableActions().contains(new PickUpItemAction(item))){
+
+			}
+			//okay so i want to check if the item is in the inventory of the player
+			//and if it is, i want to add the consume action, but i also want to add the
+			//capability to say that the item is in the inventory
+
+			//if the item in the inventory has been picked up, then it should be added to the capability list
+		}
+
+
+
 		if(this.getInventory().toString().equals("SuperMushroom"))
 			superMushroom.addSuperMushroomAction(new ConsumeAction(superMushroom));
 		if (lastAction.getNextAction() != null)

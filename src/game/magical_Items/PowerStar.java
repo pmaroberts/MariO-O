@@ -12,6 +12,7 @@ public class PowerStar extends Item {
     public static final int PRICE = 600;
     private int turns;
 
+
     /**
      * constructor for PowerStar item, initialises turns (age counter) to zero
      * @param portable a boolean variable to indicate whether the item can be moved/ carried
@@ -72,6 +73,8 @@ public class PowerStar extends Item {
                 this.turns++;
                 if (this.turns == 10) {
                     actor.removeItemFromInventory(actor.getInventory().get(i));
+                    updateStatus(Status.HOSTILE_TO_ENEMY);
+                    removeInstantKill();
                 }
             }
         }
@@ -87,9 +90,8 @@ public class PowerStar extends Item {
 
     /**
      * this simply resets the users base attack skill to what was previously before powerStar booster initiated
-     * @param actor the actor whose intrinsic weapon damage was increased
      */
-    public void removeInstantKill(Actor actor) {
+    public void removeInstantKill() {
         IntrinsicWeapon instaKill = new IntrinsicWeapon(5, "punch");
     }
 
@@ -108,24 +110,6 @@ public class PowerStar extends Item {
     public void updateStatus(Status status) {
         this.addCapability(status);
     }
-
-
-    //this method doesn't check for consumption bc it doesn't matter, the timer counts on the ground and in
-    //inventory too
-
-    //defo check this method bc not sure if it should be put in tick method!!!
-
-    /**
-     *
-     * @param actor the actor who has an active powerstar booster
-     */
-    public void checkPowerStar(Actor actor) {
-        if (this.turns == 10) {
-            updateStatus(Status.HOSTILE_TO_ENEMY);
-            removeInstantKill(actor);
-        }
-    }
-
 
     /**
      * this method is responsible for adding the consume action to the item actionList of allowable actions.
