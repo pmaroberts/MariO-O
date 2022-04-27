@@ -1,7 +1,10 @@
 package game.reset;
 
+import com.sun.source.tree.Tree;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * A global Singleton manager that does soft-reset on the instances.
@@ -45,6 +48,15 @@ public class ResetManager {
      * By doing this way, it will avoid using `instanceof` all over the place.
      */
     public void run(){
+        for (int i = 0; i< resettableList.size(); i ++){
+            if(resettableList.get(i) instanceof Tree){
+                Random r = new Random();
+                if(r.nextBoolean()){
+                 //resettableList.get(i)
+                }
+
+            }
+        }
     }
 
     /**
