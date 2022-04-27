@@ -47,10 +47,6 @@ public class Player extends Actor  {
 			//if the item in the inventory has been picked up, then it should be added to the capability list
 		}
 
-
-
-		if(this.getInventory().toString().equals("SuperMushroom"))
-			superMushroom.addSuperMushroomAction(new ConsumeAction(superMushroom));
 		if (lastAction.getNextAction() != null)
 			return lastAction.getNextAction();
 
