@@ -5,12 +5,14 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.items.PickUpItemAction;
 import edu.monash.fit2099.engine.positions.GameMap;
+import game.actions.ConsumeSuperMushroom;
 import game.actors.Status;
 
 public class SuperMushroom extends Item {
 
     private static final int SUPER_MUSHROOM_HP_BONUS = 50; //add 50 max HP everytime superMushroom consumed
     private static final int PRICE = 400; //$400 to purchase from Toad
+    private ConsumeSuperMushroom consumeSuperMushroom;
 
     /**
      * constructor
@@ -18,6 +20,8 @@ public class SuperMushroom extends Item {
      */
     public SuperMushroom(boolean portable){ //idk about this, how to tell if traded or picked up?
         super("SuperMushroom", '^', portable);
+        consumeSuperMushroom = new ConsumeSuperMushroom(this);
+        this.addAction(consumeSuperMushroom);
     }
 
     /**
@@ -50,18 +54,13 @@ public class SuperMushroom extends Item {
      */
     public int getPrice(){return SuperMushroom.PRICE;}
 
-    /**
-     * Add the item to the actor's inventory.
-     *
-     * @see Action#execute(Actor, GameMap)
-     * @param superMushroom the instance of the superMushroom picked up
-     * @param actor The actor performing the action.
-     * @param map The map the actor is on.
-     * @return a suitable description to display in the UI
-     */
-    public String pickupSuperMushroom(SuperMushroom superMushroom, Actor actor, GameMap map){
-        PickUpItemAction pickUpItemAction = new PickUpItemAction(superMushroom);//adds the item to the class
-        return pickUpItemAction.execute(actor, map); //return statement to be shown to user
+    public ConsumeSuperMushroom getSuperMushroomConsume(){
+        return this.consumeSuperMushroom;
+    }
+
+
+    public void removeActionSuperMushroom(Action action){
+        this.removeAction(action);
     }
 
 }
