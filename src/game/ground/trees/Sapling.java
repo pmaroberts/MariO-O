@@ -1,8 +1,9 @@
 package game.ground.trees;
 
 import edu.monash.fit2099.engine.positions.Location;
-import game.Tree;
 import game.Utils;
+import game.magical_Items.Coin;
+
 
 public class Sapling extends Tree {
 

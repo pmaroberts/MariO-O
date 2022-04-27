@@ -10,7 +10,6 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.World;
 import game.actors.Player;
 import game.actors.Toad;
-import game.enemy.Goomba;
 import game.enemy.Koopa;
 import game.ground.Dirt;
 import game.ground.Floor;
@@ -18,6 +17,7 @@ import game.ground.Wall;
 import game.magical_Items.PowerStar;
 import game.magical_Items.SuperMushroom;
 import game.ground.trees.Sprout;
+import game.enemy.Goomba;
 
 import java.util.Random;
 
@@ -65,15 +65,16 @@ public class Application {
 
 			Random rand = new Random();
 			SuperMushroom superMushroom = new SuperMushroom(true);
-			//gameMap.at(rand.nextInt(39), rand.nextInt(19)).addItem(superMushroom);
+			//gameMap.at(rand.nextInt(39), rand.nextInt(19)).addItem(superMushroom);6
+
 			gameMap.at(42, 9).addItem(superMushroom);
 
 			PowerStar powerStar = new PowerStar(true);
 			gameMap.at(rand.nextInt(39), rand.nextInt(19)).addItem(powerStar);
-			gameMap.at(42, 10).addItem(powerStar);
+			gameMap.at(36, 10).addItem(powerStar);
 
 			// FIXME: the Goomba should be generated from the Tree
-			gameMap.at(35, 10).addActor(new Koopa());
+			gameMap.at(35, 10).addActor(new Goomba());
 
 			world.run();
 

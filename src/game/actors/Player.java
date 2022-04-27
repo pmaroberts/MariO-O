@@ -8,6 +8,7 @@ import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.items.PickUpItemAction;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.displays.Menu;
+import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import game.actions.ConsumeAction;
 import game.magical_Items.Coin;
 import game.magical_Items.SuperMushroom;

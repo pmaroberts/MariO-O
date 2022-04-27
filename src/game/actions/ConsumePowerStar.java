@@ -17,7 +17,7 @@ public class ConsumePowerStar extends ConsumeAction{
     public String execute(Actor actor, GameMap map ){
         actor.removeItemFromInventory(this.powerStar);
         this.powerStar.healPlayer(actor);
-        this.powerStar.updateStatus(Status.POWERSTAR);
+        actor.addCapability(Status.POWERSTAR);
         this.powerStar.instantKill();
         this.powerStar.removeActionPowerStar(powerStar.getPowerStarConsume());
         map.locationOf(actor).removeItem(powerStar);

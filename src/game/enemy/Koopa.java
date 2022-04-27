@@ -26,7 +26,7 @@ public class Koopa extends Enemy {
 
     public Koopa() {
         super("Koopa", 'K', 1); // hp should be 100
-        this.behaviours.put(10, new WanderBehaviour());
+        //this.behaviours.put(10, new WanderBehaviour());
         //this.behaviours.put(1, new AttackBehaviour());
         this.addCapability(Status.VALID_CORPSE);
         this.addItemToInventory(new SuperMushroom(true));

@@ -1,8 +1,7 @@
 package game.ground.trees;
 
 import edu.monash.fit2099.engine.positions.Location;
-import game.Goomba;
-import game.Tree;
+import game.enemy.Goomba;
 import game.Utils;
 
 public class Sprout extends Tree {

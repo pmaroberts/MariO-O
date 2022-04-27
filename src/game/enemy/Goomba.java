@@ -1,4 +1,4 @@
-package game;
+package game.enemy;
 
 
 import edu.monash.fit2099.engine.actions.Action;
@@ -8,12 +8,12 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.actions.DoNothingAction;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
+import game.Utils;
 import game.actions.AttackAction;
 import game.actors.Status;
 import game.behaviour.Behaviour;
 import game.behaviour.FollowBehaviour;
 import game.behaviour.WanderBehaviour;
-import game.enemy.Enemy;
 
 import java.util.HashMap;
 import java.util.Map;

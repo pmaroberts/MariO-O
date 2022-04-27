@@ -18,7 +18,7 @@ public class Coin extends Item {
      *                 enemy's if they drop coins when killed will need to have a portable coin in inventory
      *                 for main player, coin will not be portable
      */
-    Coin(int value, boolean portable) {
+    public Coin(int value, boolean portable) {
         super("Coin $" + value, '$', portable);
         this.value = value;
         //this.addAction(new ConsumeAction(this));
@@ -36,7 +36,6 @@ public class Coin extends Item {
     /**
      * a method to pick up the coin and remove it from the map
      * @param player the player whose balance will be affected by coin pickup
-     * @param gameMap the gameMap that the coin is found on
      * @return the menu description of the pickup action
      */
     public void removeCoin(Player player) {

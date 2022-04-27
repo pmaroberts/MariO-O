@@ -8,6 +8,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.weapons.Weapon;
+import game.actors.Status;
 
 /**
  * Special Action for attacking other Actors.
@@ -45,13 +46,22 @@ public class AttackAction extends Action {
 		Weapon weapon = actor.getWeapon();
 		actor.addCapability(Status.ENGAGED);
 		target.addCapability(Status.ENGAGED);
-		if (!(rand.nextInt(100) <= weapon.chanceToHit())) {
-			return actor + " misses " + target + ".";
+		String result = "";
+
+		if(actor.hasCapability(Status.POWERSTAR)){
+			target.hurt(99999);
+			result += actor + " attacks with powerstar";
+		}
+		else{
+			if (!(rand.nextInt(100) <= weapon.chanceToHit())) {
+				return actor + " misses " + target + ".";
+			}
+			int damage = weapon.damage();
+			result += actor + " " + weapon.verb() + " " + target + " for " + damage + " damage.";
+			target.hurt(damage);
 		}
 
-		int damage = weapon.damage();
-		String result = actor + " " + weapon.verb() + " " + target + " for " + damage + " damage.";
-		target.hurt(damage);
+
 
 
 
