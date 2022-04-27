@@ -53,8 +53,14 @@ public class ResetManager {
     public void run(){
         for (int i = 0; i< resettableList.size(); i ++){
 
-            resettableList.get(i).resetInstance();
-            cleanUp(resettableList.get(i));
+            try {
+                resettableList.get(i).resetInstance();
+                cleanUp(resettableList.get(i));
+            }
+            catch (Exception e){
+                System.out.println("Error reseting list");
+            }
+
            /*if(resettableList.get(i) instanceof Tree){
                 Random r = new Random();
                 if(r.nextBoolean()){

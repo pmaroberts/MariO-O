@@ -15,6 +15,7 @@ public class Koopa extends Enemy {
      */
     public Koopa(String name, char displayChar, int hitPoints) {
         super(name, displayChar, hitPoints);
+        this.registerInstance();
     }
 
     @Override
