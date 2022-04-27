@@ -6,30 +6,72 @@ import edu.monash.fit2099.engine.actions.DoNothingAction;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
+import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
+
 import java.util.HashMap;
 import java.util.Map;
 
 
-// ************************************************************************************
-// At the moment this is just a placeholder for testing, it will be implemented soon :)
-// ************************************************************************************
-public class Koopa extends Actor {
+
+public class Koopa extends Enemy {
 
     private final Map<Integer, Behaviour> behaviours = new HashMap<>(); // priority, behaviour
 
 
     public Koopa() {
-        super("Koopa", 'K', 50);
+        super("Koopa", 'K', 1); // hp should be 100
         this.behaviours.put(10, new WanderBehaviour());
+        //this.behaviours.put(1, new AttackBehaviour());
+        this.addCapability(Status.VALID_CORPSE);
+        this.addItemToInventory(new SuperMushroom(true));
     }
+
+    public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
+        ActionList actions = new ActionList();
+        if(otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)) {
+            if(this.hasCapability(Status.VALID_CORPSE)){
+                actions.add(new AttackAction(this,direction));
+            }
+            else{
+                // add destroy koopa thing
+            }
+        }
+        return actions;
+    }
+
 
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
+
+        if(!this.isConscious()){
+            this.becomeDormant();
+        }
+        // Allows Koopa to follow whatever attacks it
+        Actor attacker = this.startFollowFromExit(map);
+        if(attacker != null && this.hasCapability(Status.VALID_CORPSE)){
+            try{
+                this.behaviours.put(2, new FollowBehaviour(attacker));
+            }
+            catch(Exception ignored){}
+        }
         for(Behaviour Behaviour : behaviours.values()) {
             Action action = Behaviour.getAction(this, map);
             if (action != null)
                 return action;
         }
         return new DoNothingAction();
+    }
+
+    public void becomeDormant(){
+        this.setDisplayChar('D');
+        this.behaviours.clear(); // Removes all behaviours
+        this.removeCapability(Status.VALID_CORPSE);
+        this.addCapability(Status.DORMANT);
+    }
+
+    @Override
+    protected IntrinsicWeapon getIntrinsicWeapon(){
+        // We can use intrinsic weapon here because it automatically has a 50% hit rate.
+        return new IntrinsicWeapon(30, "punch"); //
     }
 }

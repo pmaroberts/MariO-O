@@ -11,4 +11,6 @@ public enum Status {
     FERTILE,
     ENEMY,
     ENGAGED,
+    VALID_CORPSE,
+    DORMANT
 }

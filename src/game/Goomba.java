@@ -26,7 +26,7 @@ public class Goomba extends Enemy {
 	public Goomba() {
 		super("Goomba", 'g', 20);
 		this.behaviours.put(10, new WanderBehaviour());
-		this.behaviours.put(1, new AttackBehaviour());
+		//this.behaviours.put(1, new AttackBehaviour());
 	}
 
 	/**
@@ -41,7 +41,6 @@ public class Goomba extends Enemy {
 	@Override
 	public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
 		ActionList actions = new ActionList();
-		// it can be attacked only by the HOSTILE opponent, and this action will not attack the HOSTILE enemy back.
 		if(otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)) {
 			actions.add(new AttackAction(this,direction));
 		}

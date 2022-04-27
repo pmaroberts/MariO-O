@@ -43,7 +43,8 @@ public class AttackAction extends Action {
 	public String execute(Actor actor, GameMap map) {
 
 		Weapon weapon = actor.getWeapon();
-
+		actor.addCapability(Status.ENGAGED);
+		target.addCapability(Status.ENGAGED);
 		if (!(rand.nextInt(100) <= weapon.chanceToHit())) {
 			return actor + " misses " + target + ".";
 		}
@@ -51,10 +52,10 @@ public class AttackAction extends Action {
 		int damage = weapon.damage();
 		String result = actor + " " + weapon.verb() + " " + target + " for " + damage + " damage.";
 		target.hurt(damage);
-		target.addCapability(Status.ENGAGED);
 
 
-		if (!target.isConscious()) {
+
+		if (!target.isConscious() && !target.hasCapability(Status.VALID_CORPSE)) {
 			ActionList dropActions = new ActionList();
 			// drop all items
 			for (Item item : target.getInventory())

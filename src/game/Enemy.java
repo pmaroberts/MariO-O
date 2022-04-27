@@ -20,15 +20,18 @@ public abstract class Enemy extends Actor {
     }
 
     public Actor startFollowFromExit(GameMap map){
-        Location here = map.locationOf(this);
-        for(Exit exit : here.getExits()){
-            if(exit.getDestination().containsAnActor()){
-                Actor attacker = exit.getDestination().getActor();
-                if(attacker.hasCapability(Status.HOSTILE_TO_ENEMY)){
-                    return attacker;
+        if(this.hasCapability(Status.ENGAGED)){
+            Location here = map.locationOf(this);
+            for(Exit exit : here.getExits()){
+                if(exit.getDestination().containsAnActor()){
+                    Actor attacker = exit.getDestination().getActor();
+                    if(attacker.hasCapability(Status.HOSTILE_TO_ENEMY)){
+                        return attacker;
+                    }
                 }
             }
         }
+
         return null;
     }
 
