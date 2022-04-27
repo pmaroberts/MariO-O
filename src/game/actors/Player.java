@@ -15,7 +15,7 @@ import game.magical_Items.SuperMushroom;
 /**
  * Class representing the Player.
  */
-public class Player extends Actor  {
+public class Player extends Actor {
 
 	private final Menu menu = new Menu();
 	private int wallet = 0;
@@ -45,6 +45,8 @@ public class Player extends Actor  {
 			//capability to say that the item is in the inventory
 
 			//if the item in the inventory has been picked up, then it should be added to the capability list
+
+
 		}
 
 
