@@ -9,7 +9,7 @@ public class ConsumePowerStar extends ConsumeAction{
     PowerStar powerStar;
 
         public ConsumePowerStar(PowerStar powerStar){
-            super(powerStar);
+            super();
             this.powerStar = powerStar;
         }
 
@@ -18,6 +18,7 @@ public class ConsumePowerStar extends ConsumeAction{
             actor.removeItemFromInventory(this.powerStar);
             this.powerStar.healPlayer(actor);
             this.powerStar.updateStatus(Status.POWERSTAR);
+            this.powerStar.instantKill();
             this.powerStar.removeActionPowerStar(powerStar.getPowerStarConsume());
             return menuDescription(actor);
 

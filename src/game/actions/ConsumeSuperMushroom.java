@@ -8,7 +8,7 @@ public class ConsumeSuperMushroom extends ConsumeAction{
     SuperMushroom superMushroom;
 
     public ConsumeSuperMushroom(SuperMushroom superMushroom){
-        super(superMushroom);
+        super();
         this.superMushroom = superMushroom;
     }
 
