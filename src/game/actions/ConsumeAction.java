@@ -3,12 +3,19 @@ package game.actions;
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
+import game.magical_Items.ConsumableItem;
 
-public abstract class ConsumeAction extends Action {
+public class ConsumeAction extends Action {
+    ConsumableItem consumableItem;
     /**
      * Consume item action constructor
      */
-    public ConsumeAction() {
+    public ConsumeAction(ConsumableItem item) {
+        this.consumableItem = item;
+    }
+
+    public ConsumeAction getConsumeAction(){
+        return this;
     }
 
     /**
@@ -17,7 +24,8 @@ public abstract class ConsumeAction extends Action {
      */
     @Override
     public String execute(Actor actor, GameMap map ) {
-            return "";
+        consumableItem.toExecute(actor, map);
+        return menuDescription(actor);
     }
 
     /**
@@ -27,7 +35,7 @@ public abstract class ConsumeAction extends Action {
      */
     @Override
     public String menuDescription(Actor actor) {
-        return actor + " consumes "  ;
+        return actor + " consumes " + consumableItem.toString();
     }
 }
 

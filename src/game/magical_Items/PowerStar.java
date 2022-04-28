@@ -2,15 +2,14 @@ package game.magical_Items;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
+import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
-import game.actions.ConsumePowerStar;
 import game.actors.Status;
 
 public class PowerStar extends ConsumableItem {
     public static final int PRICE = 600;
     private int turns;
-    private ConsumePowerStar consumePowerStar;
 
     /**
      * constructor for PowerStar item, initialises turns (age counter) to zero
@@ -20,8 +19,6 @@ public class PowerStar extends ConsumableItem {
     public PowerStar(boolean portable) {
         super("PowerStar", '*', portable);
         turns = 0;
-        this.consumePowerStar = new ConsumePowerStar(this);
-        this.addAction(consumePowerStar);
     }
 
     /**
@@ -102,15 +99,6 @@ public class PowerStar extends ConsumableItem {
     }
 
     /**
-     * responsible for adding action to the action list in powerStar item attribute
-     *
-     * @param action the action to be added
-     */
-    public void addPowerStarAction(Action action) {
-        this.addAction(action);
-    }
-
-    /**
      * updates player status enum with capability selected
      *
      * @param status chosen status, multipurpose method as any status can be updated
@@ -119,12 +107,17 @@ public class PowerStar extends ConsumableItem {
         this.addCapability(status);
     }
 
-    public ConsumePowerStar getPowerStarConsume(){
-        return this.consumePowerStar;
-    }
-
-
     public void removeActionPowerStar(Action action){
         this.removeAction(action);
+    }
+
+    @Override
+    public void toExecute(Actor actor, GameMap map){
+        actor.removeItemFromInventory(this);
+        this.healPlayer(actor);
+        actor.addCapability(Status.POWERSTAR);
+        this.instantKill();
+        this.removeActionPowerStar(this.getConsumeAction());
+        map.locationOf(actor).removeItem(this);
     }
 }
