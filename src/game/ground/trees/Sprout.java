@@ -6,8 +6,10 @@ import game.Utils;
 
 public class Sprout extends Tree {
 
-    private final double GOOMBA_ODDS = 0.0; // Should be 0.1 as per Assignment 1.
-    private final int GROW_UP_AGE = 10;
+    private static final double GOOMBA_ODDS = 0.0; // Should be 0.1 as per Assignment 1.
+    private static final int GROW_UP_AGE = 10;
+    private static final double JUMP_ODDS = 0.7;
+    private static final int FALL_DAMAGE = 30;
 
 
     public Sprout() {
@@ -19,6 +21,7 @@ public class Sprout extends Tree {
         super.incrementAge();
         this.spawnGoomba(location);
         this.growUp(location);
+        this.destroyedByPowerStar(location);
 
     }
 
@@ -32,5 +35,12 @@ public class Sprout extends Tree {
         if(super.age == GROW_UP_AGE){
             location.setGround(new Sapling());
         }
+    }
+
+    public int jump() {
+        if(Utils.probReturn(JUMP_ODDS)){
+            return 0;
+        }
+        return FALL_DAMAGE;
     }
 }
