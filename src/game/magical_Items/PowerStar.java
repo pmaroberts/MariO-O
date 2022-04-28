@@ -2,13 +2,12 @@ package game.magical_Items;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
-import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import game.actions.ConsumePowerStar;
 import game.actors.Status;
 
-public class PowerStar extends Item {
+public class PowerStar extends ConsumableItem {
     public static final int PRICE = 600;
     private int turns;
     private ConsumePowerStar consumePowerStar;

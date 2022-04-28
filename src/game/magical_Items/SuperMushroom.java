@@ -2,11 +2,10 @@ package game.magical_Items;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
-import edu.monash.fit2099.engine.items.Item;
 import game.actions.ConsumeSuperMushroom;
 import game.actors.Status;
 
-public class SuperMushroom extends Item {
+public class SuperMushroom extends ConsumableItem {
 
     private static final int SUPER_MUSHROOM_HP_BONUS = 50; //add 50 max HP everytime superMushroom consumed
     private static final int PRICE = 400; //$400 to purchase from Toad
