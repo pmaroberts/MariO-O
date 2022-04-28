@@ -76,7 +76,7 @@ public class PowerStar extends ConsumableItem {
                 this.turns++;
                 if (this.turns == 10) {
                     actor.removeItemFromInventory(actor.getInventory().get(i));
-                    updateStatus(Status.HOSTILE_TO_ENEMY);
+                    actor.removeCapability(Status.POWERSTAR);
                     removeInstantKill();
                 }
             }
@@ -120,4 +120,5 @@ public class PowerStar extends ConsumableItem {
         this.removeActionPowerStar(this.getConsumeAction());
         map.locationOf(actor).removeItem(this);
     }
+
 }
