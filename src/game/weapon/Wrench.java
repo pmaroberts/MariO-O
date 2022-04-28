@@ -1,7 +1,10 @@
 package game.weapon;
 
 import edu.monash.fit2099.engine.actions.Action;
+import edu.monash.fit2099.engine.actors.Actor;
+import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
+import game.actors.Status;
 
 public class Wrench extends WeaponItem  {
 
@@ -12,6 +15,7 @@ public class Wrench extends WeaponItem  {
      */
     public Wrench() {
         super("Wrench", '%', 50, "Wrench Attack!", 80);
+        this.togglePortability();
     }
 
     /**
@@ -20,11 +24,12 @@ public class Wrench extends WeaponItem  {
      */
     public int getPrice(){return Wrench.PRICE;}
 
-    /**
-     * adds an action to the list of allowable items
-     * @param action chosen action
-     */
-    public void addWrenchAction(Action action){
-        this.addAction(action);
+
+    @Override
+    public void tick(Location currentLocation, Actor actor) {
+        actor.addCapability(Status.WRENCH);
     }
+
+
+
 }

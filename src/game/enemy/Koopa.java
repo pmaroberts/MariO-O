@@ -8,6 +8,7 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import game.actions.AttackAction;
+import game.actions.DestroyShell;
 import game.actors.Status;
 import game.behaviour.Behaviour;
 import game.behaviour.FollowBehaviour;
@@ -38,8 +39,8 @@ public class Koopa extends Enemy {
             if(this.hasCapability(Status.VALID_CORPSE)){
                 actions.add(new AttackAction(this,direction));
             }
-            else{
-                // add destroy koopa thing
+            else if(otherActor.hasCapability(Status.WRENCH)){
+                actions.add(new DestroyShell(this,direction));
             }
         }
         return actions;
