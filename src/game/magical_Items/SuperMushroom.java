@@ -2,14 +2,13 @@ package game.magical_Items;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
-import game.actions.ConsumeSuperMushroom;
+import edu.monash.fit2099.engine.positions.GameMap;
 import game.actors.Status;
 
 public class SuperMushroom extends ConsumableItem {
 
     private static final int SUPER_MUSHROOM_HP_BONUS = 50; //add 50 max HP everytime superMushroom consumed
     private static final int PRICE = 400; //$400 to purchase from Toad
-    private ConsumeSuperMushroom consumeSuperMushroom;
 
     /**
      * constructor
@@ -17,8 +16,6 @@ public class SuperMushroom extends ConsumableItem {
      */
     public SuperMushroom(boolean portable){
         super("SuperMushroom", '^', portable);
-        consumeSuperMushroom = new ConsumeSuperMushroom(this);
-        this.addAction(consumeSuperMushroom);
     }
 
     /**
@@ -51,13 +48,17 @@ public class SuperMushroom extends ConsumableItem {
      */
     public int getPrice(){return SuperMushroom.PRICE;}
 
-    public ConsumeSuperMushroom getSuperMushroomConsume(){
-        return this.consumeSuperMushroom;
-    }
-
-
     public void removeActionSuperMushroom(Action action){
         this.removeAction(action);
+    }
+
+    @Override
+    public void toExecute(Actor actor, GameMap map){
+        actor.removeItemFromInventory(this);
+        this.increaseHPSuperMushroom(actor);
+        this.updatePlayerDisplayCharacter(actor);
+        this.removeActionSuperMushroom(this.getConsumeAction());
+        map.locationOf(actor).removeItem(this);
     }
 
 }
