@@ -7,7 +7,7 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import game.actions.ConsumeAction;
 import game.actors.Player;
 
-public class Coin extends Item {
+public class Coin extends ConsumableItem {
     private final int value;
 
     /**
