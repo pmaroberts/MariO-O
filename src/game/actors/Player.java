@@ -17,7 +17,7 @@ import game.weapon.Wrench;
 /**
  * Class representing the Player.
  */
-public class Player extends Actor {
+public class Player extends Actor implements Buyer{
 
 	private final Menu menu = new Menu();
 	private int wallet = 0;
