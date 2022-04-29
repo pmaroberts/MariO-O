@@ -14,8 +14,10 @@ import game.ground.Dirt;
 
 public class Mature extends Tree {
 
-    private final double KOOPA_ODDS = 0.15;
-    private final double SUICIDE_ODDS = 0.2;
+    private static final double KOOPA_ODDS = 0.15;
+    private static final double SUICIDE_ODDS = 0.2;
+    private static final double JUMP_ODDS = 0.7;
+    private static final int FALL_DAMAGE = 30;
 
     public Mature() {
         super('T'); // 'T' is the display character for Matures
@@ -27,6 +29,7 @@ public class Mature extends Tree {
         this.spawnKoopa(location);
         this.spawnSprout(location);
         this.suicide(location);
+        this.destroyedByPowerStar(location);
     }
 
     public void spawnKoopa(Location location){
@@ -61,5 +64,13 @@ public class Mature extends Tree {
         }
     }
 
+    // Returns 0 if jump is successful, fall damage if jump fails.
 
+    @Override
+    public int jump() {
+        if(Utils.probReturn(JUMP_ODDS)){
+            return 0;
+        }
+        return FALL_DAMAGE;
+    }
 }

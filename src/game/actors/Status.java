@@ -12,5 +12,6 @@ public enum Status {
     ENEMY,
     ENGAGED,
     VALID_CORPSE,
-    DORMANT
+    DORMANT,
+    WRENCH
 }

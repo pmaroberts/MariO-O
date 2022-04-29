@@ -61,10 +61,6 @@ public class AttackAction extends Action {
 			target.hurt(damage);
 		}
 
-
-
-
-
 		if (!target.isConscious() && !target.hasCapability(Status.VALID_CORPSE)) {
 			ActionList dropActions = new ActionList();
 			// drop all items

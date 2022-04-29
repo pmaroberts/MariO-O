@@ -7,9 +7,11 @@ import game.magical_Items.Coin;
 
 public class Sapling extends Tree {
 
-    private final double COIN_ODDS = 0.1;
-    private final int COIN_VALUE = 20;
-    private final int GROW_UP_AGE = 10;
+    private static final double COIN_ODDS = 0.1;
+    private static final int COIN_VALUE = 20;
+    private static final int GROW_UP_AGE = 10;
+    private static final double JUMP_ODDS = 0.7;
+    private static final int FALL_DAMAGE = 30;
 
     public Sapling() {
         super('t'); // 't' is the display character for Saplings
@@ -20,6 +22,7 @@ public class Sapling extends Tree {
         super.incrementAge();
         this.dropCoin(location);
         this.growUp(location);
+        this.destroyedByPowerStar(location);
     }
 
     public void dropCoin(Location location){
@@ -34,5 +37,11 @@ public class Sapling extends Tree {
         }
     }
 
+    public int jump() {
+        if(Utils.probReturn(JUMP_ODDS)){
+            return 0;
+        }
+        return FALL_DAMAGE;
+    }
 
 }

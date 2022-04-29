@@ -3,10 +3,11 @@ package game.weapon;
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
+import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
-import game.magical_Items.PurchasableItem;
+import game.actors.Status;
 
-public class Wrench extends WeaponItem implements PurchasableItem {
+public class Wrench extends WeaponItem  {
 
     public static final int PRICE = 200;
 
@@ -15,6 +16,7 @@ public class Wrench extends WeaponItem implements PurchasableItem {
      */
     public Wrench() {
         super("Wrench", '%', 50, "Wrench Attack!", 80);
+        this.togglePortability();
     }
 
     /**
@@ -29,6 +31,11 @@ public class Wrench extends WeaponItem implements PurchasableItem {
      */
     public void addWrenchAction(Action action){
         this.addAction(action);
+    }
+
+    @Override
+    public void tick(Location currentLocation, Actor actor) {
+        actor.addCapability(Status.WRENCH);
     }
 
     @Override
