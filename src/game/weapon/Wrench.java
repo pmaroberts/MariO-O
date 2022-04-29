@@ -44,6 +44,7 @@ public class Wrench extends WeaponItem implements PurchasableItem {
         if (actor.getWalletBalance()> PRICE){
             actor.addItemToInventory(this);
             actor.editBalance(-PRICE);
+            actor.addCapability(Status.WRENCH);
             return "Successfully purchased Wrench! Remaining Balance: " + actor.getWalletBalance();
         }
         return "insufficient Balance :(";
