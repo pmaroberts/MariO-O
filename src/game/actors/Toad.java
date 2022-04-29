@@ -16,7 +16,7 @@ import game.weapon.Wrench;
 public class Toad extends Actor {
 
     public Toad() {
-        super("Toad", 'T', 999999999);
+        super("Toad", '0', 999999999);
     }
 
     @Override
