@@ -81,11 +81,14 @@ public class Player extends Actor implements Resettable {
 
 	@Override
 	public void resetInstance() {
-		//reset HP and status
+		resetMaxHp(getMaxHp());
+		//once i Pull properly check the capability list and can manually remove all capabilities
+		//removeCapability();
 	}
 
 	@Override
 	public void registerInstance() {
 		Resettable.super.registerInstance();
 	}
+
 }
