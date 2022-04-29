@@ -3,9 +3,10 @@ package game.magical_Items;
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
+import game.actions.PurchaseAction;
 import game.actors.Status;
 
-public class SuperMushroom extends ConsumableItem {
+public class SuperMushroom extends ConsumableItem implements PurchasableItem {
 
     private static final int SUPER_MUSHROOM_HP_BONUS = 50; //add 50 max HP everytime superMushroom consumed
     private static final int PRICE = 400; //$400 to purchase from Toad
@@ -60,5 +61,16 @@ public class SuperMushroom extends ConsumableItem {
         this.removeActionSuperMushroom(this.getConsumeAction());
         map.locationOf(actor).removeItem(this);
     }
+
+    @Override
+    public String purchase(Actor actor, GameMap map) {
+        if (actor.getWalletBalance()> PRICE){
+            actor.addItemToInventory(this);
+            actor.editBalance(-PRICE);
+            return "Successfully purchased SuperMushroom! Remaining Balance: " + actor.getWalletBalance();
+        }
+        return "insufficient Balance :(";
+    }
+
 
 }
