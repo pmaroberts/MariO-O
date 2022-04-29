@@ -6,8 +6,9 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.actors.Status;
+import game.magical_Items.PurchasableItem;
 
-public class Wrench extends WeaponItem  {
+public class Wrench extends WeaponItem implements PurchasableItem {
 
     public static final int PRICE = 200;
 
