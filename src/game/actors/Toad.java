@@ -14,21 +14,26 @@ import game.magical_Items.SuperMushroom;
 import game.weapon.Wrench;
 
 public class Toad extends Actor {
+    private final Buyer buyer;
 
-    public Toad() {
+
+    public Toad(Buyer buyer) {
         super("Toad", '0', 999999999);
+        this.buyer = buyer;
     }
-
+// get copy of list of actors, then check if the actor has hostiletoenemy status
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
 
         Location here = map.locationOf(this);
         for(Exit exit : here.getExits()){
             if(exit.getDestination().containsAnActor()){
-                Actor buyer = exit.getDestination().getActor();
-                actions.add(new PurchaseAction(new SuperMushroom(true)));
-                actions.add(new PurchaseAction(new PowerStar(true)));
-                actions.add(new PurchaseAction(new Wrench()));
+                Actor actor = exit.getDestination().getActor();
+                if (actor.hasCapability(Status.HOSTILE_TO_ENEMY)){
+                    new PurchaseAction(new SuperMushroom(true), this.buyer);
+                    actions.add(new PurchaseAction(new PowerStar(true), this.buyer));
+                    actions.add(new PurchaseAction(new Wrench(), this.buyer));
+                }
 
 
             }

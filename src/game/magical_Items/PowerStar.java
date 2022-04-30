@@ -5,6 +5,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
+import game.actors.Buyer;
 import game.actors.Status;
 
 public class PowerStar extends ConsumableItem implements PurchasableItem{
@@ -122,11 +123,11 @@ public class PowerStar extends ConsumableItem implements PurchasableItem{
     }
 
     @Override
-    public String purchase(Actor actor, GameMap map) {
-        if (actor.getWalletBalance()> PRICE){
-            actor.addItemToInventory(this);
-            actor.editBalance(-PRICE);
-            return "Successfully purchased PowerStar! Remaining Balance: " + actor.getWalletBalance();
+    public String purchase(Buyer buyer, GameMap map) {
+        if (buyer.getWalletBalance()> PRICE){
+            buyer.addItemToInventoryBuyer(this);
+            buyer.editBalance(-PRICE);
+            return "Successfully purchased PowerStar! Remaining Balance: " + buyer.getWalletBalance();
         }
         return "insufficient Balance :(";
     }
