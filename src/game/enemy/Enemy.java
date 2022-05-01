@@ -22,6 +22,7 @@ public abstract class Enemy extends Actor implements Resettable {
         this.registerInstance();
     }
 
+
     public Actor startFollowFromExit(GameMap map){
         if(this.hasCapability(Status.ENGAGED)){
             Location here = map.locationOf(this);
