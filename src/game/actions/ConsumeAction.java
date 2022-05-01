@@ -7,20 +7,20 @@ import game.magical_Items.ConsumableItem;
 
 public class ConsumeAction extends Action {
     ConsumableItem consumableItem;
+
     /**
-     * Consume item action constructor
+     * consumeaction constructor
+     * @param item consumable item to instantiate the consumable item
      */
     public ConsumeAction(ConsumableItem item) {
         this.consumableItem = item;
     }
 
-    public ConsumeAction getConsumeAction(){
-        return this;
-    }
-
     /**
      * overriding action class execute method. updates and calls methods according to which item type is fed through
-
+     * @param actor The actor performing the action.
+     * @param map The map the actor is on.
+     * @return menuDescription string "actor consumes ..."
      */
     @Override
     public String execute(Actor actor, GameMap map ) {

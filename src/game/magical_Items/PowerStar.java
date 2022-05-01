@@ -4,7 +4,6 @@ import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
-import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import game.actors.Buyer;
 import game.actors.Status;
 
@@ -79,12 +78,19 @@ public class PowerStar extends ConsumableItem implements PurchasableItem{
         }
     }
 
-
-
+    /**
+     * remove a certain action from the powerStar allowable action list
+     * @param action action to be removed from allowable actions
+     */
     public void removeActionPowerStar(Action action){
         this.removeAction(action);
     }
 
+    /**
+     * consume abstract class toExecute method, gives the powerstar a consume action.
+     * @param actor Actor that is consuming the item
+     * @param map GameMap that the actor is on
+     */
     @Override
     public void toExecute(Actor actor, GameMap map){
         this.turns = 0;
@@ -98,6 +104,12 @@ public class PowerStar extends ConsumableItem implements PurchasableItem{
         this.togglePortability();
     }
 
+    /**
+     * purchase method specific to powerstar.
+     * @param buyer Buyer purchasing the item
+     * @param map GameMap the buyer is on
+     * @return string with success of purchase and remaining balance
+     */
     @Override
     public String purchase(Buyer buyer, GameMap map) {
         if (buyer.getWalletBalance()> PRICE){
@@ -108,6 +120,10 @@ public class PowerStar extends ConsumableItem implements PurchasableItem{
         return "insufficient Balance :(";
     }
 
+    /**
+     * changing toString to include remaining turns of powerstar instance
+     * @return string concatenated with remaining turns
+     */
     @Override
     public String toString(){
         return this.getClass().getSimpleName() + " (" + (10 - this.getTurns()) + " turns remaining)";

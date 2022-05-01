@@ -5,20 +5,18 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import game.actors.Buyer;
-import game.actors.Player;
 import game.actors.Status;
 import game.reset.Resettable;
+import game.reset.ResetManager;
 
 public class Coin extends ConsumableItem implements Resettable {
     private final int value;
 
     /**
      * coin item constructor
-     *
+     * adds coin to resettable manager array
      * @param value    the coin instance value (integer)
      * @param portable a boolean variable that describes if the coin is portable.
-     *                 enemy's if they drop coins when killed will need to have a portable coin in inventory
-     *                 for main player, coin will not be portable
      */
     public Coin(int value, boolean portable) {
         super("Coin $" + value, '$', portable);
@@ -34,24 +32,20 @@ public class Coin extends ConsumableItem implements Resettable {
         return this.value;
     }
 
-
-    public void removeCoin(Player player) {
-        player.editBalance(this.getValue());
-    }
-
-
     /**
-     * adds coin action to coin item allowable actions
-     * @param action the action to add to list of allowable actions
+     * remove Action from coin allowableActionList
+     * @param action Action type action
      */
-    public void addCoinAction(Action action) {
-        this.addAction(action);
-    }
-
     public void removeActionCoin(Action action){
+        ResetManager.getInstance().cleanUp(this::resetInstance);
         this.removeAction(action);
     }
 
+    /**
+     * execute method for consumableItem abstract
+     * @param actor actor consuming the coin
+     * @param map the map on which the actor is on
+     */
     @Override
     public void toExecute(Actor actor, GameMap map){
         int check = BuyerManager.getInstance().buyers().indexOf(actor);
@@ -64,6 +58,7 @@ public class Coin extends ConsumableItem implements Resettable {
         map.locationOf(actor).removeItem(this);
     }
 
+
     @Override
     public void tick(Location location){
         if(this.hasCapability(Status.RESET)){
@@ -72,6 +67,9 @@ public class Coin extends ConsumableItem implements Resettable {
 
     }
 
+    /**
+     * Status of RESET is added so that the tick funtion runs the reset function
+     */
     @Override
     public void resetInstance() {
         this.addCapability(Status.RESET);

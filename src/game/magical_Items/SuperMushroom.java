@@ -38,21 +38,25 @@ public class SuperMushroom extends ConsumableItem implements PurchasableItem {
         actor.addCapability(Status.TALL); //updating enum
     }
 
-
-    public void addSuperMushroomAction(Action action) {
-        this.addAction(action);
-    }
-
     /**
      * getter for private price attribute
      * @return static price attribute
      */
     public int getPrice(){return SuperMushroom.PRICE;}
 
+    /**
+     * removing action from SuperMushroom allowableActions list
+     * @param action the action to be removed
+     */
     public void removeActionSuperMushroom(Action action){
         this.removeAction(action);
     }
 
+    /**
+     * SuperMushroom consume methods to be called
+     * @param actor Actor that is consuming the item
+     * @param map GameMap that the actor is on
+     */
     @Override
     public void toExecute(Actor actor, GameMap map){
         actor.removeItemFromInventory(this);
@@ -62,6 +66,12 @@ public class SuperMushroom extends ConsumableItem implements PurchasableItem {
         map.locationOf(actor).removeItem(this);
     }
 
+    /**
+     * purchase method calls
+     * @param buyer Buyer purchasing the item
+     * @param map GameMap the buyer is on
+     * @return remaining balance and/or purchase status
+     */
     @Override
     public String purchase(Buyer buyer, GameMap map) {
         if (buyer.getWalletBalance()> PRICE){

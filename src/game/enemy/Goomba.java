@@ -15,7 +15,6 @@ import game.behaviour.AttackBehaviour;
 import game.behaviour.Behaviour;
 import game.behaviour.FollowBehaviour;
 import game.behaviour.WanderBehaviour;
-import game.actions.AttackAction;
 
 import java.util.HashMap;
 import java.util.Map;
