@@ -57,6 +57,8 @@ public class Player extends Actor implements Buyer{
 
 
 		// return/print the console menu
+		display.println("BALANCE: " + this.getWalletBalance());
+		display.println("HP: " + this.printHp());
 		return menu.showMenu(this, actions, display);
 	}
 

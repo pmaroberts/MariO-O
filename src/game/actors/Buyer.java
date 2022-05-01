@@ -14,4 +14,5 @@ public interface Buyer {
     void addItemToInventoryBuyer(Item item);
 
     void addCapability(Enum<?> capability);
+
 }
