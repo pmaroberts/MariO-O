@@ -9,9 +9,11 @@ import edu.monash.fit2099.engine.items.PickUpItemAction;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.displays.Menu;
 import game.actions.ConsumeAction;
+import game.actions.ResetAction;
 import game.magical_Items.Coin;
 import game.magical_Items.PowerStar;
 import game.magical_Items.SuperMushroom;
+import game.reset.ResetManager;
 import game.reset.Resettable;
 
 /**
@@ -19,6 +21,7 @@ import game.reset.Resettable;
  */
 public class Player extends Actor implements Resettable {
 
+	private boolean resetFlag = false;
 	private final Menu menu = new Menu();
 	private int wallet = 0;
 
@@ -51,6 +54,11 @@ public class Player extends Actor implements Resettable {
 
 
 		}
+
+		if(!resetFlag){
+			actions.add(new ResetAction(ResetManager.getInstance()));
+		}
+
 
 
 
@@ -92,4 +100,13 @@ public class Player extends Actor implements Resettable {
 		Resettable.super.registerInstance();
 	}
 
+/*	public Action resetAction(){
+
+
+		if(!resetFlag){
+			this.resetInstance();
+			resetFlag = true;
+		}
+
+	}*/
 }

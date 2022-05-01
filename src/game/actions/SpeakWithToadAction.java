@@ -1,39 +1,26 @@
-package game.actors;
+package game.actions;
 
 import edu.monash.fit2099.engine.actions.Action;
-import edu.monash.fit2099.engine.actions.ActionList;
-import edu.monash.fit2099.engine.actions.DoNothingAction;
 import edu.monash.fit2099.engine.actors.Actor;
-import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
-import edu.monash.fit2099.engine.positions.World;
+import game.actors.Status;
 import game.weapon.Wrench;
 
 import java.util.Random;
 
-public class Toad extends Actor {
+public class SpeakWithToadAction extends Action {
 
-    Wrench wrench = new Wrench();
+    private Actor otherActor;
 
-    public Toad() {
-        super("Toad", 'T', 999999999);
+    public SpeakWithToadAction(Actor otherActor) {
+        this.otherActor = otherActor;
     }
 
+    //is actor here only for this actor (toad or is it the other actor like player)
     @Override
-    public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
-
-        return new DoNothingAction();
-    }
-
-    @Override
-    public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
-        ActionList actions = new ActionList();
-        actions.add(new DoNothingAction());
-        return actions;
-    }
-
-    public String speakWithToad(Player player){
+    public String execute(Actor actor, GameMap map) {
         String retVal;
+        Wrench wrench = new Wrench();
 
         //World.player
 
@@ -47,11 +34,11 @@ public class Toad extends Actor {
         //check player status and items
         //TODO: if player is holing a wrench
 
-        if(player.getInventory().contains(wrench.getWrench())){
+        if(actor.getInventory().contains(wrench.toString())){
             n = getRandomWithExclusion(r, 0, 3,0);
         }
         //TODO:if player has super star active
-        else if(player.hasCapability(Status.POWERSTAR)){
+        else if(actor.hasCapability(Status.POWERSTAR)){
             n = getRandomWithExclusion(r, 0, 3,1);
         }
         else{
@@ -60,7 +47,12 @@ public class Toad extends Actor {
 
         retVal = dialogue[n];
 
-        return retVal;
+        return "Toad: " + retVal;
+    }
+
+    @Override
+    public String menuDescription(Actor actor) {
+        return null;
     }
 
     public int getRandomWithExclusion(Random rnd, int start, int end, int... exclude) {
@@ -75,5 +67,3 @@ public class Toad extends Actor {
     }
 
 }
-
-

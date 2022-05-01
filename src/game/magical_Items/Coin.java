@@ -9,14 +9,14 @@ import game.reset.Resettable;
 
 public class Coin extends Item implements Resettable {
     private final int value;
+    //private Player player;
 
     /**
      * coin item constructor
-     *
-     * @param value    the coin instance value (integer)
+     *  @param value    the coin instance value (integer)
      * @param portable a boolean variable that describes if the coin is portable.
      *                 enemy's if they drop coins when killed will need to have a portable coin in inventory
-     *                 for main player, coin will not be portable
+     *
      */
     Coin(int value, boolean portable) {
         super("Coin $" + value, '$', portable);
@@ -56,8 +56,9 @@ public class Coin extends Item implements Resettable {
     @Override
     public void resetInstance() {
         //create disposable character to 'pick up coins' then delete disposable character?
-        Player disposable = new Player("disposeable", 'd', 2);
+
         //removeCoin(disposable,)
+
 
 
         //get current map and removes this coin

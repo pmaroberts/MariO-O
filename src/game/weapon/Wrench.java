@@ -27,4 +27,8 @@ public class Wrench extends WeaponItem  {
     public void addWrenchAction(Action action){
         this.addAction(action);
     }
+
+    public Wrench getWrench(){
+        return this;
+    }
 }
