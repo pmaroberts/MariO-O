@@ -10,11 +10,12 @@ import game.actors.Status;
 
 public class Wall extends Ground implements JumpOnAble{
 
-	private static final double JUMP_ODDS = 0.7;
-	private static final int FALL_DAMAGE = 30;
+	private static final double JUMP_ODDS = 0.8;
+	private static final int FALL_DAMAGE = 20;
 
 	public Wall() {
 		super('#');
+		this.addInstance();
 	}
 
 	@Override

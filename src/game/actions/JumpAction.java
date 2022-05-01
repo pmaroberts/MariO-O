@@ -6,6 +6,7 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import game.actors.Status;
 import game.ground.JumpOnAble;
+import game.ground.JumpOnAbleGroundManager;
 
 public class JumpAction extends Action {
 
@@ -16,7 +17,10 @@ public class JumpAction extends Action {
     public JumpAction(Location jumpToLocation, String direction) {
         this.direction = direction;
         this.jumpToLocation = jumpToLocation;
-        this.jumpToGround = (JumpOnAble) this.jumpToLocation.getGround();
+        int check = JumpOnAbleGroundManager.getInstance().getJumpOnAbles().indexOf(jumpToLocation.getGround());
+        if(check != -1){
+            this.jumpToGround = JumpOnAbleGroundManager.getInstance().getJumpOnAbles().get(check);
+        }
 
     }
 

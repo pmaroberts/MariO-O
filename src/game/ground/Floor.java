@@ -10,6 +10,7 @@ import game.actors.Status;
 public class Floor extends Ground {
 	public Floor() {
 		super('_');
+
 	}
 
 	@Override

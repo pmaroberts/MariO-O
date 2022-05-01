@@ -7,6 +7,7 @@ import edu.monash.fit2099.engine.positions.Location;
 import game.actions.JumpAction;
 import game.actors.Status;
 import game.ground.JumpOnAble;
+import game.ground.JumpOnAbleGroundManager;
 
 public abstract class Tree extends Ground implements JumpOnAble {
 
@@ -15,6 +16,7 @@ public abstract class Tree extends Ground implements JumpOnAble {
     public Tree(char displayChar) {
         super(displayChar);
         this.age = 0;
+        this.addInstance();//All trees can be jumped on
     }
 
     public void incrementAge(){

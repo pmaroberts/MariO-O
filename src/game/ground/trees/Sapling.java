@@ -10,8 +10,8 @@ public class Sapling extends Tree {
     private static final double COIN_ODDS = 0.1;
     private static final int COIN_VALUE = 20;
     private static final int GROW_UP_AGE = 10;
-    private static final double JUMP_ODDS = 0.7;
-    private static final int FALL_DAMAGE = 30;
+    private static final double JUMP_ODDS = 0.8;
+    private static final int FALL_DAMAGE = 20;
 
     public Sapling() {
         super('t'); // 't' is the display character for Saplings

@@ -6,10 +6,10 @@ import game.Utils;
 
 public class Sprout extends Tree {
 
-    private static final double GOOMBA_ODDS = 0.0; // Should be 0.1 as per Assignment 1.
+    private static final double GOOMBA_ODDS = 0.1; // Should be 0.1 as per Assignment 1.
     private static final int GROW_UP_AGE = 10;
-    private static final double JUMP_ODDS = 0.7;
-    private static final int FALL_DAMAGE = 30;
+    private static final double JUMP_ODDS = 0.9;
+    private static final int FALL_DAMAGE = 10;
 
 
     public Sprout() {

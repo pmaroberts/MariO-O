@@ -22,7 +22,7 @@ import java.util.Map;
  */
 public class Goomba extends Enemy {
 	private final Map<Integer, Behaviour> behaviours = new HashMap<>(); // priority,
-	private final double SUICIDE_ODDS = 0.0; // Should be 0.1 as per assignment 1
+	private final double SUICIDE_ODDS = 0.1; // Should be 0.1 as per assignment 1
 
 	/**
 	 * Constructor.
