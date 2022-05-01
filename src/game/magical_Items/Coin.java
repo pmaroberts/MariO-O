@@ -5,7 +5,6 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import game.actors.Buyer;
-import game.actors.Player;
 import game.actors.Status;
 import game.reset.Resettable;
 
@@ -32,20 +31,6 @@ public class Coin extends ConsumableItem implements Resettable {
      */
     public int getValue() {
         return this.value;
-    }
-
-
-    public void removeCoin(Player player) {
-        player.editBalance(this.getValue());
-    }
-
-
-    /**
-     * adds coin action to coin item allowable actions
-     * @param action the action to add to list of allowable actions
-     */
-    public void addCoinAction(Action action) {
-        this.addAction(action);
     }
 
     public void removeActionCoin(Action action){
