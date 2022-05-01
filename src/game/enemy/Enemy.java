@@ -23,13 +23,13 @@ public abstract class Enemy extends Actor implements Resettable {
     }
 
 
-    public Actor startFollowFromExit(GameMap map){
-        if(this.hasCapability(Status.ENGAGED)){
+    public Actor startFollowFromExit(GameMap map) {
+        if (this.hasCapability(Status.ENGAGED)) {
             Location here = map.locationOf(this);
-            for(Exit exit : here.getExits()){
-                if(exit.getDestination().containsAnActor()){
+            for (Exit exit : here.getExits()) {
+                if (exit.getDestination().containsAnActor()) {
                     Actor attacker = exit.getDestination().getActor();
-                    if(attacker.hasCapability(Status.HOSTILE_TO_ENEMY)){
+                    if (attacker.hasCapability(Status.HOSTILE_TO_ENEMY)) {
                         return attacker;
                     }
                 }
@@ -48,8 +48,4 @@ public abstract class Enemy extends Actor implements Resettable {
         this.addCapability(Status.RESET);
     }
 
-    @Override
-    public void registerInstance() {
-        Resettable.super.registerInstance();
-    }
 }

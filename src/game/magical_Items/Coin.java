@@ -7,6 +7,7 @@ import edu.monash.fit2099.engine.positions.Location;
 import game.actors.Buyer;
 import game.actors.Status;
 import game.reset.Resettable;
+import game.reset.ResetManager;
 
 public class Coin extends ConsumableItem implements Resettable {
     private final int value;
@@ -36,6 +37,7 @@ public class Coin extends ConsumableItem implements Resettable {
      * @param action Action type action
      */
     public void removeActionCoin(Action action){
+        ResetManager.getInstance().cleanUp(this::resetInstance);
         this.removeAction(action);
     }
 
