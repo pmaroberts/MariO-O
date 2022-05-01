@@ -5,8 +5,6 @@ import edu.monash.fit2099.engine.positions.Location;
 import game.actors.Status;
 import game.magical_Items.Coin;
 
-import java.util.List;
-
 public interface JumpOnAble {
     int jump();
     default void destroyedByPowerStar(Location location){

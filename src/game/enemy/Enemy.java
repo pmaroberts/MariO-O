@@ -39,6 +39,9 @@ public abstract class Enemy extends Actor implements Resettable {
     }
 
 
+    /**
+     * Status of RESET is added so that the tick function runs the reset function
+     */
     @Override
     public void resetInstance() {
         this.addCapability(Status.RESET);

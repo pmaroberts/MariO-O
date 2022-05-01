@@ -5,15 +5,10 @@ import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.items.Item;
-import edu.monash.fit2099.engine.items.PickUpItemAction;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.displays.Menu;
-import game.actions.ConsumeAction;
 import game.actions.ResetAction;
 import game.magical_Items.Coin;
-import game.magical_Items.ConsumableItem;
-import game.magical_Items.SuperMushroom;
-import game.reset.ResetManager;
 import game.reset.Resettable;
 
 /**
@@ -54,7 +49,6 @@ public class Player extends Actor implements Resettable, Buyer {
 		if (lastAction.getNextAction() != null)
 			return lastAction.getNextAction();
 
-		// return/print the console menu
 		display.println("BALANCE: " + this.getWalletBalance());
 		display.println("HP: " + this.printHp());
 		return menu.showMenu(this, actions, display);

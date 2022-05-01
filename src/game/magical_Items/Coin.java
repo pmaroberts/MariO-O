@@ -72,6 +72,9 @@ public class Coin extends ConsumableItem implements Resettable {
 
     }
 
+    /**
+     * Status of RESET is added so that the tick funtion runs the reset function
+     */
     @Override
     public void resetInstance() {
         this.addCapability(Status.RESET);

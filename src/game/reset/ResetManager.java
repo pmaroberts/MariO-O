@@ -1,13 +1,6 @@
 package game.reset;
-
-import com.sun.source.tree.Tree;
-import game.actors.Player;
-import game.enemy.Enemy;
-import game.magical_Items.Coin;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 /**
  * A global Singleton manager that does soft-reset on the instances.
@@ -55,29 +48,11 @@ public class ResetManager {
 
             try {
                 resettableList.get(i).resetInstance();
-//                cleanUp(resettableList.get(i));
             }
             catch (Exception e){
                 System.out.println("Error reseting list");
             }
 
-           /*if(resettableList.get(i) instanceof Tree){
-                Random r = new Random();
-                if(r.nextBoolean()){
-                    //get location of the tree and if true set that location to dirt
-                 //resettableList.get(i)
-                }
-            }
-            else if(resettableList.get(i)instanceof Enemy){
-                //kill enemy here
-                //resettableList.get(i).
-            }
-            else if(resettableList.get(i) instanceof Player){
-                //reset player status and HP
-            }
-            else if(resettableList.get(i) instanceof Coin){
-                //remove coin from ground
-            }*/
 
         }
     }
@@ -95,6 +70,8 @@ public class ResetManager {
      * Remove a Resettable instance from the list
      * @param resettable resettable object
      * FIXME: it does nothing, you need to implement it :)
+     * not used because the iterator only needs to run once per game
+     * and list does not need to be cleaned up
      */
     public void cleanUp(Resettable resettable){
         resettableList.remove(resettable);
