@@ -5,8 +5,9 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.actors.Buyer;
 import game.actors.Player;
+import game.reset.Resettable;
 
-public class Coin extends ConsumableItem {
+public class Coin extends ConsumableItem implements Resettable {
     private final int value;
 
     /**
@@ -17,10 +18,10 @@ public class Coin extends ConsumableItem {
      *                 enemy's if they drop coins when killed will need to have a portable coin in inventory
      *                 for main player, coin will not be portable
      */
-    public Coin(int value, boolean portable) {
+    Coin(int value, boolean portable) {
         super("Coin $" + value, '$', portable);
         this.value = value;
-        //this.addAction(new ConsumeAction(this));
+        this.registerInstance();
     }
 
     /**
@@ -32,14 +33,10 @@ public class Coin extends ConsumableItem {
     }
 
 
-    /**
-     * a method to pick up the coin and remove it from the map
-     * @param player the player whose balance will be affected by coin pickup
-     * @return the menu description of the pickup action
-     */
     public void removeCoin(Player player) {
         player.editBalance(this.getValue());
-        }
+    }
+
 
     /**
      * adds coin action to coin item allowable actions
@@ -64,4 +61,19 @@ public class Coin extends ConsumableItem {
         this.removeActionCoin(this.getConsumeAction());
         map.locationOf(actor).removeItem(this);
     }
+
+    @Override
+    public void resetInstance() {
+        //create disposable character to 'pick up coins' then delete disposable character?
+        Player disposable = new Player("disposable", 'd', 2);
+        //removeCoin(disposable,)
+
+
+        //get current map and removes this coin
+        //GameMap map = ;
+        //map.locationOf(this).removeItem(this);
+        //this allowed ??????^^^^
+    }
+
+
 }

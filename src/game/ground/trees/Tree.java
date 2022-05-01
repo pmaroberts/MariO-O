@@ -8,15 +8,18 @@ import game.actions.JumpAction;
 import game.actors.Status;
 import game.ground.JumpOnAble;
 import game.ground.JumpOnAbleGroundManager;
+import game.reset.Resettable;
 
-public abstract class Tree extends Ground implements JumpOnAble {
+
+
+public abstract class Tree extends Ground implements JumpOnAble, Resettable {
 
     protected int age;
-
     public Tree(char displayChar) {
         super(displayChar);
         this.age = 0;
         this.addInstance();//All trees can be jumped on
+        this.registerInstance();
     }
 
     public void incrementAge(){
@@ -35,6 +38,11 @@ public abstract class Tree extends Ground implements JumpOnAble {
             actions.add(new JumpAction(location, direction));
         }
         return actions;
+    }
+
+    @Override
+    public void resetInstance(){
+
     }
 
 }

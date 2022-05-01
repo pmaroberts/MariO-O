@@ -14,6 +14,7 @@ import game.actors.Status;
 import game.behaviour.Behaviour;
 import game.behaviour.FollowBehaviour;
 import game.behaviour.WanderBehaviour;
+import game.actions.AttackAction;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -28,9 +29,10 @@ public class Goomba extends Enemy {
 	 * Constructor.
 	 */
 	public Goomba() {
-		super("Goomba", 'g', 20);
+		super("Goomba", 'g', 50);
 		this.behaviours.put(10, new WanderBehaviour());
 		//this.behaviours.put(1, new AttackBehaviour());
+		this.registerInstance();
 	}
 
 	/**
@@ -45,6 +47,7 @@ public class Goomba extends Enemy {
 	@Override
 	public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
 		ActionList actions = new ActionList();
+		// it can be attacked only by the HOSTILE opponent, and this action will not attack the HOSTILE enemy back.
 		if(otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)) {
 			actions.add(new AttackAction(this,direction));
 		}

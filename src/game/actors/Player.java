@@ -8,13 +8,15 @@ import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.items.PickUpItemAction;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.displays.Menu;
+import game.actions.ConsumeAction;
 import game.magical_Items.Coin;
 import game.magical_Items.SuperMushroom;
+import game.reset.Resettable;
 
 /**
  * Class representing the Player.
  */
-public class Player extends Actor implements Buyer{
+public class Player extends Actor implements Resettable, Buyer {
 
 	private final Menu menu = new Menu();
 	private int wallet = 0;
@@ -30,6 +32,7 @@ public class Player extends Actor implements Buyer{
 		super(name, displayChar, hitPoints);
 		this.addCapability(Status.HOSTILE_TO_ENEMY);
 		this.addInstance();
+		this.registerInstance();
 	}
 
 	@Override
@@ -40,14 +43,11 @@ public class Player extends Actor implements Buyer{
 			if (item.getAllowableActions().contains(new PickUpItemAction(item))){
 
 			}
-			//okay so i want to check if the item is in the inventory of the player
-			//and if it is, i want to add the consume action, but i also want to add the
-			//capability to say that the item is in the inventory
-
-			//if the item in the inventory has been picked up, then it should be added to the capability list
-
 
 		}
+
+
+
 
 		if (lastAction.getNextAction() != null)
 			return lastAction.getNextAction();
@@ -74,6 +74,19 @@ public class Player extends Actor implements Buyer{
 	public void editBalance(int amount){
 		this.wallet = this.wallet + amount;
 	}
+
+	@Override
+	public void resetInstance() {
+		resetMaxHp(getMaxHp());
+		removeCapability(Status.POWERSTAR);
+		removeCapability(Status.TALL);
+	}
+
+	@Override
+	public void registerInstance() {
+		Resettable.super.registerInstance();
+	}
+
 
 	@Override
 	public void addItemToInventoryBuyer(Item item) {

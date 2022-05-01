@@ -52,14 +52,23 @@ public class ResetManager {
      */
     public void run(){
         for (int i = 0; i< resettableList.size(); i ++){
-            if(resettableList.get(i) instanceof Tree){
+
+            try {
+                resettableList.get(i).resetInstance();
+                cleanUp(resettableList.get(i));
+            }
+            catch (Exception e){
+                System.out.println("Error reseting list");
+            }
+
+           /*if(resettableList.get(i) instanceof Tree){
                 Random r = new Random();
                 if(r.nextBoolean()){
                     //get location of the tree and if true set that location to dirt
                  //resettableList.get(i)
                 }
             }
-            else if(resettableList.get(i) instanceof Enemy){
+            else if(resettableList.get(i)instanceof Enemy){
                 //kill enemy here
                 //resettableList.get(i).
             }
@@ -68,7 +77,7 @@ public class ResetManager {
             }
             else if(resettableList.get(i) instanceof Coin){
                 //remove coin from ground
-            }
+            }*/
 
         }
     }
@@ -78,6 +87,7 @@ public class ResetManager {
      * FIXME: it does nothing, you need to implement it :)
      */
     public void appendResetInstance(Resettable reset){
+        this.resettableList.add(reset);
     }
 
 
@@ -87,5 +97,6 @@ public class ResetManager {
      * FIXME: it does nothing, you need to implement it :)
      */
     public void cleanUp(Resettable resettable){
+        resettableList.remove(resettable);
     }
 }

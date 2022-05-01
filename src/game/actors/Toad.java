@@ -10,6 +10,9 @@ import game.actions.PurchaseAction;
 import game.magical_Items.PowerStar;
 import game.magical_Items.SuperMushroom;
 import game.weapon.Wrench;
+import edu.monash.fit2099.engine.positions.World;
+
+import java.util.Random;
 
 public class Toad extends Actor {
 private Buyer buyer;
@@ -18,23 +21,10 @@ private Buyer buyer;
         super("Toad", '0', 999999999);
         this.buyer = buyer;
     }
-// get copy of list of actors, then check if the actor has hostiletoenemy status
+
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
 
-        //Location here = map.locationOf(this);
-        /*for(Exit exit : here.getExits()){
-            if(exit.getDestination().containsAnActor()){
-                Actor actor = exit.getDestination().getActor();
-                if (actor.hasCapability(Status.HOSTILE_TO_ENEMY)){
-                    actions.add(new PurchaseAction(new SuperMushroom(true), this));
-                    actions.add(new PurchaseAction(new PowerStar(true), this));
-                    actions.add(new PurchaseAction(new Wrench(), this));
-                }
-
-
-            }
-        }*/
         return new DoNothingAction();
     }
 

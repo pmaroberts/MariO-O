@@ -6,9 +6,9 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import game.actors.Status;
 
+import game.reset.Resettable;
 
-public abstract class Enemy extends Actor {
-
+public abstract class Enemy extends Actor implements Resettable {
     /**
      * Constructor.
      *
@@ -37,4 +37,14 @@ public abstract class Enemy extends Actor {
         return null;
     }
 
+
+    @Override
+    public void resetInstance() {
+        this.hurt(getMaxHp());
+    }
+
+    @Override
+    public void registerInstance() {
+        Resettable.super.registerInstance();
+    }
 }
