@@ -17,7 +17,6 @@ import game.ground.Wall;
 import game.magical_Items.PowerStar;
 import game.magical_Items.SuperMushroom;
 import game.ground.trees.Sprout;
-import game.enemy.Goomba;
 
 import java.util.Random;
 
@@ -64,19 +63,25 @@ public class Application {
 			gameMap.at(44,10).addActor(toad);
 
 			Random rand = new Random();
+
+			//adding superMushroom under mario spawn
 			SuperMushroom superMushroom = new SuperMushroom(true);
-			//gameMap.at(rand.nextInt(39), rand.nextInt(19)).addItem(superMushroom);
 			gameMap.at(42, 9).addItem(superMushroom);
 
+			//spawning in a random mushroom on map for spicyness
+			SuperMushroom superMushroomRand = new SuperMushroom(true);
+			gameMap.at(rand.nextInt(39), rand.nextInt(19)).addItem(superMushroomRand);
+
+			//adding powerstar under mario spawn
 			PowerStar powerStar = new PowerStar(true);
 			gameMap.at(42, 9).addItem(powerStar);
 
-			// FIXME: the Goomba should be generated from the Tree
+			//adding a random powerstar on LHS of map
+			PowerStar powerStarRand = new PowerStar(true);
+			gameMap.at(rand.nextInt(39), rand.nextInt(19)).addItem(powerStarRand);
+
 			gameMap.at(35, 10).addActor(new Koopa());
-//			gameMap.at(35, 8).addActor(new Goomba());
 			gameMap.at(35, 7).addActor(new Koopa());
-//			gameMap.at(35, 6).addActor(new Goomba());
-//			gameMap.at(35, 4).addActor(new Goomba());
 
 
 			world.run();
