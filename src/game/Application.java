@@ -60,7 +60,7 @@ public class Application {
 			Player mario = new Player("Player", 'm', 100);
 			world.addPlayer(mario, gameMap.at(42, 9));
 
-			Actor toad = new Toad(mario);
+			Actor toad = new Toad();
 			gameMap.at(44,10).addActor(toad);
 
 			Random rand = new Random();

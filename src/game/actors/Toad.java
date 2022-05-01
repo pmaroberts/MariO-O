@@ -8,16 +8,15 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.actions.PurchaseAction;
 import game.actions.SpeakWithToadAction;
+import game.magical_Items.BuyerManager;
 import game.magical_Items.PowerStar;
 import game.magical_Items.SuperMushroom;
 import game.weapon.Wrench;
 
 public class Toad extends Actor {
-private final Buyer buyer;
 
-    public Toad(Buyer buyer) {
+    public Toad() {
         super("Toad", '0', 999999999);
-        this.buyer = buyer;
     }
 
     @Override
@@ -30,12 +29,16 @@ private final Buyer buyer;
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
         ActionList actions = new ActionList();
         actions.add(new DoNothingAction());
-        if (otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)){
 
-            actions.add(new PurchaseAction(new SuperMushroom(true), this.buyer));
-            actions.add(new PurchaseAction(new PowerStar(true), this.buyer));
-            actions.add(new PurchaseAction(new Wrench(), this.buyer));
-            actions.add(new SpeakWithToadAction(otherActor));
+        if (otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)){
+            int check = BuyerManager.getInstance().buyers().indexOf(otherActor);
+            if (check!= -1){
+                Buyer buyer = BuyerManager.getInstance().buyers().get(check);
+                actions.add(new PurchaseAction(new SuperMushroom(true), buyer));
+                actions.add(new PurchaseAction(new PowerStar(true), buyer));
+                actions.add(new PurchaseAction(new Wrench(), buyer));
+                actions.add(new SpeakWithToadAction(otherActor));
+            }
         }
         return actions;
     }
