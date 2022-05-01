@@ -6,6 +6,7 @@ import edu.monash.fit2099.engine.actions.DoNothingAction;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
+import edu.monash.fit2099.engine.positions.World;
 
 import java.util.Random;
 
@@ -29,7 +30,9 @@ public class Toad extends Actor {
     }
 
     public String speakWithToad(){
-        String retVal= "";
+        String retVal;
+
+        //World.player
 
         String[] dialogue = {"You might need a wrench to smash Koopa's hard shells.",
                 "You better get back to finding the Power Stars.",

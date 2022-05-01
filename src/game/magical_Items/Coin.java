@@ -55,7 +55,15 @@ public class Coin extends Item implements Resettable {
 
     @Override
     public void resetInstance() {
+        //create disposable character to 'pick up coins' then delete disposable character?
+        Player disposable = new Player("disposeable", 'd', 2);
+        //removeCoin(disposable,)
 
+
+        //get current map and removes this coin
+        //GameMap map = ;
+        //map.locationOf(this).removeItem(this);
+        //this allowed ??????^^^^
     }
 
     @Override

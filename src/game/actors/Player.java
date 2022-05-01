@@ -10,6 +10,7 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.displays.Menu;
 import game.actions.ConsumeAction;
 import game.magical_Items.Coin;
+import game.magical_Items.PowerStar;
 import game.magical_Items.SuperMushroom;
 import game.reset.Resettable;
 
@@ -82,8 +83,8 @@ public class Player extends Actor implements Resettable {
 	@Override
 	public void resetInstance() {
 		resetMaxHp(getMaxHp());
-		//once i Pull properly check the capability list and can manually remove all capabilities
-		//removeCapability();
+		removeCapability(Status.POWERSTAR);
+		removeCapability(Status.TALL);
 	}
 
 	@Override
