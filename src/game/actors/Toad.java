@@ -7,6 +7,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.actions.PurchaseAction;
+import game.actions.SpeakWithToadAction;
 import game.magical_Items.PowerStar;
 import game.magical_Items.SuperMushroom;
 import game.weapon.Wrench;
@@ -37,6 +38,7 @@ private Buyer buyer;
             actions.add(new PurchaseAction(new SuperMushroom(true), this.buyer));
             actions.add(new PurchaseAction(new PowerStar(true), this.buyer));
             actions.add(new PurchaseAction(new Wrench(), this.buyer));
+            actions.add(new SpeakWithToadAction(otherActor));
         }
         return actions;
     }
