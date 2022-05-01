@@ -1,12 +1,14 @@
 package game.ground.trees;
 
 import edu.monash.fit2099.engine.positions.Location;
+import game.actors.Status;
 import game.enemy.Goomba;
 import game.Utils;
+import game.ground.Dirt;
 
 public class Sprout extends Tree {
 
-    private static final double GOOMBA_ODDS = 0.1; // Should be 0.1 as per Assignment 1.
+    private static final double GOOMBA_ODDS = 0.0; // Should be 0.1 as per Assignment 1.
     private static final int GROW_UP_AGE = 10;
     private static final double JUMP_ODDS = 0.9;
     private static final int FALL_DAMAGE = 10;
@@ -18,6 +20,9 @@ public class Sprout extends Tree {
 
     @Override
     public void tick(Location location){
+        if(this.hasCapability(Status.RESET)){
+            location.setGround(new Dirt());
+        }
         super.incrementAge();
         this.spawnGoomba(location);
         this.growUp(location);

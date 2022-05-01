@@ -9,8 +9,10 @@ import edu.monash.fit2099.engine.items.PickUpItemAction;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.displays.Menu;
 import game.actions.ConsumeAction;
+import game.actions.ResetAction;
 import game.magical_Items.Coin;
 import game.magical_Items.SuperMushroom;
+import game.reset.ResetManager;
 import game.reset.Resettable;
 
 /**
@@ -19,7 +21,8 @@ import game.reset.Resettable;
 public class Player extends Actor implements Resettable, Buyer {
 
 	private final Menu menu = new Menu();
-	private int wallet = 0;
+	private int wallet = 100000;
+	private boolean resetFlag = false;
 
 	/**
 	 * Constructor.
@@ -38,16 +41,10 @@ public class Player extends Actor implements Resettable, Buyer {
 	@Override
 	public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
 		// Handle multi-turn Actions
-		SuperMushroom superMushroom = new SuperMushroom(true);
-		for (Item item : this.getInventory()){
-			if (item.getAllowableActions().contains(new PickUpItemAction(item))){
-
-			}
+		if(!resetFlag){
+			actions.add(new ResetAction());
 
 		}
-
-
-
 
 		if (lastAction.getNextAction() != null)
 			return lastAction.getNextAction();
@@ -80,6 +77,7 @@ public class Player extends Actor implements Resettable, Buyer {
 		resetMaxHp(getMaxHp());
 		removeCapability(Status.POWERSTAR);
 		removeCapability(Status.TALL);
+		this.resetFlag = true;
 	}
 
 	@Override

@@ -34,7 +34,7 @@ public class SpeakWithToadAction extends Action {
         //check player status and items
         //TODO: if player is holing a wrench
 
-        if(actor.getInventory().contains(wrench.toString())){
+        if(actor.hasCapability(Status.WRENCH)){
             n = getRandomWithExclusion(r, 0, 3,0);
         }
         //TODO:if player has super star active
@@ -52,7 +52,7 @@ public class SpeakWithToadAction extends Action {
 
     @Override
     public String menuDescription(Actor actor) {
-        return null;
+        return "Speak with toad";
     }
 
     public int getRandomWithExclusion(Random rnd, int start, int end, int... exclude) {

@@ -25,6 +25,9 @@ public class Mature extends Tree {
 
     @Override
     public void tick(Location location){
+        if(this.hasCapability(Status.RESET)){
+            location.setGround(new Dirt());
+        }
         super.incrementAge();
         this.spawnKoopa(location);
         this.spawnSprout(location);

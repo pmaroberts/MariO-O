@@ -55,7 +55,7 @@ public class ResetManager {
 
             try {
                 resettableList.get(i).resetInstance();
-                cleanUp(resettableList.get(i));
+//                cleanUp(resettableList.get(i));
             }
             catch (Exception e){
                 System.out.println("Error reseting list");

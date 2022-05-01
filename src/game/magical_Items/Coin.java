@@ -3,8 +3,10 @@ package game.magical_Items;
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
+import edu.monash.fit2099.engine.positions.Location;
 import game.actors.Buyer;
 import game.actors.Player;
+import game.actors.Status;
 import game.reset.Resettable;
 
 public class Coin extends ConsumableItem implements Resettable {
@@ -63,16 +65,16 @@ public class Coin extends ConsumableItem implements Resettable {
     }
 
     @Override
+    public void tick(Location location){
+        if(this.hasCapability(Status.RESET)){
+            location.removeItem(this);
+        }
+
+    }
+
+    @Override
     public void resetInstance() {
-        //create disposable character to 'pick up coins' then delete disposable character?
-        Player disposable = new Player("disposable", 'd', 2);
-        //removeCoin(disposable,)
-
-
-        //get current map and removes this coin
-        //GameMap map = ;
-        //map.locationOf(this).removeItem(this);
-        //this allowed ??????^^^^
+        this.addCapability(Status.RESET);
     }
 
 

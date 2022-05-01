@@ -19,6 +19,7 @@ public abstract class Enemy extends Actor implements Resettable {
     public Enemy(String name, char displayChar, int hitPoints) {
         super(name, displayChar, hitPoints);
         this.addCapability(Status.ENEMY);
+        this.registerInstance();
     }
 
     public Actor startFollowFromExit(GameMap map){
@@ -40,7 +41,7 @@ public abstract class Enemy extends Actor implements Resettable {
 
     @Override
     public void resetInstance() {
-        this.hurt(getMaxHp());
+        this.addCapability(Status.RESET);
     }
 
     @Override

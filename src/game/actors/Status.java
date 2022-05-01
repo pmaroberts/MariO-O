@@ -13,5 +13,6 @@ public enum Status {
     ENGAGED,
     VALID_CORPSE,
     DORMANT,
-    WRENCH
+    WRENCH,
+    RESET
 }

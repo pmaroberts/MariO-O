@@ -2,6 +2,8 @@ package game.ground.trees;
 
 import edu.monash.fit2099.engine.positions.Location;
 import game.Utils;
+import game.actors.Status;
+import game.ground.Dirt;
 import game.magical_Items.Coin;
 
 
@@ -19,6 +21,9 @@ public class Sapling extends Tree {
 
     @Override
     public void tick(Location location){
+        if(this.hasCapability(Status.RESET)){
+            location.setGround(new Dirt());
+        }
         super.incrementAge();
         this.dropCoin(location);
         this.growUp(location);

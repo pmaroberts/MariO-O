@@ -6,31 +6,26 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import game.reset.ResetManager;
 import game.reset.Resettable;
 
-public class ResetAction extends Action implements Resettable {
+public class ResetAction extends Action{
     ResetManager reset;
 
-    public ResetAction(ResetManager reset) {
-        this.reset = reset;
+    public ResetAction() {
+        this.reset = ResetManager.getInstance();
     }
 
     @Override
     public String execute(Actor actor, GameMap map) {
         reset.run();
-        return null;
+        return "Reset complete!";
     }
 
     @Override
     public String menuDescription(Actor actor) {
-        return null;
+        return "Reset the map (you can only do this once!)";
     }
 
     @Override
-    public void resetInstance() {
+    public String hotkey(){return "r";};
 
-    }
 
-    @Override
-    public void registerInstance() {
-        Resettable.super.registerInstance();
-    }
 }

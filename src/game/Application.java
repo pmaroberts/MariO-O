@@ -61,7 +61,7 @@ public class Application {
 			world.addPlayer(mario, gameMap.at(42, 9));
 
 			Actor toad = new Toad(mario);
-			world.addPlayer(toad, gameMap.at(44, 10)); //44 9
+			gameMap.at(44,10).addActor(toad);
 
 			Random rand = new Random();
 			SuperMushroom superMushroom = new SuperMushroom(true);
@@ -74,6 +74,11 @@ public class Application {
 
 			// FIXME: the Goomba should be generated from the Tree
 			gameMap.at(35, 10).addActor(new Koopa());
+//			gameMap.at(35, 8).addActor(new Goomba());
+			gameMap.at(35, 7).addActor(new Koopa());
+//			gameMap.at(35, 6).addActor(new Goomba());
+//			gameMap.at(35, 4).addActor(new Goomba());
+
 
 			world.run();
 

@@ -32,7 +32,6 @@ public class Goomba extends Enemy {
 		super("Goomba", 'g', 50);
 		this.behaviours.put(10, new WanderBehaviour());
 		//this.behaviours.put(1, new AttackBehaviour());
-		this.registerInstance();
 	}
 
 	/**
@@ -60,6 +59,11 @@ public class Goomba extends Enemy {
 	 */
 	@Override
 	public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
+
+		if(this.hasCapability(Status.RESET)){
+			map.removeActor(this);
+			return new DoNothingAction();
+		}
 
 		Actor attacker = this.startFollowFromExit(map);
 		if(attacker != null){
