@@ -18,7 +18,7 @@ public class Coin extends ConsumableItem implements Resettable {
      *                 enemy's if they drop coins when killed will need to have a portable coin in inventory
      *                 for main player, coin will not be portable
      */
-    Coin(int value, boolean portable) {
+    public Coin(int value, boolean portable) {
         super("Coin $" + value, '$', portable);
         this.value = value;
         this.registerInstance();
