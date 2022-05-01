@@ -72,41 +72,14 @@ public class PowerStar extends ConsumableItem implements PurchasableItem{
      */
     @Override
     public void tick(Location location, Actor actor) {
-        for (int i = 0; i < actor.getInventory().size(); i++) {
-            if (actor.hasCapability(Status.POWERSTAR)) {
-                this.turns++;
-                if (this.turns == 10) {
-                    actor.removeItemFromInventory(actor.getInventory().get(i));
-                    actor.removeCapability(Status.POWERSTAR);
-                    removeInstantKill();
-                }
-            }
+        this.turns++;
+        if (this.turns == 10) {
+            actor.removeItemFromInventory(this);
+            actor.removeCapability(Status.POWERSTAR);
         }
     }
 
-    /**
-     * instant kill method implements that a base hit from the user with no weapon while powerStar is active
-     * will instantly kill any enemy because the damage is such an arbitrary high number.
-     */
-    public void instantKill() {
-        IntrinsicWeapon instaKill = new IntrinsicWeapon(999999, "POWERSTAR_INSTAKILL");
-    }
 
-    /**
-     * this simply resets the users base attack skill to what was previously before powerStar booster initiated
-     */
-    public void removeInstantKill() {
-        IntrinsicWeapon instaKill = new IntrinsicWeapon(5, "punch");
-    }
-
-    /**
-     * updates player status enum with capability selected
-     *
-     * @param status chosen status, multipurpose method as any status can be updated
-     */
-    public void updateStatus(Status status) {
-        this.addCapability(status);
-    }
 
     public void removeActionPowerStar(Action action){
         this.removeAction(action);
@@ -114,12 +87,15 @@ public class PowerStar extends ConsumableItem implements PurchasableItem{
 
     @Override
     public void toExecute(Actor actor, GameMap map){
-        actor.removeItemFromInventory(this);
+        this.turns = 0;
         this.healPlayer(actor);
+        if(!actor.getInventory().contains(this)){
+            actor.addItemToInventory(this);
+        }
         actor.addCapability(Status.POWERSTAR);
-        this.instantKill();
         this.removeActionPowerStar(this.getConsumeAction());
         map.locationOf(actor).removeItem(this);
+        this.togglePortability();
     }
 
     @Override
@@ -130,5 +106,10 @@ public class PowerStar extends ConsumableItem implements PurchasableItem{
             return "Successfully purchased PowerStar! Remaining Balance: " + buyer.getWalletBalance();
         }
         return "insufficient Balance :(";
+    }
+
+    @Override
+    public String toString(){
+        return this.getClass().getSimpleName() + " (" + (10 - this.getTurns()) + " turns remaining)";
     }
 }

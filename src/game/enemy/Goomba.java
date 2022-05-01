@@ -11,6 +11,7 @@ import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import game.Utils;
 import game.actions.AttackAction;
 import game.actors.Status;
+import game.behaviour.AttackBehaviour;
 import game.behaviour.Behaviour;
 import game.behaviour.FollowBehaviour;
 import game.behaviour.WanderBehaviour;
@@ -23,7 +24,7 @@ import java.util.Map;
  */
 public class Goomba extends Enemy {
 	private final Map<Integer, Behaviour> behaviours = new HashMap<>(); // priority,
-	private final double SUICIDE_ODDS = 0.1; // Should be 0.1 as per assignment 1
+	private static final double SUICIDE_ODDS = 0.1; // Should be 0.1 as per assignment 1
 
 	/**
 	 * Constructor.
@@ -31,7 +32,7 @@ public class Goomba extends Enemy {
 	public Goomba() {
 		super("Goomba", 'g', 50);
 		this.behaviours.put(10, new WanderBehaviour());
-		//this.behaviours.put(1, new AttackBehaviour());
+		this.behaviours.put(1, new AttackBehaviour());
 	}
 
 	/**
