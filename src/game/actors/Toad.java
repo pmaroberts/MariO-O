@@ -7,6 +7,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.World;
+import game.actions.SpeakWithToadAction;
 import game.weapon.Wrench;
 
 import java.util.Random;
@@ -29,50 +30,13 @@ public class Toad extends Actor {
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
         ActionList actions = new ActionList();
         actions.add(new DoNothingAction());
+
+        if(otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)){
+            actions.add(new SpeakWithToadAction(otherActor));
+        }
         return actions;
     }
 
-    public String speakWithToad(Player player){
-        String retVal;
-
-        //World.player
-
-        String[] dialogue = {"You might need a wrench to smash Koopa's hard shells.",
-                "You better get back to finding the Power Stars.",
-                "The Princess is depending on you! You are our only hope.",
-                "Being imprisoned in these walls can drive a fungus crazy :("
-        };
-        Random r = new Random();
-        int n;
-        //check player status and items
-        //TODO: if player is holing a wrench
-
-        if(player.getInventory().contains(wrench.getWrench())){
-            n = getRandomWithExclusion(r, 0, 3,0);
-        }
-        //TODO:if player has super star active
-        else if(player.hasCapability(Status.POWERSTAR)){
-            n = getRandomWithExclusion(r, 0, 3,1);
-        }
-        else{
-            n = r.nextInt(4);
-        }
-
-        retVal = dialogue[n];
-
-        return retVal;
-    }
-
-    public int getRandomWithExclusion(Random rnd, int start, int end, int... exclude) {
-        int random = start + rnd.nextInt(end - start + 1 - exclude.length);
-        for (int ex : exclude) {
-            if (random < ex) {
-                break;
-            }
-            random++;
-        }
-        return random;
-    }
 
 }
 
