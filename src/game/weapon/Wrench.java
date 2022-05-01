@@ -2,11 +2,14 @@ package game.weapon;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
+import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
+import game.actors.Buyer;
 import game.actors.Status;
+import game.magical_Items.PurchasableItem;
 
-public class Wrench extends WeaponItem  {
+public class Wrench extends WeaponItem implements PurchasableItem {
 
     public static final int PRICE = 200;
 
@@ -24,12 +27,29 @@ public class Wrench extends WeaponItem  {
      */
     public int getPrice(){return Wrench.PRICE;}
 
+    /**
+     * adds an action to the list of allowable items
+     * @param action chosen action
+     */
+    public void addWrenchAction(Action action){
+        this.addAction(action);
+    }
 
     @Override
     public void tick(Location currentLocation, Actor actor) {
         actor.addCapability(Status.WRENCH);
     }
 
+    @Override
+    public String purchase(Buyer buyer, GameMap map) {
+        if (buyer.getWalletBalance()> PRICE){
+            buyer.addItemToInventoryBuyer(this);
+            buyer.editBalance(-PRICE);
+            buyer.addCapability(Status.WRENCH);
+            return "Successfully purchased Wrench! Remaining Balance: " + buyer.getWalletBalance();
+        }
+        return "insufficient Balance :(";
+    }
 
 
 }

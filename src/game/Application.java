@@ -57,11 +57,11 @@ public class Application {
 			GameMap gameMap = new GameMap(groundFactory, map);
 			world.addGameMap(gameMap);
 
-			Actor mario = new Player("Player", 'm', 100);
+			Player mario = new Player("Player", 'm', 100);
 			world.addPlayer(mario, gameMap.at(42, 9));
 
-			Actor toad = new Toad();
-			//world.addPlayer(toad, gameMap.at(42, 9)); //44 9
+			Actor toad = new Toad(mario);
+			world.addPlayer(toad, gameMap.at(44, 10)); //44 9
 
 			Random rand = new Random();
 			SuperMushroom superMushroom = new SuperMushroom(true);

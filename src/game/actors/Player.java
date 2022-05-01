@@ -11,13 +11,14 @@ import edu.monash.fit2099.engine.displays.Menu;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import game.actions.ConsumeAction;
 import game.magical_Items.Coin;
+import game.magical_Items.PurchasableItem;
 import game.magical_Items.SuperMushroom;
 import game.weapon.Wrench;
 
 /**
  * Class representing the Player.
  */
-public class Player extends Actor {
+public class Player extends Actor implements Buyer{
 
 	private final Menu menu = new Menu();
 	private int wallet = 0;
@@ -32,7 +33,6 @@ public class Player extends Actor {
 	public Player(String name, char displayChar, int hitPoints) {
 		super(name, displayChar, hitPoints);
 		this.addCapability(Status.HOSTILE_TO_ENEMY);
-		this.addItemToInventory(new Wrench()); // DELETE THIS
 	}
 
 	@Override
@@ -74,5 +74,15 @@ public class Player extends Actor {
 
 	public void editBalance(int amount){
 		this.wallet = this.wallet + amount;
+	}
+
+	@Override
+	public void addItemToInventoryBuyer(Item item) {
+		this.addItemToInventory(item);
+	}
+
+	@Override
+	public void addCapability(Enum<?> capability) {
+		super.addCapability(capability);
 	}
 }
