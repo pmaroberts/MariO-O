@@ -14,7 +14,6 @@ import java.util.Random;
 
 public class Toad extends Actor {
 
-    Wrench wrench = new Wrench();
 
     public Toad() {
         super("Toad", 'T', 999999999);
