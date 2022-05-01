@@ -13,11 +13,9 @@ public class Coin extends ConsumableItem implements Resettable {
 
     /**
      * coin item constructor
-     *
+     * adds coin to resettable manager array
      * @param value    the coin instance value (integer)
      * @param portable a boolean variable that describes if the coin is portable.
-     *                 enemy's if they drop coins when killed will need to have a portable coin in inventory
-     *                 for main player, coin will not be portable
      */
     public Coin(int value, boolean portable) {
         super("Coin $" + value, '$', portable);
@@ -33,10 +31,19 @@ public class Coin extends ConsumableItem implements Resettable {
         return this.value;
     }
 
+    /**
+     * remove Action from coin allowableActionList
+     * @param action Action type action
+     */
     public void removeActionCoin(Action action){
         this.removeAction(action);
     }
 
+    /**
+     * execute method for consumableItem abstract
+     * @param actor actor consuming the coin
+     * @param map the map on which the actor is on
+     */
     @Override
     public void toExecute(Actor actor, GameMap map){
         int check = BuyerManager.getInstance().buyers().indexOf(actor);
@@ -48,6 +55,7 @@ public class Coin extends ConsumableItem implements Resettable {
         this.removeActionCoin(this.getConsumeAction());
         map.locationOf(actor).removeItem(this);
     }
+
 
     @Override
     public void tick(Location location){

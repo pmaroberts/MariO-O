@@ -15,16 +15,34 @@ import game.weapon.Wrench;
 
 public class Toad extends Actor {
 
+    /**
+     * toad constructor
+     */
     public Toad() {
         super("Toad", '0', 999999999);
     }
 
+    /**
+     * toad play turn method, executed each round
+     * @param actions    collection of possible Actions for this Actor
+     * @param lastAction The Action this Actor took last turn. Can do interesting things in conjunction with Action.getNextAction()
+     * @param map        the map containing the Actor
+     * @param display    the I/O object to which messages may be written
+     * @return doNothingAction
+     */
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
 
         return new DoNothingAction();
     }
 
+    /**
+     * allowable actions of Toad, adding purchase actions if player is in range
+     * @param otherActor the Actor that might be performing attack
+     * @param direction  String representing the direction of the other Actor
+     * @param map        current GameMap
+     * @return allowableActionList
+     */
     @Override
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
         ActionList actions = new ActionList();

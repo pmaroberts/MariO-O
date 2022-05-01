@@ -8,14 +8,29 @@ import game.actions.ConsumeAction;
 public abstract class ConsumableItem extends Item {
     ConsumeAction consumeAction;
 
+    /**
+     * consumable item constructor adds consume action to item
+     * @param name consumable item type name
+     * @param displayChar display char
+     * @param portable boolean
+     */
     public ConsumableItem(String name, char displayChar, boolean portable){
         super(name, displayChar, portable);
         consumeAction = new ConsumeAction(this);
         this.addAction(consumeAction);
     }
 
+    /**
+     * general toExecute method to allow any consumable item to have a consume action
+     * @param actor Actor that is consuming the item
+     * @param map GameMap that the actor is on
+     */
     public void toExecute(Actor actor, GameMap map){}
 
+    /**
+     * getter for ConsumeAction
+     * @return consumeAction
+     */
     public ConsumeAction getConsumeAction(){
         return consumeAction;
     }
