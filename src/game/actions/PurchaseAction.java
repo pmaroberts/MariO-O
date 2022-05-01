@@ -38,7 +38,7 @@ public class PurchaseAction extends Action {
      */
     @Override
     public String menuDescription(Actor actor) {
-        return actor + " purchases " + purchasableItem ;
+        return actor + " buys " + purchasableItem + " ($" + purchasableItem.getPrice() + ")";
     }
 }
 

@@ -8,4 +8,6 @@ public interface PurchasableItem {
 
     String purchase(Buyer buyer, GameMap map);
 
+    int getPrice();
+
 }

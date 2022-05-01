@@ -65,8 +65,7 @@ public class Application {
 
 			Random rand = new Random();
 			SuperMushroom superMushroom = new SuperMushroom(true);
-			//gameMap.at(rand.nextInt(39), rand.nextInt(19)).addItem(superMushroom);6
-
+			gameMap.at(rand.nextInt(39), rand.nextInt(19)).addItem(superMushroom);
 			gameMap.at(42, 9).addItem(superMushroom);
 
 			PowerStar powerStar = new PowerStar(true);

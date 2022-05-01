@@ -3,6 +3,7 @@ package game.magical_Items;
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
+import game.actors.Buyer;
 import game.actors.Player;
 
 public class Coin extends ConsumableItem {
@@ -54,9 +55,13 @@ public class Coin extends ConsumableItem {
 
     @Override
     public void toExecute(Actor actor, GameMap map){
+        int check = BuyerManager.getInstance().buyers().indexOf(actor);
+        if (check!= -1){
+            Buyer buyer = BuyerManager.getInstance().buyers().get(check);
+            buyer.editBalance(this.value);
+        }
         actor.removeItemFromInventory(this);
-        //call to wallet manager here?
-        this.removeActionCoin(this.consumeAction);
+        this.removeActionCoin(this.getConsumeAction());
         map.locationOf(actor).removeItem(this);
     }
 }
