@@ -27,11 +27,12 @@ public class Sprout extends Tree {
         this.spawnGoomba(location);
         this.growUp(location);
         this.destroyedByPowerStar(location);
+        this.addCapability(Status.CAN_SPAWN);
 
     }
 
     public void spawnGoomba(Location location){
-        if(Utils.probReturn(GOOMBA_ODDS) && !location.containsAnActor()){
+        if(Utils.probReturn(GOOMBA_ODDS) && !location.containsAnActor() && this.hasCapability(Status.CAN_SPAWN)){
             location.addActor(new Goomba());
         }
     }

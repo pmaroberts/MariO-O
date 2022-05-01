@@ -15,7 +15,7 @@ import game.reset.Resettable;
 
 public abstract class Tree extends Ground implements JumpOnAble, Resettable {
 
-    private final double RESET_ODDS = 0.5;
+    private static final double RESET_ODDS = 0.5;
 
 
     protected int age;
@@ -24,6 +24,7 @@ public abstract class Tree extends Ground implements JumpOnAble, Resettable {
         this.age = 0;
         this.addInstance();//All trees can be jumped on
         this.registerInstance();
+        this.addCapability(Status.CAN_SPAWN);
     }
 
     public void incrementAge(){
@@ -51,6 +52,8 @@ public abstract class Tree extends Ground implements JumpOnAble, Resettable {
             this.addCapability(Status.RESET);
 
         }
+        this.removeCapability(Status.CAN_SPAWN);
+
     }
 
 }

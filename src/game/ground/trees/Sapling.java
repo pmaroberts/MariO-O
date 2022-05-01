@@ -28,10 +28,11 @@ public class Sapling extends Tree {
         this.dropCoin(location);
         this.growUp(location);
         this.destroyedByPowerStar(location);
+        this.addCapability(Status.CAN_SPAWN);
     }
 
     public void dropCoin(Location location){
-        if(Utils.probReturn(COIN_ODDS)){
+        if(Utils.probReturn(COIN_ODDS) && this.hasCapability(Status.CAN_SPAWN)){
             location.addItem(new Coin(COIN_VALUE,true));
         }
     }

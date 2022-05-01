@@ -33,10 +33,11 @@ public class Mature extends Tree {
         this.spawnSprout(location);
         this.suicide(location);
         this.destroyedByPowerStar(location);
+        this.addCapability(Status.CAN_SPAWN);
     }
 
     public void spawnKoopa(Location location){
-        if(Utils.probReturn(KOOPA_ODDS) && !location.containsAnActor()){
+        if(Utils.probReturn(KOOPA_ODDS) && !location.containsAnActor() && this.hasCapability(Status.CAN_SPAWN)){
             location.addActor(new Koopa());
         }
     }
@@ -52,7 +53,7 @@ public class Mature extends Tree {
         List<Exit> exits = location.getExits();
         List<Exit> dirtExits = new ArrayList<>();
 
-        if(super.age%5 == 0){
+        if(super.age%5 == 0 && this.hasCapability(Status.CAN_SPAWN)){
             for(Exit exit : exits){
                 if(exit.getDestination().getGround().hasCapability(Status.FERTILE)){
                     dirtExits.add(exit);

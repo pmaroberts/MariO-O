@@ -50,7 +50,7 @@ public class AttackAction extends Action {
 
 		if(actor.hasCapability(Status.POWERSTAR)){
 			target.hurt(99999);
-			result += actor + " attacks with powerstar";
+			result += actor + " attacks with PowerStar";
 		}
 		else{
 			if (!(rand.nextInt(100) <= weapon.chanceToHit())) {
@@ -59,6 +59,7 @@ public class AttackAction extends Action {
 			int damage = weapon.damage();
 			result += actor + " " + weapon.verb() + " " + target + " for " + damage + " damage.";
 			target.hurt(damage);
+			target.removeCapability(Status.TALL);
 		}
 
 		if (!target.isConscious() && !target.hasCapability(Status.VALID_CORPSE)) {

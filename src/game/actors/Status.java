@@ -14,5 +14,6 @@ public enum Status {
     VALID_CORPSE,
     DORMANT,
     WRENCH,
-    RESET
+    RESET,
+    CAN_SPAWN
 }
