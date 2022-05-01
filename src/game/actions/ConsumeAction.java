@@ -18,7 +18,9 @@ public class ConsumeAction extends Action {
 
     /**
      * overriding action class execute method. updates and calls methods according to which item type is fed through
-
+     * @param actor The actor performing the action.
+     * @param map The map the actor is on.
+     * @return menuDescription string "actor consumes ..."
      */
     @Override
     public String execute(Actor actor, GameMap map ) {

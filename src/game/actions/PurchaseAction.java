@@ -10,8 +10,11 @@ public class PurchaseAction extends Action {
 
     private final PurchasableItem purchasableItem;
     private final Buyer buyer;
+
     /**
-     * Consume item action constructor
+     * PurchaseItem Constructor, assigns the purchasable item type and the buyer
+     * @param item general purchasable item type
+     * @param buyer buyer interface type (atm just player)
      */
    public PurchaseAction(PurchasableItem item, Buyer buyer) {
         this.purchasableItem = item;
