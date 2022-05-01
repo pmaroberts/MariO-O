@@ -8,12 +8,8 @@ import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.items.PickUpItemAction;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.displays.Menu;
-import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
-import game.actions.ConsumeAction;
 import game.magical_Items.Coin;
-import game.magical_Items.PurchasableItem;
 import game.magical_Items.SuperMushroom;
-import game.weapon.Wrench;
 
 /**
  * Class representing the Player.
@@ -33,6 +29,7 @@ public class Player extends Actor implements Buyer{
 	public Player(String name, char displayChar, int hitPoints) {
 		super(name, displayChar, hitPoints);
 		this.addCapability(Status.HOSTILE_TO_ENEMY);
+		this.addInstance();
 	}
 
 	@Override

@@ -55,8 +55,12 @@ public class Coin extends ConsumableItem {
 
     @Override
     public void toExecute(Actor actor, GameMap map){
+        int check = BuyerManager.getInstance().buyers().indexOf(actor);
+        if (check!= -1){
+            Buyer buyer = BuyerManager.getInstance().buyers().get(check);
+            buyer.editBalance(this.value);
+        }
         actor.removeItemFromInventory(this);
-
         this.removeActionCoin(this.getConsumeAction());
         map.locationOf(actor).removeItem(this);
     }
