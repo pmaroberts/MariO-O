@@ -11,12 +11,9 @@ import game.actions.SpeakWithToadAction;
 import game.magical_Items.PowerStar;
 import game.magical_Items.SuperMushroom;
 import game.weapon.Wrench;
-import edu.monash.fit2099.engine.positions.World;
-
-import java.util.Random;
 
 public class Toad extends Actor {
-private Buyer buyer;
+private final Buyer buyer;
 
     public Toad(Buyer buyer) {
         super("Toad", '0', 999999999);

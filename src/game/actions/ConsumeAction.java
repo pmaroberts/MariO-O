@@ -7,15 +7,13 @@ import game.magical_Items.ConsumableItem;
 
 public class ConsumeAction extends Action {
     ConsumableItem consumableItem;
+
     /**
-     * Consume item action constructor
+     * consumeaction constructor
+     * @param item consumable item to instantiate the consumable item
      */
     public ConsumeAction(ConsumableItem item) {
         this.consumableItem = item;
-    }
-
-    public ConsumeAction getConsumeAction(){
-        return this;
     }
 
     /**

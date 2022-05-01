@@ -38,11 +38,6 @@ public class SuperMushroom extends ConsumableItem implements PurchasableItem {
         actor.addCapability(Status.TALL); //updating enum
     }
 
-
-    public void addSuperMushroomAction(Action action) {
-        this.addAction(action);
-    }
-
     /**
      * getter for private price attribute
      * @return static price attribute
