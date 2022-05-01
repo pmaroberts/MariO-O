@@ -15,6 +15,7 @@ public class Wrench extends WeaponItem implements PurchasableItem {
 
     /**
      * constructor for wrench weaponItem
+     * sets it to be portable
      */
     public Wrench() {
         super("Wrench", '%', 50, "Wrench Attack!", 80);
@@ -28,18 +29,11 @@ public class Wrench extends WeaponItem implements PurchasableItem {
     public int getPrice(){return Wrench.PRICE;}
 
     /**
-     * adds an action to the list of allowable items
-     * @param action chosen action
+     * wrench purchase method calls
+     * @param buyer Buyer purchasing the item
+     * @param map GameMap the buyer is on
+     * @return player balance and/or purchase success statement
      */
-    public void addWrenchAction(Action action){
-        this.addAction(action);
-    }
-
-    @Override
-    public void tick(Location currentLocation, Actor actor) {
-        actor.addCapability(Status.WRENCH);
-    }
-
     @Override
     public String purchase(Buyer buyer, GameMap map) {
         if (buyer.getWalletBalance()> PRICE){
