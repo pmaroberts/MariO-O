@@ -13,6 +13,6 @@ public enum Status {
     ENGAGED,
     VALID_CORPSE,
     DORMANT,
-    WRENCH,
+    WRENCH, //this status is used to indicate that the player has a wrench in inventory, only used in purchase()
     RESET
 }

@@ -34,6 +34,14 @@ public class Player extends Actor implements Resettable, Buyer {
 		this.registerInstance();
 	}
 
+	/**
+	 * responsible for logic and actions provided to player on turn
+	 * @param actions    collection of possible Actions for this Actor
+	 * @param lastAction The Action this Actor took last turn. Can do interesting things in conjunction with Action.getNextAction()
+	 * @param map        the map containing the Actor
+	 * @param display    the I/O object to which messages may be written
+	 * @return the menu display
+	 */
 	@Override
 	public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
 		// Handle multi-turn Actions
@@ -54,21 +62,37 @@ public class Player extends Actor implements Resettable, Buyer {
 		return menu.showMenu(this, actions, display);
 	}
 
+	/**
+	 * checks the display char of player
+	 * @return the disp character of player
+	 */
 	@Override
 	public char getDisplayChar(){
 		return this.hasCapability(Status.TALL) ? Character.toUpperCase(super.getDisplayChar()): super.getDisplayChar();
 	}
 
-
+	/**
+	 * getter for players wallet balance
+	 * @return int wallet amount
+	 */
 	public int getWalletBalance(){return this.wallet;}
 
+	/**
+	 * multipurpose wallet edit method, increase or decrease wallet amount
+	 * @param coin coin that is consumed to edit
+	 */
 	public void addMoney(Coin coin){
 		this.wallet = this.wallet + coin.getValue();
 	}
 
+	/**
+	 * allows balance to be edited without coin instance
+	 * @param amount int value
+	 */
 	public void editBalance(int amount){
 		this.wallet = this.wallet + amount;
 	}
+
 
 	@Override
 	public void resetInstance() {
@@ -83,12 +107,20 @@ public class Player extends Actor implements Resettable, Buyer {
 		Resettable.super.registerInstance();
 	}
 
-
+	/**
+	 * overrides buyerManager addItemToInventory
+	 * @param item the item to be added to inventory
+	 * @see game.magical_Items.BuyerManager
+	 */
 	@Override
 	public void addItemToInventoryBuyer(Item item) {
 		this.addItemToInventory(item);
 	}
 
+	/**
+	 * overrides add capability method so that it can accessed through interface
+	 * @param capability the Capability to add
+	 */
 	@Override
 	public void addCapability(Enum<?> capability) {
 		super.addCapability(capability);
