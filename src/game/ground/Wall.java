@@ -5,7 +5,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
 import game.Utils;
-import game.actions.JumpAction;
+import game.actions.JumpActorAction;
 import game.actors.Status;
 
 /**
@@ -51,7 +51,7 @@ public class Wall extends Ground implements JumpOnAble{
 	 * Method to call when Wall is jumped at
 	 * @return 0 if jump is successful, fall damage otherwise
 	 */
-	public int jump() {
+	public int didJumpSucceed() {
 		if(Utils.probReturn(JUMP_ODDS)){
 			return 0;
 		}
@@ -69,7 +69,7 @@ public class Wall extends Ground implements JumpOnAble{
 	public ActionList allowableActions(Actor actor, Location location, String direction){
 		ActionList actions =  new ActionList();
 		if(!location.containsAnActor() && !actor.hasCapability(Status.POWERSTAR)){
-			actions.add(new JumpAction(location, direction));
+			actions.add(new JumpActorAction(location, direction));
 		}
 		return actions;
 	}

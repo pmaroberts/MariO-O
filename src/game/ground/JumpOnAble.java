@@ -10,7 +10,7 @@ public interface JumpOnAble {
      * Method that runs when Grounds are jumped on.
      * @return 0 if jump is successful, fall damage if jump fails.
      */
-    int jump();
+    int didJumpSucceed();
 
     /**
      * Method for destroying JumpOnAble ground when actor walks through it with a PowerStar

@@ -76,7 +76,7 @@ public class Sprout extends Tree {
      * Method called when sprout is jumped at
      * @return 0 if jump succeeds, fall damage if jump fails.
      */
-    public int jump() {
+    public int didJumpSucceed() {
         if(Utils.probReturn(JUMP_ODDS)){
             return 0;
         }

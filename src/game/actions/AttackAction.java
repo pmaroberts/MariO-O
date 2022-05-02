@@ -61,6 +61,9 @@ public class AttackAction extends Action {
 			target.hurt(99999);
 			result += actor + " attacks with PowerStar";
 		}
+		else if(target.hasCapability(Status.POWERSTAR)){
+			return actor + " attack fails due to PowerStar!";
+		}
 		else{
 			// Regular weapon attack
 			if (!(rand.nextInt(100) <= weapon.chanceToHit())) {

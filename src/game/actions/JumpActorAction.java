@@ -13,7 +13,7 @@ import game.ground.JumpOnAbleGroundManager;
  * @author Peter Roberts
  * @version Assignment 2
  */
-public class JumpAction extends Action {
+public class JumpActorAction extends Action {
 
     /**
      * Location being jumped to
@@ -33,7 +33,7 @@ public class JumpAction extends Action {
      * @param jumpToLocation Location being jumped to
      * @param direction Direction to jumpToLocation
      */
-    public JumpAction(Location jumpToLocation, String direction) {
+    public JumpActorAction(Location jumpToLocation, String direction) {
         this.direction = direction;
         this.jumpToLocation = jumpToLocation;
         // Gets the Ground from jumpToLocation from the JumpOnAbleGroundManager, so that JumpOnAble is definitely implemented.
@@ -51,7 +51,7 @@ public class JumpAction extends Action {
      */
     @Override
     public String execute(Actor actor, GameMap map) {
-        int jumpResult = jumpToGround.jump();
+        int jumpResult = jumpToGround.didJumpSucceed();
         if(jumpResult == 0 || actor.hasCapability(Status.TALL)){
             map.moveActor(actor, this.jumpToLocation);
             return "Jumped successfully to " + this.jumpToGround.getClass().getSimpleName() + "(" + this.jumpToLocation.x() + ", " + this.jumpToLocation.y() + ")";

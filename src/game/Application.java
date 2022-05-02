@@ -80,8 +80,8 @@ public class Application {
 			PowerStar powerStarRand = new PowerStar(true);
 			gameMap.at(rand.nextInt(39), rand.nextInt(19)).addItem(powerStarRand);
 
-			gameMap.at(35, 10).addActor(new Koopa());
-			gameMap.at(35, 7).addActor(new Koopa());
+			//gameMap.at(35, 10).addActor(new Koopa());
+			//gameMap.at(35, 7).addActor(new Koopa());
 
 
 			world.run();

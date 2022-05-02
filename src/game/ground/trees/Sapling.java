@@ -81,7 +81,7 @@ public class Sapling extends Tree {
      * Method called when mature is jumped at
      * @return 0 if jump succeeds, fall damage if jump fails.
      */
-    public int jump() {
+    public int didJumpSucceed() {
         if(Utils.probReturn(JUMP_ODDS)){
             return 0;
         }
