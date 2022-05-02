@@ -63,6 +63,8 @@ Peter Roberts: I accept this WBA. I'm Peter Roberts and I endorse this message.
 Timothy Moniaga: I accept this WBA.
 
 -----------------------------------------------------------------------------------
+Assignment 2 WBA
+
 
 Tim
 - Design Rationale
@@ -93,17 +95,22 @@ Sara - I accept that these are the tasks I completed
         - BuyerManager
         - Player (methods)
 
-Peter
+Peter - I accept this Work Breakdown Agreement
 - Design Rationale
     - Enemies
         - Koopa
-        - add functionality to Goomba
+        - Goomba
         - DestroyShell
         - Enemy
+        - Follow Behaviour
+        - Attack Behaviour
+        - AttackAction
+        - Abstraction
     - Trees
         - Sprout
         - Sapling
         - Mature
+        - Abstraction
     - Jump
         - JumpAction
         - JumpOnAble
