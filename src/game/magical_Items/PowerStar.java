@@ -7,8 +7,19 @@ import edu.monash.fit2099.engine.positions.Location;
 import game.actors.Buyer;
 import game.actors.Status;
 
+/**
+ * PowerStar Class
+ * @author Sara Hopkins
+ * @version Assignment 2
+ */
 public class PowerStar extends ConsumableItem implements PurchasableItem{
+    /**
+     * Price of the PowerStar
+     */
     public static final int PRICE = 600;
+    /**
+     * Age of the PowerStar in turns
+     */
     private int turns;
 
     /**

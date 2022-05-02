@@ -33,26 +33,36 @@ public class AttackAction extends Action {
 	/**
 	 * Constructor.
 	 * 
-	 * @param target the Actor to attack
+	 * @param target Actor being attacked
+	 * @param direction Direction of incoming attack
 	 */
 	public AttackAction(Actor target, String direction) {
 		this.target = target;
 		this.direction = direction;
 	}
 
+	/**
+	 * Execute Method
+	 * @param actor The actor performing the action.
+	 * @param map The map the actor is on.
+	 * @return Result of the action, to print to console
+	 */
+
 	@Override
 	public String execute(Actor actor, GameMap map) {
 
 		Weapon weapon = actor.getWeapon();
+		// Causes actor to follow target and target to follow actor
 		actor.addCapability(Status.ENGAGED);
 		target.addCapability(Status.ENGAGED);
 		String result = "";
-
+		// PowerStar causes target to die when it gets attacked
 		if(actor.hasCapability(Status.POWERSTAR)){
 			target.hurt(99999);
 			result += actor + " attacks with PowerStar";
 		}
 		else{
+			// Regular weapon attack
 			if (!(rand.nextInt(100) <= weapon.chanceToHit())) {
 				return actor + " misses " + target + ".";
 			}
@@ -61,7 +71,7 @@ public class AttackAction extends Action {
 			target.hurt(damage);
 			target.removeCapability(Status.TALL);
 		}
-
+		// Runs if the target dies, unless the target should leave its corpse on the ground (like Koopa turning dormant)
 		if (!target.isConscious() && !target.hasCapability(Status.VALID_CORPSE)) {
 			ActionList dropActions = new ActionList();
 			// drop all items
@@ -77,6 +87,11 @@ public class AttackAction extends Action {
 		return result;
 	}
 
+	/**
+	 * Menu Description Method
+	 * @param actor The actor performing the action.
+	 * @return The menu description of the action
+	 */
 	@Override
 	public String menuDescription(Actor actor) {
 		return actor + " attacks " + target + " at " + direction;

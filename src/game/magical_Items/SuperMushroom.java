@@ -6,9 +6,19 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import game.actors.Buyer;
 import game.actors.Status;
 
+/**
+ * Super Mushroom Class
+ * @author Sara Hopkins
+ * @version Assignment 2
+ */
 public class SuperMushroom extends ConsumableItem implements PurchasableItem {
-
-    private static final int SUPER_MUSHROOM_HP_BONUS = 50; //add 50 max HP everytime superMushroom consumed
+    /**
+     * Add 50 max HP everytime superMushroom consumed
+     */
+    private static final int SUPER_MUSHROOM_HP_BONUS = 50;
+    /**
+     * Price of SuperMushroom
+     */
     private static final int PRICE = 400; //$400 to purchase from Toad
 
     /**

@@ -1,26 +1,17 @@
 package game;
 import java.util.Random;
 
+/**
+ * Utils class for handling some probabilities
+ */
 public class Utils {
-    public static boolean probReturn(double odds){
+    /**
+     * Calculates a result randomly based on inputted odds
+     * @param odds the probability of returning true
+     * @return true if yes, false if no
+     */
+    public static boolean probReturn(double odds) {
         Random rand = new Random();
         return rand.nextDouble() < odds;
-
-    }
-
-    public static void main(String[] args) {
-//        testy
-//        int trues = 0;
-//        int falses = 0;
-//        for(int i =0; i < 1000; i++){
-//            if(probReturn(0.1)){
-//                trues++;
-//            }
-//            else{
-//                falses++;
-//            }
-//        }
-//        System.out.println(trues);
-//        System.out.println(falses);
     }
 }

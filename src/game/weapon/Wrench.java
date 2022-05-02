@@ -9,8 +9,16 @@ import game.actors.Buyer;
 import game.actors.Status;
 import game.magical_Items.PurchasableItem;
 
+/**
+ * Class for the Wrench
+ * @author Sara Hopkins
+ * @version Assignment 2
+ */
 public class Wrench extends WeaponItem implements PurchasableItem {
 
+    /**
+     * Price of Wrench
+     */
     public static final int PRICE = 200;
 
     /**
@@ -19,7 +27,7 @@ public class Wrench extends WeaponItem implements PurchasableItem {
      */
     public Wrench() {
         super("Wrench", '%', 50, "Wrench Attack!", 80);
-        this.togglePortability();
+        this.togglePortability(); // Wrench cannot be dropped
     }
 
     /**

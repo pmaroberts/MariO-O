@@ -8,11 +8,18 @@ import edu.monash.fit2099.engine.positions.Location;
 import game.actions.AttackAction;
 import game.actors.Status;
 
-
+/**
+ * Behaviour implementing class to handle automatic attacks
+ */
 public class AttackBehaviour implements Behaviour {
 
 
-    // TODO: develop and use it to attack the player automatically.
+    /**
+     *
+     * @param actor the Actor attacking
+     * @param map the GameMap containing the Actor
+     * @return AttackAction for the actor, null when there is no hostile actors nearby
+     */
     @Override
     public Action getAction(Actor actor, GameMap map) {
         Location here = map.locationOf(actor);

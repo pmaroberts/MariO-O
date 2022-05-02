@@ -50,7 +50,7 @@ public class ResetManager {
                 resettableList.get(i).resetInstance();
             }
             catch (Exception e){
-                System.out.println("Error reseting list");
+                System.out.println("Error resetting list");
             }
 
 

@@ -6,7 +6,16 @@ import game.actors.Status;
 import game.magical_Items.Coin;
 
 public interface JumpOnAble {
+    /**
+     * Method that runs when Grounds are jumped on.
+     * @return 0 if jump is successful, fall damage if jump fails.
+     */
     int jump();
+
+    /**
+     * Method for destroying JumpOnAble ground when actor walks through it with a PowerStar
+     * @param location location of the actor
+     */
     default void destroyedByPowerStar(Location location){
         Actor actor = location.getActor();
         if(actor != null && actor.hasCapability(Status.POWERSTAR)){
@@ -15,6 +24,9 @@ public interface JumpOnAble {
         }
     }
 
+    /**
+     * Method for adding instances of Ground objects that implement JumpOnAble interface (to avoid casting)
+     */
     default void addInstance(){
         JumpOnAbleGroundManager.getInstance().appendJumpOnAbleGround(this);
     }

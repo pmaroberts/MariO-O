@@ -8,11 +8,19 @@ import game.actors.Status;
  * A class that represents the floor inside a building.
  */
 public class Floor extends Ground {
+	/**
+	 * Constructor.
+	 */
 	public Floor() {
 		super('_');
 
 	}
 
+	/**
+	 * Method to prevent enemies from entering the floor
+	 * @param actor the Actor to check
+	 * @return true if actor is not an enemy, false otherwise.
+	 */
 	@Override
 	public boolean canActorEnter(Actor actor){
 		return !actor.hasCapability(Status.ENEMY);

@@ -7,9 +7,14 @@ import game.actors.Status;
 
 import java.util.Random;
 
+/**
+ * Action for speaking with the Toad
+ * @author Tim Moniaga
+ * @version Assignment 2
+ */
 public class SpeakWithToadAction extends Action {
-
     private Actor otherActor;
+
 
     public SpeakWithToadAction(Actor otherActor) {
         this.otherActor = otherActor;

@@ -1,6 +1,10 @@
 package game.reset;
 
-
+/**
+ * Resettable interface
+ * @author Tim Moniaga
+ * @version Assignment 2
+ */
 public interface Resettable {
     /**
      * Allows any classes that use this interface to reset abilities, attributes, and/or items.

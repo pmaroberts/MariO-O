@@ -13,6 +13,11 @@ import game.magical_Items.PowerStar;
 import game.magical_Items.SuperMushroom;
 import game.weapon.Wrench;
 
+/**
+ * Class for Toad
+ * @author Sara Hopkins
+ * @version Assignment 2
+ */
 public class Toad extends Actor {
 
     /**

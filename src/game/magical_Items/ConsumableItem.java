@@ -5,6 +5,11 @@ import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.actions.ConsumeAction;
 
+/**
+ * Abstract Class for items that are consumable
+ * @author Sara Hopkins
+ * @version Assignment 2
+ */
 public abstract class ConsumableItem extends Item {
     ConsumeAction consumeAction;
 

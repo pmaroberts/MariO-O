@@ -8,6 +8,11 @@ import game.actors.Status;
 
 import game.reset.Resettable;
 
+/**
+ * Abstract class for enemy
+ * @author Peter Roberts
+ * @version Assignment 2
+ */
 public abstract class Enemy extends Actor implements Resettable {
     /**
      * Constructor.
@@ -22,7 +27,11 @@ public abstract class Enemy extends Actor implements Resettable {
         this.registerInstance();
     }
 
-
+    /**
+     * Method for getting the actor that is engaged with the enemy
+     * @param map current GameMap
+     * @return Actor that is engaged with the enemy
+     */
     public Actor startFollowFromExit(GameMap map) {
         if (this.hasCapability(Status.ENGAGED)) {
             Location here = map.locationOf(this);

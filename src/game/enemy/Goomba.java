@@ -19,10 +19,18 @@ import game.behaviour.WanderBehaviour;
 import java.util.HashMap;
 import java.util.Map;
 /**
- * A little fungus guy.
+ * Class for the Goomba Enemy
+ * @author Peter Roberts
+ * @version Assignment 2
  */
 public class Goomba extends Enemy {
+	/**
+	 * Behaviours hashmap
+	 */
 	private final Map<Integer, Behaviour> behaviours = new HashMap<>(); // priority,
+	/**
+	 * Probability of Suicide
+	 */
 	private static final double SUICIDE_ODDS = 0.1; // Should be 0.1 as per assignment 1
 
 	/**
@@ -35,8 +43,7 @@ public class Goomba extends Enemy {
 	}
 
 	/**
-	 * At the moment, we only make it can be attacked by Player.
-	 * You can do something else with this method.
+	 * Allows other actors to attack the enemy
 	 * @param otherActor the Actor that might perform an action.
 	 * @param direction  String representing the direction of the other Actor
 	 * @param map        current GameMap
@@ -54,17 +61,23 @@ public class Goomba extends Enemy {
 	}
 
 	/**
-	 * Figure out what to do next.
-	 * @see Actor#playTurn(ActionList, Action, GameMap, Display)
+	 * Figures out what Goomba should do next
+	 * @param actions    collection of possible Actions for this Actor
+	 * @param lastAction The Action this Actor took last turn. Can do interesting things in conjunction with Action.getNextAction()
+	 * @param map        the map containing the Actor
+	 * @param display    the I/O object to which messages may be written
+	 * @return Goomba's next action
 	 */
 	@Override
 	public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
 
+		// Removes itself if reset has been run
 		if(this.hasCapability(Status.RESET)){
 			map.removeActor(this);
 			return new DoNothingAction();
 		}
 
+		// Follows the actor that it is engaged with
 		Actor attacker = this.startFollowFromExit(map);
 		if(attacker != null){
 			try{
@@ -82,12 +95,20 @@ public class Goomba extends Enemy {
 		return new DoNothingAction();
 	}
 
+	/**
+	 * Method for getting Goomba's intrinsic weapon
+	 * @return Goomba's intrinsic weapon
+	 */
 	@Override
 	protected IntrinsicWeapon getIntrinsicWeapon(){
 		// We can use intrinsic weapon here because it automatically has a 50% hit rate.
 		return new IntrinsicWeapon(10, "kick"); //
 	}
 
+	/**
+	 * Method for deciding whether the Goomba should suicide
+	 * @param map current GameMap
+	 */
 	public void maybeSuicide(GameMap map){
 		if(Utils.probReturn(SUICIDE_ODDS)){
 			map.removeActor(this);

@@ -8,16 +8,35 @@ import game.Utils;
 import game.actions.JumpAction;
 import game.actors.Status;
 
+/**
+ * Class for Walls
+ * @author Peter Roberts
+ * @version Assignment 2
+ */
 public class Wall extends Ground implements JumpOnAble{
 
+	/**
+	 * Probability of successful jump
+	 */
 	private static final double JUMP_ODDS = 0.8;
+	/**
+	 * Fall damage incurred upon failed jump
+	 */
 	private static final int FALL_DAMAGE = 20;
 
+	/**
+	 * Constructor.
+	 */
 	public Wall() {
 		super('#');
-		this.addInstance();
+		this.addInstance(); // Walls can be jumped on
 	}
 
+	/**
+	 * Method preventing actor from entering walls, unless actor has powerstar
+	 * @param actor the Actor to check
+	 * @return false, unless actor has powerstar
+	 */
 	@Override
 	public boolean canActorEnter(Actor actor) {
 		return actor.hasCapability(Status.POWERSTAR);
@@ -28,6 +47,10 @@ public class Wall extends Ground implements JumpOnAble{
 		return true;
 	}
 
+	/**
+	 * Method to call when Wall is jumped at
+	 * @return 0 if jump is successful, fall damage otherwise
+	 */
 	public int jump() {
 		if(Utils.probReturn(JUMP_ODDS)){
 			return 0;
@@ -35,7 +58,13 @@ public class Wall extends Ground implements JumpOnAble{
 		return FALL_DAMAGE;
 	}
 
-
+	/**
+	 * Gives actor standing next to wall actions that can be chosen
+	 * @param actor the Actor acting
+	 * @param location the current Location
+	 * @param direction the direction of the Ground from the Actor
+	 * @return actions list actor can complete
+	 */
 	@Override
 	public ActionList allowableActions(Actor actor, Location location, String direction){
 		ActionList actions =  new ActionList();
@@ -45,6 +74,10 @@ public class Wall extends Ground implements JumpOnAble{
 		return actions;
 	}
 
+	/**
+	 * Tick Method for wall
+	 * @param location The location of the Ground
+	 */
 	@Override
 	public void tick(Location location) {
 		this.destroyedByPowerStar(location);

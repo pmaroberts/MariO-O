@@ -9,6 +9,11 @@ import game.actors.Status;
 import game.reset.Resettable;
 import game.reset.ResetManager;
 
+/**
+ * Class for the coin
+ * @author Sara Hopkins
+ * @version Assignment 2
+ */
 public class Coin extends ConsumableItem implements Resettable {
     private final int value;
 

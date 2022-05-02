@@ -7,13 +7,13 @@ package game.actors;
 public enum Status {
     HOSTILE_TO_ENEMY, // use this status to be considered hostile towards enemy (e.g., to be attacked by enemy)
     TALL, // use this status to tell that current instance has "grown".
-    POWERSTAR, //use this status to pass to other classes that player has consumed powerStar
-    FERTILE,
-    ENEMY,
-    ENGAGED,
-    VALID_CORPSE,
-    DORMANT,
-    WRENCH,
-    RESET,
-    CAN_SPAWN
+    POWERSTAR, // use this status to pass to other classes that player has consumed powerStar
+    FERTILE, // used to classify ground types upon which trees can be spawned
+    ENEMY, // used to label actors that are enemies, at this point this is only used to stop them entering the floor
+    ENGAGED, // used to label actors that have attacked or been attacked (they follow now)
+    VALID_CORPSE, // used to label actors that should not be removed from the map once dead
+    DORMANT, // used to label Koopas that have been made dormant
+    WRENCH, // used to label actors that hold a wrench
+    RESET, // used to label ground types that have just had their reset method run
+    CAN_SPAWN // used to label ground types that can spawn (removed for 1 turn when actor resets)
 }

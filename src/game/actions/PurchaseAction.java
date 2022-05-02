@@ -6,6 +6,11 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import game.actors.Buyer;
 import game.magical_Items.PurchasableItem;
 
+/**
+ * Action for purchasing items
+ * @author Sara Hopkins
+ * @version Assignment 2
+ */
 public class PurchaseAction extends Action {
 
     private final PurchasableItem purchasableItem;

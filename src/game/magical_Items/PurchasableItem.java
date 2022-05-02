@@ -3,6 +3,11 @@ package game.magical_Items;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.actors.Buyer;
 
+/**
+ * Interface impletented by items that are purchasable
+ * @author Sara Hopkins
+ * @version Assignment 2
+ */
 public interface PurchasableItem {
 
     /**

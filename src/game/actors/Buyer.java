@@ -3,6 +3,9 @@ package game.actors;
 import edu.monash.fit2099.engine.items.Item;
 import game.magical_Items.BuyerManager;
 
+/**
+ * Interface implemented by actors that can buy
+ */
 public interface Buyer {
 
     /**
