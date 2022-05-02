@@ -93,7 +93,9 @@ public class Player extends Actor implements Resettable, Buyer {
 		this.wallet = this.wallet + amount;
 	}
 
-
+	/**
+	 * after reset occurs, all player capabilities should be removed and HP restored to MaxHP
+	 */
 	@Override
 	public void resetInstance() {
 		resetMaxHp(getMaxHp());
@@ -102,6 +104,9 @@ public class Player extends Actor implements Resettable, Buyer {
 		this.resetFlag = true;
 	}
 
+	/**
+	 * allows player class to be accessed by global reset
+	 */
 	@Override
 	public void registerInstance() {
 		Resettable.super.registerInstance();
