@@ -63,7 +63,10 @@ public class Coin extends ConsumableItem implements Resettable {
         map.locationOf(actor).removeItem(this);
     }
 
-
+    /**
+     * if an item has the reset status then it needs to be removed
+     * @param location location of the item
+     */
     @Override
     public void tick(Location location){
         if(this.hasCapability(Status.RESET)){
