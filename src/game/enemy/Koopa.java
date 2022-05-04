@@ -94,8 +94,8 @@ public class Koopa extends Enemy {
             }
             catch(Exception ignored){}
         }
-        for(Behaviour Behaviour : behaviours.values()) {
-            Action action = Behaviour.getAction(this, map);
+        for(Behaviour behaviour : behaviours.values()) {
+            Action action = behaviour.getAction(this, map);
             if (action != null)
                 return action;
         }
