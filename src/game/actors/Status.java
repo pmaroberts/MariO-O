@@ -9,7 +9,7 @@ public enum Status {
     TALL, // use this status to tell that current instance has "grown".
     POWERSTAR, // use this status to pass to other classes that player has consumed powerStar
     FERTILE, // used to classify ground types upon which trees can be spawned
-    ENEMY, // used to label actors that are enemies, at this point this is only used to stop them entering the floor
+    FLOOR_BANNED, // Used to label actors that cannot enter the floor
     ENGAGED, // used to label actors that have attacked or been attacked (they follow now)
     VALID_CORPSE, // used to label actors that should not be removed from the map once dead
     DORMANT, // used to label Koopas that have been made dormant

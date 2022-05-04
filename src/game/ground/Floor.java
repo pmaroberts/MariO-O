@@ -23,7 +23,7 @@ public class Floor extends Ground {
 	 */
 	@Override
 	public boolean canActorEnter(Actor actor){
-		return !actor.hasCapability(Status.ENEMY);
+		return !actor.hasCapability(Status.FLOOR_BANNED);
 	}
 }
 
