@@ -21,6 +21,8 @@ public abstract class Tree extends Ground implements JumpOnAble, Resettable {
      * Probability that the tree dies on reset.
      */
     private static final double RESET_ODDS = 0.5;
+
+    public static final double FIRE_FLOWER_ODDS = 0.5;
     /**
      * The tree's age (in turns)
      */
