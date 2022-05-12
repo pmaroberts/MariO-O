@@ -5,8 +5,8 @@ import game.magical_Items.ConsumableItem;
 
 public abstract class Water extends ConsumableItem {
 
-    public Water(){
-        super( "Water", '*',false);
+    public Water(String name, char dispchar){
+        super( name, dispchar,false);
 
     }
 
