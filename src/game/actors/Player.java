@@ -9,6 +9,7 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.displays.Menu;
 import game.actions.ResetAction;
 import game.magical_Items.Coin;
+import game.magical_Items.magic_water.Bottle;
 import game.reset.Resettable;
 
 /**
@@ -19,6 +20,7 @@ public class Player extends Actor implements Resettable, Buyer {
 	private final Menu menu = new Menu();
 	private int wallet = 0;
 	private boolean resetFlag = false;
+	private Bottle bottle;
 
 	/**
 	 * Constructor.
@@ -32,6 +34,7 @@ public class Player extends Actor implements Resettable, Buyer {
 		this.addCapability(Status.HOSTILE_TO_ENEMY);
 		this.addInstance();
 		this.registerInstance();
+		this.bottle = new Bottle();
 	}
 
 	/**
@@ -129,5 +132,10 @@ public class Player extends Actor implements Resettable, Buyer {
 	@Override
 	public void addCapability(Enum<?> capability) {
 		super.addCapability(capability);
+	}
+
+	@Override
+	public Bottle getBottle() {
+		return this.bottle;
 	}
 }
