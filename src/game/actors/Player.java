@@ -20,7 +20,7 @@ public class Player extends Actor implements Resettable, Buyer {
 	private final Menu menu = new Menu();
 	private int wallet = 0;
 	private boolean resetFlag = false;
-	private Bottle bottle;
+	private final Bottle bottle;
 
 	/**
 	 * Constructor.
@@ -35,6 +35,7 @@ public class Player extends Actor implements Resettable, Buyer {
 		this.addInstance();
 		this.registerInstance();
 		this.bottle = new Bottle();
+		addItemToInventory(this.bottle);
 	}
 
 	/**
