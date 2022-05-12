@@ -14,6 +14,7 @@ import game.enemy.Koopa;
 import game.ground.Dirt;
 import game.ground.Floor;
 import game.ground.Wall;
+import game.ground.fountains.HealthFountain;
 import game.magical_Items.PowerStar;
 import game.magical_Items.SuperMushroom;
 import game.ground.trees.Sprout;

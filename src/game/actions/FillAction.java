@@ -23,6 +23,6 @@ public class FillAction extends Action {
 
     @Override
     public String menuDescription(Actor actor) {
-        return actor + "refill" + this.water.toString();
+        return actor + " refill " + this.water.toString();
     }
 }
