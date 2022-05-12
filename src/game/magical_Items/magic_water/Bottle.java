@@ -12,4 +12,12 @@ public class Bottle extends Item {
         super("Bottle", 'B', false);
         stack = new Stack<>();
     }
+
+    public void addToBottle(Water water){
+        this.stack.push(water);
+    }
+
+    public Water removeFromBottle(){
+        return this.stack.pop();
+    }
 }
