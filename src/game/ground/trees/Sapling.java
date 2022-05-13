@@ -55,6 +55,7 @@ public class Sapling extends Tree {
         this.growUp(location);
         this.destroyedByPowerStar(location);
         this.addCapability(Status.CAN_SPAWN);
+        this.fire_flower_spawn(location);
     }
 
     /**

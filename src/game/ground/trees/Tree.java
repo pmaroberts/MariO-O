@@ -58,10 +58,6 @@ public abstract class Tree extends Ground implements JumpOnAble, Resettable {
         return actor.hasCapability(Status.POWERSTAR);
     }
 
-    @Override
-    public void tick(Location location){
-        this.fire_flower_spawn(location);
-    }
 
     public void fire_flower_spawn(Location location){
         if(Utils.probReturn(FIRE_FLOWER_ODDS)){

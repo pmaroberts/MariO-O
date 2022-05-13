@@ -40,7 +40,7 @@ public class ConsumeAction extends Action {
      */
     @Override
     public String menuDescription(Actor actor) {
-        return actor + " consumes " + consumableItem;
+        return actor + " consumes " + consumableItem.toString();
     }
 }
 

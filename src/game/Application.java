@@ -70,7 +70,11 @@ public class Application {
 			SuperMushroom superMushroom = new SuperMushroom(true);
 			gameMap.at(42, 9).addItem(superMushroom);
 
-			//spawning in a random mushroom on map for spicyness
+			//spawning in5
+		// 5
+		// 5
+		// 55
+		// a random mushroom on map for spicyness
 			SuperMushroom superMushroomRand = new SuperMushroom(true);
 			gameMap.at(rand.nextInt(39), rand.nextInt(19)).addItem(superMushroomRand);
 

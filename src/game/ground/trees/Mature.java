@@ -56,6 +56,7 @@ public class Mature extends Tree {
         this.suicide(location);
         this.destroyedByPowerStar(location);
         this.addCapability(Status.CAN_SPAWN);
+        this.fire_flower_spawn(location);
 
     }
 
