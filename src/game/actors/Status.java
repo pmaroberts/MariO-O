@@ -15,5 +15,6 @@ public enum Status {
     DORMANT, // used to label Koopas that have been made dormant
     WRENCH, // used to label actors that hold a wrench
     RESET, // used to label ground types that have just had their reset method run
-    CAN_SPAWN // used to label ground types that can spawn (removed for 1 turn when actor resets)
+    CAN_SPAWN, // used to label ground types that can spawn (removed for 1 turn when actor resets)
+    FIRE_ATTACK //used to label bowser and those with the fireflower booster.
 }
