@@ -10,7 +10,6 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.World;
 import game.actors.Player;
 import game.actors.Toad;
-import game.enemy.Koopa;
 import game.ground.Dirt;
 import game.ground.Floor;
 import game.ground.Wall;
@@ -62,6 +61,8 @@ public class Application {
 
 			Actor toad = new Toad();
 			gameMap.at(44,10).addActor(toad);
+
+			gameMap.at(45,10).setGround(new HealthFountain());
 
 			Random rand = new Random();
 
