@@ -8,6 +8,7 @@ import game.Utils;
 import game.actions.JumpActorAction;
 import game.actors.Status;
 import game.ground.JumpOnAble;
+import game.magical_Items.FireFlower;
 import game.reset.Resettable;
 
 
@@ -55,6 +56,17 @@ public abstract class Tree extends Ground implements JumpOnAble, Resettable {
     @Override
     public boolean canActorEnter(Actor actor) {
         return actor.hasCapability(Status.POWERSTAR);
+    }
+
+    @Override
+    public void tick(Location location){
+        this.fire_flower_spawn(location);
+    }
+
+    public void fire_flower_spawn(Location location){
+        if(Utils.probReturn(FIRE_FLOWER_ODDS)){
+            location.addItem(new FireFlower());
+        }
     }
 
     /**
