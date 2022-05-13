@@ -56,6 +56,9 @@ public class Player extends Actor implements Resettable, Buyer {
 		if(this.hasCapability(Status.POWERSTAR)){
 			display.println("Mario is INVINCIBLE!");
 		}
+		if(this.hasCapability(Status.FIRE_ATTACK)){
+			display.println("Mario has FIREPOWER6!");
+		}
 
 
 		if (lastAction.getNextAction() != null)
