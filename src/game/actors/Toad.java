@@ -5,13 +5,18 @@ import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actions.DoNothingAction;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
+import edu.monash.fit2099.engine.items.Item;
+import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.actions.PurchaseAction;
 import game.actions.SpeakWithToadAction;
 import game.magical_Items.BuyerManager;
 import game.magical_Items.PowerStar;
 import game.magical_Items.SuperMushroom;
+import game.magical_Items.magic_water.Bottle;
 import game.weapon.Wrench;
+
+import java.util.List;
 
 /**
  * Class for Toad
@@ -37,7 +42,18 @@ public class Toad extends Actor {
      */
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
-
+        List<Exit> exits = map.locationOf(this).getExits();
+        for(Exit exit : exits){
+            if(exit.getDestination().containsAnActor()){
+                if (exit.getDestination().getActor().hasCapability(Status.HOSTILE_TO_ENEMY)){
+                    int check = BuyerManager.getInstance().buyers().indexOf(exit.getDestination().getActor());
+                    if (check!= -1){
+                        Buyer buyer = BuyerManager.getInstance().buyers().get(check);
+                        buyer.setBottle(new Bottle());
+                    }
+                }
+            }
+        }
         return new DoNothingAction();
     }
 

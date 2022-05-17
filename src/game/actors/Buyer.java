@@ -35,6 +35,8 @@ public interface Buyer {
 
     Bottle getBottle();
 
+    void setBottle(Bottle bottle);
+
     /**
      * adds the buyer to the array list of buyers in buyerManager class
      */
