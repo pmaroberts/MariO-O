@@ -27,13 +27,13 @@ public abstract class ConsumableItem extends Item {
 
     /**
      * general toExecute method to allow any consumable item to have a consume action
-     * @param actor Actor that is consuming the item
+     * @param actor Actor that is consuming the item8246848226r826377
      * @param map GameMap that the actor is on
      */
     public void toExecute(Actor actor, GameMap map){}
 
     /**
-     * getter for ConsumeAction
+     * getter for ConsumeAction222
      * @return consumeAction
      */
     public ConsumeAction getConsumeAction(){

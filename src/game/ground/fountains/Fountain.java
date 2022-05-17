@@ -22,14 +22,17 @@ public abstract class Fountain extends Ground {
     @Override
     public ActionList allowableActions(Actor actor, Location location, String direction) {
         ActionList actions = new ActionList();
-        if (actor.hasCapability(Status.FLOOR_BANNED)) {
-            actions.add(new ConsumeAction(this.water));
+        if (location.containsAnActor()){
+            if (actor.hasCapability(Status.FLOOR_BANNED)) {
+                actions.add(new ConsumeAction(this.water));
+            }
+            int check = BuyerManager.getInstance().buyers().indexOf(actor);
+            if (check != -1) {
+                Buyer buyer = BuyerManager.getInstance().buyers().get(check);
+                actions.add(new FillAction(buyer.getBottle(), this.water));
+            }
         }
-        int check = BuyerManager.getInstance().buyers().indexOf(actor);
-        if (check != -1) {
-            Buyer buyer = BuyerManager.getInstance().buyers().get(check);
-            actions.add(new FillAction(buyer.getBottle(), this.water));
-        }
+
         return actions;
     }
 
