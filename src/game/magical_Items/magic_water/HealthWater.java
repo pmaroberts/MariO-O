@@ -14,4 +14,5 @@ public class HealthWater extends Water{
     public void toExecute(Actor actor, GameMap map){
         actor.heal(50);
     }
+
 }
