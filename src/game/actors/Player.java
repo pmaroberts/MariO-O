@@ -21,6 +21,7 @@ public class Player extends Actor implements Resettable, Buyer {
 	private int wallet = 0;
 	private boolean resetFlag = false;
 	private Bottle bottle;
+	private boolean bottleHeld = false;
 
 	/**
 	 * Constructor.
@@ -147,5 +148,11 @@ public class Player extends Actor implements Resettable, Buyer {
 	public void setBottle(Bottle bottle) {
 		this.bottle = bottle;
 		this.addItemToInventory(this.bottle);
+		this.bottleHeld = true;
+	}
+
+	@Override
+	public boolean hasBottle() {
+		return this.bottleHeld;
 	}
 }

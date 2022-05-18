@@ -5,7 +5,6 @@ import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actions.DoNothingAction;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
-import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.actions.PurchaseAction;
@@ -49,7 +48,9 @@ public class Toad extends Actor {
                     int check = BuyerManager.getInstance().buyers().indexOf(exit.getDestination().getActor());
                     if (check!= -1){
                         Buyer buyer = BuyerManager.getInstance().buyers().get(check);
-                        buyer.setBottle(new Bottle());
+                        if (!buyer.hasBottle()) {
+                            buyer.setBottle(new Bottle());
+                        }
                     }
                 }
             }
