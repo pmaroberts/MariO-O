@@ -18,6 +18,7 @@ import game.magical_Items.SuperMushroom;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 
 /**
@@ -27,9 +28,9 @@ import java.util.Map;
  */
 public class Koopa extends Enemy {
     /**
-     * Hash Map for storing behaviours
+     * Tree Map for storing behaviours
      */
-    private final Map<Integer, Behaviour> behaviours = new HashMap<>(); // priority, behaviour
+    private final Map<Integer, Behaviour> behaviours = new TreeMap<>(); // priority, behaviour
 
     /**
      * Constructor.

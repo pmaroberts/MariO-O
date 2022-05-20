@@ -26,7 +26,7 @@ public class Coin extends ConsumableItem implements Resettable {
     public Coin(int value, boolean portable) {
         super("Coin $" + value, '$', portable);
         this.value = value;
-        this.registerInstance();
+        this.registerResetInstance();
     }
 
     /**

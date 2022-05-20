@@ -18,6 +18,8 @@ import game.behaviour.WanderBehaviour;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
+
 /**
  * Class for the Goomba Enemy
  * @author Peter Roberts
@@ -25,9 +27,9 @@ import java.util.Map;
  */
 public class Goomba extends Enemy {
 	/**
-	 * Behaviours hashmap
+	 * Behaviours treemap
 	 */
-	private final Map<Integer, Behaviour> behaviours = new HashMap<>(); // priority,
+	private final Map<Integer, Behaviour> behaviours = new TreeMap<>(); // priority,
 	/**
 	 * Probability of Suicide
 	 */

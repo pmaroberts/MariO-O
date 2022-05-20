@@ -24,7 +24,8 @@ public abstract class Enemy extends Actor implements Resettable {
     public Enemy(String name, char displayChar, int hitPoints) {
         super(name, displayChar, hitPoints);
         this.addCapability(Status.FLOOR_BANNED);
-        this.registerInstance();
+        this.addCapability(Status.LAVA_BANNED);
+        this.registerResetInstance();
     }
 
     /**

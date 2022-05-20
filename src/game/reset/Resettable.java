@@ -18,7 +18,7 @@ public interface Resettable {
      * It allows corresponding class uses to be affected by global reset
      * TODO: Use this method at the constructor of `this` instance.
      */
-    default void registerInstance(){
+    default void registerResetInstance(){
         ResetManager.getInstance().appendResetInstance(this);
     }
 }

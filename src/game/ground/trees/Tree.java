@@ -33,8 +33,8 @@ public abstract class Tree extends Ground implements JumpOnAble, Resettable {
     public Tree(char displayChar) {
         super(displayChar);
         this.age = 0;
-        this.addInstance();// All trees can be jumped on
-        this.registerInstance(); // All trees can be reset
+        this.addJumpInstance();// All trees can be jumped on
+        this.registerResetInstance(); // All trees can be reset
         this.addCapability(Status.CAN_SPAWN);
     }
 
@@ -52,7 +52,7 @@ public abstract class Tree extends Ground implements JumpOnAble, Resettable {
      */
     @Override
     public boolean canActorEnter(Actor actor) {
-        return actor.hasCapability(Status.POWERSTAR);
+        return replaceCanActorEnter(actor);
     }
 
     /**
@@ -65,7 +65,7 @@ public abstract class Tree extends Ground implements JumpOnAble, Resettable {
     @Override
     public ActionList allowableActions(Actor actor, Location location, String direction){
         ActionList actions =  new ActionList();
-        if(!location.containsAnActor() && !actor.hasCapability(Status.POWERSTAR)){
+        if(!location.containsAnActor() && !replaceCanActorEnter(actor)){
             actions.add(new JumpActorAction(location, direction));
         }
         return actions;

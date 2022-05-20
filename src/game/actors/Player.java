@@ -31,7 +31,7 @@ public class Player extends Actor implements Resettable, Buyer {
 		super(name, displayChar, hitPoints);
 		this.addCapability(Status.HOSTILE_TO_ENEMY);
 		this.addInstance();
-		this.registerInstance();
+		this.registerResetInstance();
 	}
 
 	/**
@@ -108,8 +108,8 @@ public class Player extends Actor implements Resettable, Buyer {
 	 * allows player class to be accessed by global reset
 	 */
 	@Override
-	public void registerInstance() {
-		Resettable.super.registerInstance();
+	public void registerResetInstance() {
+		Resettable.super.registerResetInstance();
 	}
 
 	/**
