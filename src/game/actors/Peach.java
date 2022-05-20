@@ -12,10 +12,9 @@ import java.util.Random;
 
 public class Peach extends Actor implements Speakable{
 
-    private final String[] dialogue = {"You might need a wrench to smash Koopa's hard shells.",
-            "You better get back to finding the Power Stars.",
-            "The Princess is depending on you! You are our only hope.",
-            "Being imprisoned in these walls can drive a fungus crazy :("
+    private final String[] dialogue = {"Dear Mario, I'll be waiting for you...",
+            "Never gonna give you up!",
+            "Release me, or I will kick you!"
     };
 
     private boolean count = false;
