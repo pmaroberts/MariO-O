@@ -21,6 +21,7 @@ public class Peach extends Actor implements Speakable{
 
     public Peach(){
         super("Peach", 'P', 600000);
+        this.addCapability(Status.POWERSTAR); // to allow peach to not be attacked
     }
 
     @Override

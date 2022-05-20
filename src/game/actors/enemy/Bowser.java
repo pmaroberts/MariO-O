@@ -22,13 +22,9 @@ public class Bowser extends Enemy implements Speakable {
     private boolean count = false;
 
     /**
-     * Constructor.
-     *
-     * @param name        the name of the Actor
-     * @param displayChar the character that will represent the Actor in the display
-     * @param hitPoints   the Actor's starting hit points
+     * Constructor for Bowser
      */
-    public Bowser(String name, char displayChar, int hitPoints) {
+    public Bowser() {
         super("Bowser", 'B', 500);
     }
 
