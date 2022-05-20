@@ -9,6 +9,8 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import game.actions.AttackAction;
 import game.actions.DestroyShell;
+import game.actions.SpeakAction;
+import game.actors.Speakable;
 import game.actors.Status;
 import game.behaviour.AttackBehaviour;
 import game.behaviour.Behaviour;
@@ -18,6 +20,7 @@ import game.magical_Items.SuperMushroom;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 
 /**
@@ -25,11 +28,17 @@ import java.util.Map;
  * @author Peter Roberts
  * @version Assignment 2
  */
-public class Koopa extends Enemy {
+public class Koopa extends Enemy implements Speakable {
     /**
      * Hash Map for storing behaviours
      */
     private final Map<Integer, Behaviour> behaviours = new HashMap<>(); // priority, behaviour
+
+    private final String[] dialogue = {"Never gonna make you cry!",
+            "Koopi koopi koopii~!"
+    };
+
+    private boolean count = false;
 
     /**
      * Constructor.
@@ -79,7 +88,14 @@ public class Koopa extends Enemy {
         // Remove the actor on reset
         if(this.hasCapability(Status.RESET)){
             map.removeActor(this);
-            return new DoNothingAction();
+            if(this.count){
+                this.count = false;
+                return new SpeakAction(this);
+            }
+            else{
+                this.count = true;
+                return new DoNothingAction();
+            }
         }
 
         // Turn into a shell if dead
@@ -99,7 +115,14 @@ public class Koopa extends Enemy {
             if (action != null)
                 return action;
         }
-        return new DoNothingAction();
+        if(this.count){
+            this.count = false;
+            return new SpeakAction(this);
+        }
+        else{
+            this.count = true;
+            return new DoNothingAction();
+        }
     }
 
     /**
@@ -119,5 +142,11 @@ public class Koopa extends Enemy {
     protected IntrinsicWeapon getIntrinsicWeapon(){
         // We can use intrinsic weapon here because it automatically has a 50% hit rate.
         return new IntrinsicWeapon(30, "punch"); //
+    }
+
+    @Override
+    public String speak(Actor actor) {
+        Random r = new Random();
+        return dialogue[r.nextInt(4)];
     }
 }

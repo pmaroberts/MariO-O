@@ -57,4 +57,5 @@ public abstract class Enemy extends Actor implements Resettable {
         this.addCapability(Status.RESET);
     }
 
+
 }
