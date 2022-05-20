@@ -18,7 +18,9 @@ public class PrincessPeach extends Actor {
     @Override
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
         ActionList actions = new ActionList();
-        if(otherActor.hasCapability(Status.KEYHOLDER)) {
+
+        // She can only be rescued by keyholders that are hostile to enemies.
+        if(otherActor.hasCapability(Status.KEYHOLDER) && otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)) {
             actions.add(new UnlockCuffs()); // Unlock cuffs action
         }
         return actions;

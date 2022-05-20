@@ -18,5 +18,6 @@ public enum Status {
     RESET, // used to label ground types that have just had their reset method run
     FLY,
     KEYHOLDER,
+    FIRE_ATTACK,
     CAN_SPAWN // used to label ground types that can spawn (removed for 1 turn when actor resets)
 }

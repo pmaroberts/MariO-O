@@ -9,6 +9,7 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.weapons.Weapon;
 import game.actors.Status;
+import game.magical_Items.Fire;
 
 /**
  * Special Action for attacking other Actors.
@@ -52,6 +53,7 @@ public class AttackAction extends Action {
 	public String execute(Actor actor, GameMap map) {
 
 		Weapon weapon = actor.getWeapon();
+
 		// Causes actor to follow target and target to follow actor
 		actor.addCapability(Status.ENGAGED);
 		target.addCapability(Status.ENGAGED);
@@ -70,6 +72,12 @@ public class AttackAction extends Action {
 				return actor + " misses " + target + ".";
 			}
 			int damage = weapon.damage();
+
+			// Throw fire if necessary
+			if(actor.hasCapability(Status.FIRE_ATTACK)){
+				map.locationOf(target).addItem(new Fire());
+			}
+
 			result += actor + " " + weapon.verb() + " " + target + " for " + damage + " damage.";
 			target.hurt(damage);
 			target.removeCapability(Status.TALL);
