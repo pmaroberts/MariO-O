@@ -84,45 +84,39 @@ public class Koopa extends Enemy implements Speakable {
      */
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
-
-        // Remove the actor on reset
-        if(this.hasCapability(Status.RESET)){
-            map.removeActor(this);
-            if(this.count){
-                this.count = false;
-                return new SpeakAction(this);
-            }
-            else{
-                this.count = true;
-                return new DoNothingAction();
-            }
-        }
-
-        // Turn into a shell if dead
-        if(!this.isConscious()){
-            this.becomeDormant();
-        }
-        // Allows Koopa to follow whatever attacks it
-        Actor attacker = this.startFollowFromExit(map);
-        if(attacker != null && this.hasCapability(Status.VALID_CORPSE)){
-            try{
-                this.behaviours.put(2, new FollowBehaviour(attacker));
-            }
-            catch(Exception ignored){}
-        }
-        for(Behaviour behaviour : behaviours.values()) {
-            Action action = behaviour.getAction(this, map);
-            if (action != null)
-                return action;
-        }
         if(this.count){
             this.count = false;
             return new SpeakAction(this);
         }
-        else{
+        else {
             this.count = true;
+            // Remove the actor on reset
+            if(this.hasCapability(Status.RESET)){
+                map.removeActor(this);
+                return new DoNothingAction();
+            }
+
+            // Turn into a shell if dead
+            if(!this.isConscious()){
+                this.becomeDormant();
+            }
+            // Allows Koopa to follow whatever attacks it
+            Actor attacker = this.startFollowFromExit(map);
+            if(attacker != null && this.hasCapability(Status.VALID_CORPSE)){
+                try{
+                    this.behaviours.put(2, new FollowBehaviour(attacker));
+                }
+                catch(Exception ignored){}
+            }
+            for(Behaviour behaviour : behaviours.values()) {
+                Action action = behaviour.getAction(this, map);
+                if (action != null)
+                    return action;
+            }
             return new DoNothingAction();
         }
+
+
     }
 
     /**
@@ -147,6 +141,6 @@ public class Koopa extends Enemy implements Speakable {
     @Override
     public String speak(Actor actor) {
         Random r = new Random();
-        return dialogue[r.nextInt(4)];
+        return dialogue[r.nextInt(2)];
     }
 }

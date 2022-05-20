@@ -81,43 +81,37 @@ public class Goomba extends Enemy implements Speakable {
 	 */
 	@Override
 	public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
-
-		// Removes itself if reset has been run
-		if(this.hasCapability(Status.RESET)){
-			map.removeActor(this);
-			if(this.count){
-				this.count = false;
-				return new SpeakAction(this);
-			}
-			else{
-				this.count = true;
-				return new DoNothingAction();
-			}
-		}
-
-		// Follows the actor that it is engaged with
-		Actor attacker = this.startFollowFromExit(map);
-		if(attacker != null){
-			try{
-				this.behaviours.put(2, new FollowBehaviour(attacker));
-			}
-			catch(Exception ignored){}
-		}
-
-		for(Behaviour behaviour : behaviours.values()) {
-			Action action = behaviour.getAction(this, map);
-			if (action != null)
-				return action;
-		}
-		this.maybeSuicide(map);
 		if(this.count){
 			this.count = false;
 			return new SpeakAction(this);
 		}
 		else{
 			this.count = true;
+			// Removes itself if reset has been run
+			if(this.hasCapability(Status.RESET)){
+				map.removeActor(this);
+				return new DoNothingAction();
+			}
+
+			// Follows the actor that it is engaged with
+			Actor attacker = this.startFollowFromExit(map);
+			if(attacker != null){
+				try{
+					this.behaviours.put(2, new FollowBehaviour(attacker));
+				}
+				catch(Exception ignored){}
+			}
+
+			for(Behaviour behaviour : behaviours.values()) {
+				Action action = behaviour.getAction(this, map);
+				if (action != null)
+					return action;
+			}
+			this.maybeSuicide(map);
 			return new DoNothingAction();
 		}
+
+
 	}
 
 	/**
@@ -144,6 +138,6 @@ public class Goomba extends Enemy implements Speakable {
 	@Override
 	public String speak(Actor actor) {
 		Random r = new Random();
-		return dialogue[r.nextInt(4)];
+		return dialogue[r.nextInt(3)];
 	}
 }
