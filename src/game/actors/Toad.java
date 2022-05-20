@@ -21,9 +21,10 @@ import java.util.Random;
 /**
  * Class for Toad
  * @author Sara Hopkins
- * @version Assignment 2
+ * @version Assignment 3
  */
 public class Toad extends Actor implements Speakable{
+
 
     private final String[] dialogue = {"You might need a wrench to smash Koopa's hard shells.",
             "You better get back to finding the Power Stars.",

@@ -12,7 +12,7 @@ import game.actors.Speakable;
 import java.util.Random;
 
 /**
- * Action for consuming items
+ * Bowser class
  * @author Sara Hopkins, Peter Roberts
  * @version Assignment 3
  */

@@ -12,9 +12,9 @@ public enum Status {
     FLOOR_BANNED, // Used to label actors that cannot enter the floor
     ENGAGED, // used to label actors that have attacked or been attacked (they follow now)
     VALID_CORPSE, // used to label actors that should not be removed from the map once dead
-    DORMANT, // used to label Koopas that have been made dormant
+    DORMANT, // used to label Koopa's that have been made dormant
     WRENCH, // used to label actors that hold a wrench
     RESET, // used to label ground types that have just had their reset method run
     CAN_SPAWN, // used to label ground types that can spawn (removed for 1 turn when actor resets)
-    FIRE_ATTACK //used to label bowser and those with the fireflower booster.
+    FIRE_ATTACK //used to label bowser and those with the fire flower booster.
 }

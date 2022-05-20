@@ -8,7 +8,6 @@ import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.displays.Menu;
 import game.actions.ResetAction;
-import game.magical_Items.Coin;
 import game.magical_Items.magic_water.Bottle;
 import game.reset.Resettable;
 
@@ -17,10 +16,19 @@ import game.reset.Resettable;
  */
 public class Player extends Actor implements Resettable, Buyer {
 
+	//menu to be printed
 	private final Menu menu = new Menu();
+
+	//players wallet balance
 	private int wallet = 0;
+
+	//if reset has been done
 	private boolean resetFlag = false;
+
+	//players bottle attribute
 	private Bottle bottle;
+
+	//check to see if player has a bottle
 	private boolean bottleHeld = false;
 
 	/**
@@ -35,8 +43,6 @@ public class Player extends Actor implements Resettable, Buyer {
 		this.addCapability(Status.HOSTILE_TO_ENEMY);
 		this.addInstance();
 		this.registerInstance();
-		//this.bottle = new Bottle();
-		//addItemToInventory(this.bottle);
 	}
 
 	/**
@@ -57,8 +63,8 @@ public class Player extends Actor implements Resettable, Buyer {
 		if(this.hasCapability(Status.POWERSTAR)){
 			display.println("Mario is INVINCIBLE!");
 		}
-		if(this.hasCapability(Status.FIRE_ATTACK)){
-			display.println("Mario has FIREPOWER6!");
+		if(this.hasCapability(Status.FIRE_ATTACK)){//fire flower power-up active
+			display.println("Mario has FIREPOWER!");
 		}
 
 
@@ -84,14 +90,6 @@ public class Player extends Actor implements Resettable, Buyer {
 	 * @return int wallet amount
 	 */
 	public int getWalletBalance(){return this.wallet;}
-
-	/**
-	 * multipurpose wallet edit method, increase or decrease wallet amount
-	 * @param coin coin that is consumed to edit
-	 */
-	public void addMoney(Coin coin){
-		this.wallet = this.wallet + coin.getValue();
-	}
 
 	/**
 	 * allows balance to be edited without coin instance
@@ -139,11 +137,19 @@ public class Player extends Actor implements Resettable, Buyer {
 		super.addCapability(capability);
 	}
 
+	/**
+	 * interface method to retrieve players bottle instance
+	 * @return players bottle
+	 */
 	@Override
 	public Bottle getBottle() {
 		return this.bottle;
 	}
 
+	/**
+	 * setting the players instance of bottle
+	 * @param bottle instance of bottle
+	 */
 	@Override
 	public void setBottle(Bottle bottle) {
 		this.bottle = bottle;
@@ -151,6 +157,10 @@ public class Player extends Actor implements Resettable, Buyer {
 		this.bottleHeld = true;
 	}
 
+	/**
+	 * checks if the player has a bottle already
+	 * @return true bool if player has bottle
+	 */
 	@Override
 	public boolean hasBottle() {
 		return this.bottleHeld;

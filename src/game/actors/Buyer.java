@@ -6,6 +6,8 @@ import game.magical_Items.magic_water.Bottle;
 
 /**
  * Interface implemented by actors that can buy
+ * @author Sara Hopkins
+ * @version Assignment 3
  */
 public interface Buyer {
 
@@ -33,10 +35,21 @@ public interface Buyer {
      */
     void addCapability(Enum<?> capability);
 
+    /**
+     * get instance of bottle from player
+     */
     Bottle getBottle();
 
+    /**
+     * assign new bottle instance to player
+     * @param bottle instance of bottle
+     */
     void setBottle(Bottle bottle);
 
+    /**
+     * checks whether the player has a bottle or not
+     * @return boolean
+     */
     boolean hasBottle();
 
     /**
