@@ -30,13 +30,22 @@ public class Koopa extends Enemy {
     /**
      * Tree Map for storing behaviours
      */
-    private final Map<Integer, Behaviour> behaviours = new TreeMap<>(); // priority, behaviour
+    protected final Map<Integer, Behaviour> behaviours = new TreeMap<>(); // priority, behaviour
 
     /**
      * Constructor.
      */
     public Koopa() {
         super("Koopa", 'K', 100); // hp should be 100
+        this.behaviours.put(10, new WanderBehaviour());
+        this.behaviours.put(1, new AttackBehaviour());
+        this.addCapability(Status.VALID_CORPSE);
+        // Give Koopa a Super Mushroom to drop when it is destroyed
+        this.addItemToInventory(new SuperMushroom(true));
+    }
+
+    protected Koopa(String name, char displayChar, int hitPoints){
+        super(name, displayChar, hitPoints);
         this.behaviours.put(10, new WanderBehaviour());
         this.behaviours.put(1, new AttackBehaviour());
         this.addCapability(Status.VALID_CORPSE);

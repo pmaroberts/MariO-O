@@ -10,7 +10,9 @@ import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.World;
 import game.actors.Player;
+import game.actors.PrincessPeach;
 import game.actors.Toad;
+import game.enemy.FlyingKoopa;
 import game.enemy.Koopa;
 import game.ground.*;
 import game.magical_Items.PowerStar;
@@ -59,11 +61,11 @@ public class Application {
 					".....LL.........................",
 					"........................LLLL....",
 					"................................",
-					"..LLLLLLLLL.....................",
+					"..LLLL.LLLL.....................",
 					"..LLLLLLLLL.........L.LL........",
-					"....................L..L........",
-					"........LLL.........L..L........",
-					"....................LLLL........");
+					"###.................L..L........",
+					"###.....LLL.........L..L........",
+					".##.................LLLL........");
 
 			GameMap gameMap = new GameMap(groundFactory, map);
 			world.addGameMap(gameMap);
@@ -73,11 +75,12 @@ public class Application {
 
 			Player mario = new Player("Player", 'm', 100);
 			//world.addPlayer(mario, gameMap.at(42, 9));
-			//world.addPlayer(mario, lavaGameMap.at(6,6));
-			world.addPlayer(mario, gameMap.at(1,1));
+			world.addPlayer(mario, lavaGameMap.at(6,6));
+			//world.addPlayer(mario, gameMap.at(1,1));
 
 			Actor toad = new Toad();
 			gameMap.at(44,10).addActor(toad);
+			lavaGameMap.at(28,7).addActor(new PrincessPeach());
 
 			Random rand = new Random();
 
@@ -101,7 +104,9 @@ public class Application {
 			//gameMap.at(35, 10).addActor(new Koopa());
 			//gameMap.at(35, 7).addActor(new Koopa());
 
+			//lavaGameMap.at(0,10).addActor(new FlyingKoopa());
 
+			// VERY IMPORTANT DO NOT DELETE
 			PipesManager.getInstance().setWarpTo(lavaGameMap.at(0,0)); // Top left corner
 
 			world.run();

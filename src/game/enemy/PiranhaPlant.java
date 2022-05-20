@@ -23,7 +23,7 @@ public class PiranhaPlant extends Enemy{
 
 
     public PiranhaPlant(){
-        super("PiranhaPlant",'Y',1); // Should be 150 as per assignment 3
+        super("Piranha Plant",'Y',1); // Should be 150 as per assignment 3
         this.behaviours.put(1, new AttackBehaviour());
         this.registerResetInstance();
     }
