@@ -9,9 +9,9 @@ import game.actors.Status;
 import java.util.Random;
 
 /**
- * Action for speaking with the Toad
- * @author Tim Moniaga
- * @version Assignment 2
+ * Action for speaking
+ * @author Sara Hopkins
+ * @version Assignment 3
  */
 public class SpeakAction extends Action {
     //speakable actor type

@@ -9,7 +9,7 @@ import game.magical_Items.PurchasableItem;
 /**
  * Action for purchasing items
  * @author Sara Hopkins
- * @version Assignment 2
+ * @version Assignment 3
  */
 public class PurchaseAction extends Action {
 

@@ -14,15 +14,17 @@ import game.reset.Resettable;
 
 /**
  * Abstract Class for handling Trees
- * @author Peter Roberts
- * @version Assignment 2
+ * @author Peter Roberts, Sara Hopkins
+ * @version Assignment 3
  */
 public abstract class Tree extends Ground implements JumpOnAble, Resettable {
     /**
      * Probability that the tree dies on reset.
      */
     private static final double RESET_ODDS = 0.5;
-
+    /**
+     * the odds of a fire flower spawning each turn
+     */
     public static final double FIRE_FLOWER_ODDS = 0.5;
     /**
      * The tree's age (in turns)
@@ -58,7 +60,10 @@ public abstract class Tree extends Ground implements JumpOnAble, Resettable {
         return actor.hasCapability(Status.POWERSTAR);
     }
 
-
+    /**
+     * method to spawn fire flower
+     * @param location of the tree
+     */
     public void fire_flower_spawn(Location location){
         if(Utils.probReturn(FIRE_FLOWER_ODDS)){
             location.addItem(new FireFlower());
