@@ -1,4 +1,4 @@
-package game.enemy;
+package game.actors.enemy;
 
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Exit;

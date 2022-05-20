@@ -2,7 +2,7 @@ package game.ground.trees;
 
 import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.Location;
-import game.enemy.Koopa;
+import game.actors.enemy.Koopa;
 import game.Utils;
 
 import java.util.ArrayList;

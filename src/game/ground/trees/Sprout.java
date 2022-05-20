@@ -2,7 +2,7 @@ package game.ground.trees;
 
 import edu.monash.fit2099.engine.positions.Location;
 import game.actors.Status;
-import game.enemy.Goomba;
+import game.actors.enemy.Goomba;
 import game.Utils;
 import game.ground.Dirt;
 

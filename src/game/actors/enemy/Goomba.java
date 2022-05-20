@@ -1,4 +1,4 @@
-package game.enemy;
+package game.actors.enemy;
 
 
 import edu.monash.fit2099.engine.actions.Action;
@@ -10,6 +10,8 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import game.Utils;
 import game.actions.AttackAction;
+import game.actions.SpeakAction;
+import game.actors.Speakable;
 import game.actors.Status;
 import game.behaviour.AttackBehaviour;
 import game.behaviour.Behaviour;
@@ -18,12 +20,14 @@ import game.behaviour.WanderBehaviour;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
+
 /**
  * Class for the Goomba Enemy
  * @author Peter Roberts
  * @version Assignment 2
  */
-public class Goomba extends Enemy {
+public class Goomba extends Enemy implements Speakable {
 	/**
 	 * Behaviours hashmap
 	 */
@@ -32,6 +36,13 @@ public class Goomba extends Enemy {
 	 * Probability of Suicide
 	 */
 	private static final double SUICIDE_ODDS = 0.1; // Should be 0.1 as per assignment 1
+
+	private final String[] dialogue = {"Mugga mugga!",
+			"Ugha ugha... (Never gonna run around and desert you...)",
+			"Ooga-Chaka Ooga-Ooga!"
+	};
+
+	private boolean count = false;
 
 	/**
 	 * Constructor.
@@ -74,7 +85,14 @@ public class Goomba extends Enemy {
 		// Removes itself if reset has been run
 		if(this.hasCapability(Status.RESET)){
 			map.removeActor(this);
-			return new DoNothingAction();
+			if(this.count){
+				this.count = false;
+				return new SpeakAction(this);
+			}
+			else{
+				this.count = true;
+				return new DoNothingAction();
+			}
 		}
 
 		// Follows the actor that it is engaged with
@@ -92,7 +110,14 @@ public class Goomba extends Enemy {
 				return action;
 		}
 		this.maybeSuicide(map);
-		return new DoNothingAction();
+		if(this.count){
+			this.count = false;
+			return new SpeakAction(this);
+		}
+		else{
+			this.count = true;
+			return new DoNothingAction();
+		}
 	}
 
 	/**
@@ -116,6 +141,9 @@ public class Goomba extends Enemy {
 	}
 
 
-
-
+	@Override
+	public String speak(Actor actor) {
+		Random r = new Random();
+		return dialogue[r.nextInt(4)];
+	}
 }

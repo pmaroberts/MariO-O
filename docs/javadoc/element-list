@@ -16,7 +16,7 @@ game
 game.actions
 game.actors
 game.behaviour
-game.enemy
+game.actors.enemy
 game.ground
 game.ground.trees
 game.magical_Items

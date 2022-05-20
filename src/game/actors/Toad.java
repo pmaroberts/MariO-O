@@ -8,7 +8,7 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.actions.PurchaseAction;
-import game.actions.SpeakWithToadAction;
+import game.actions.SpeakAction;
 import game.magical_Items.BuyerManager;
 import game.magical_Items.PowerStar;
 import game.magical_Items.SuperMushroom;
@@ -16,14 +16,21 @@ import game.magical_Items.magic_water.Bottle;
 import game.weapon.Wrench;
 
 import java.util.List;
+import java.util.Random;
 
 /**
  * Class for Toad
  * @author Sara Hopkins
  * @version Assignment 2
  */
-public class Toad extends Actor {
+public class Toad extends Actor implements Speakable{
 
+    private final String[] dialogue = {"You might need a wrench to smash Koopa's hard shells.",
+            "You better get back to finding the Power Stars.",
+            "The Princess is depending on you! You are our only hope.",
+            "Being imprisoned in these walls can drive a fungus crazy :("
+    };
+    private boolean count = false;
     /**
      * toad constructor
      */
@@ -55,7 +62,15 @@ public class Toad extends Actor {
                 }
             }
         }
-        return new DoNothingAction();
+        if(this.count){
+            this.count = false;
+            return new SpeakAction(this);
+        }
+        else{
+            this.count = true;
+            return new DoNothingAction();
+        }
+
     }
 
     /**
@@ -77,10 +92,57 @@ public class Toad extends Actor {
                 actions.add(new PurchaseAction(new SuperMushroom(true), buyer));
                 actions.add(new PurchaseAction(new PowerStar(true), buyer));
                 actions.add(new PurchaseAction(new Wrench(), buyer));
-                actions.add(new SpeakWithToadAction(otherActor));
+                actions.add(new SpeakAction(this, otherActor));
             }
         }
         return actions;
+    }
+
+    @Override
+    public String speak(Actor actor) {
+        Random r = new Random();
+        int n;
+        String retVal = "";
+        if (actor != null){
+            if(actor.hasCapability(Status.WRENCH)){
+                n = getRandomWithExclusion(r, 0, 3,0);
+            }
+            else if(actor.hasCapability(Status.POWERSTAR)){
+                n = getRandomWithExclusion(r, 0, 3,1);
+            }
+            else{
+                n = r.nextInt(4);
+            }
+            retVal = dialogue[n];
+        }
+        else{
+            n = r.nextInt(4);
+            retVal = dialogue[n];
+        }
+
+
+
+        return "Toad: " + retVal;
+    }
+
+
+
+    /**
+     * @param rnd Random object
+     * @param start minimum possible value inclusive
+     * @param end highest possible value inclusive
+     * @param exclude number/s to exclude
+     * @return random integer
+     */
+    public int getRandomWithExclusion(Random rnd, int start, int end, int... exclude) {
+        int random = start + rnd.nextInt(end - start + 1 - exclude.length);
+        for (int ex : exclude) {
+            if (random < ex) {
+                break;
+            }
+            random++;
+        }
+        return random;
     }
 }
 
