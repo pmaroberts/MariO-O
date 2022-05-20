@@ -11,7 +11,7 @@ import game.reset.Resettable;
 /**
  * Abstract class for enemy
  * @author Peter Roberts
- * @version Assignment 2
+ * @version Assignment 3
  */
 public abstract class Enemy extends Actor implements Resettable {
     /**

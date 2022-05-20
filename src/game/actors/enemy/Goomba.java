@@ -24,8 +24,8 @@ import java.util.Random;
 
 /**
  * Class for the Goomba Enemy
- * @author Peter Roberts
- * @version Assignment 2
+ * @author Peter Roberts, Sara Hopkins
+ * @version Assignment 3
  */
 public class Goomba extends Enemy implements Speakable {
 	/**
@@ -37,11 +37,13 @@ public class Goomba extends Enemy implements Speakable {
 	 */
 	private static final double SUICIDE_ODDS = 0.1; // Should be 0.1 as per assignment 1
 
+	//collection of strings that Goomba can speak
 	private final String[] dialogue = {"Mugga mugga!",
 			"Ugha ugha... (Never gonna run around and desert you...)",
 			"Ooga-Chaka Ooga-Ooga!"
 	};
 
+	////bool used for counting every second turn for speak action
 	private boolean count = false;
 
 	/**
@@ -81,12 +83,12 @@ public class Goomba extends Enemy implements Speakable {
 	 */
 	@Override
 	public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
-		if(this.count){
-			this.count = false;
+		if(this.count){ //run all turn code in this if-else loop so that every 2nd turn Goomba speaks
+			this.count = false; //update so next turn won't speak
 			return new SpeakAction(this);
 		}
 		else{
-			this.count = true;
+			this.count = true; //update so next turn will speak
 			// Removes itself if reset has been run
 			if(this.hasCapability(Status.RESET)){
 				map.removeActor(this);
@@ -134,7 +136,11 @@ public class Goomba extends Enemy implements Speakable {
 		}
 	}
 
-
+	/**
+	 * method to pick random prompt for Bowser to speak each turn
+	 * @param actor default actor, included in interface for speak with Toad
+	 * @return the string spoken
+	 */
 	@Override
 	public String speak(Actor actor) {
 		Random r = new Random();

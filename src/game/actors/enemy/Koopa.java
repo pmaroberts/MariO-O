@@ -22,11 +22,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
-
 /**
  * Koopa Class
- * @author Peter Roberts
- * @version Assignment 2
+ * @author Peter Roberts, Sara Hopkins
+ * @version Assignment 3
  */
 public class Koopa extends Enemy implements Speakable {
     /**
@@ -34,17 +33,19 @@ public class Koopa extends Enemy implements Speakable {
      */
     private final Map<Integer, Behaviour> behaviours = new HashMap<>(); // priority, behaviour
 
+    //array of strings that Koopa can speak
     private final String[] dialogue = {"Never gonna make you cry!",
             "Koopi koopi koopii~!"
     };
 
+    //boolean to count every second turn to speak
     private boolean count = false;
 
     /**
      * Constructor.
      */
     public Koopa() {
-        super("Koopa", 'K', 100); // hp should be 100
+        super("Koopa", 'K', 100);
         this.behaviours.put(10, new WanderBehaviour());
         this.behaviours.put(1, new AttackBehaviour());
         this.addCapability(Status.VALID_CORPSE);
@@ -84,7 +85,7 @@ public class Koopa extends Enemy implements Speakable {
      */
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
-        if(this.count){
+        if(this.count){ //speak action every second turn
             this.count = false;
             return new SpeakAction(this);
         }
@@ -138,6 +139,11 @@ public class Koopa extends Enemy implements Speakable {
         return new IntrinsicWeapon(30, "punch"); //
     }
 
+    /**
+     * method to pick random prompt for Bowser to speak each turn
+     * @param actor default actor, included in interface for speak with Toad
+     * @return the string spoken
+     */
     @Override
     public String speak(Actor actor) {
         Random r = new Random();
