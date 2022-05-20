@@ -14,6 +14,7 @@ import game.ground.Dirt;
 import game.ground.Floor;
 import game.ground.Wall;
 import game.ground.fountains.HealthFountain;
+import game.ground.fountains.PowerFountain;
 import game.magical_Items.PowerStar;
 import game.magical_Items.SuperMushroom;
 import game.ground.trees.Sprout;
@@ -63,6 +64,7 @@ public class Application {
 			gameMap.at(44,10).addActor(toad);
 
 			gameMap.at(45,10).setGround(new HealthFountain());
+		gameMap.at(45,9).setGround(new PowerFountain());
 
 			Random rand = new Random();
 
@@ -70,11 +72,7 @@ public class Application {
 			SuperMushroom superMushroom = new SuperMushroom(true);
 			gameMap.at(42, 9).addItem(superMushroom);
 
-			//spawning in5
-		// 5
-		// 5
-		// 55
-		// a random mushroom on map for spicyness
+			//spawning in a random mushroom on map for spicyness
 			SuperMushroom superMushroomRand = new SuperMushroom(true);
 			gameMap.at(rand.nextInt(39), rand.nextInt(19)).addItem(superMushroomRand);
 
@@ -85,10 +83,6 @@ public class Application {
 			//adding a random powerstar on LHS of map
 			PowerStar powerStarRand = new PowerStar(true);
 			gameMap.at(rand.nextInt(39), rand.nextInt(19)).addItem(powerStarRand);
-
-			//gameMap.at(35, 10).addActor(new Koopa());
-			//gameMap.at(35, 7).addActor(new Koopa());
-
 
 			world.run();
 

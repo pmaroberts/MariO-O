@@ -8,7 +8,7 @@ import game.magical_Items.ConsumableItem;
 /**
  * Action for consuming items
  * @author Sara Hopkins
- * @version Assignment 2
+ * @version Assignment 3
  */
 public class ConsumeAction extends Action {
     ConsumableItem consumableItem;

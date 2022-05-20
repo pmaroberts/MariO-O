@@ -13,7 +13,10 @@ import game.magical_Items.PurchasableItem;
  */
 public class PurchaseAction extends Action {
 
+    //instance of pruchasable item type
     private final PurchasableItem purchasableItem;
+
+    //instance of buyer purchasing the item
     private final Buyer buyer;
 
     /**
@@ -30,7 +33,7 @@ public class PurchaseAction extends Action {
      * overriding the execute method from the Action class as ut us n=necessary for any extension of an abstract class
      * @param actor The actor performing the action.
      * @param map The map the actor is on.
-     * @return a staement either indicating success or failure of purchase.
+     * @return a statement either indicating success or failure of purchase.
      * @see Action class - for execute method
      */
     @Override
