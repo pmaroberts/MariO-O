@@ -8,7 +8,7 @@ import game.actions.ConsumeAction;
 /**
  * Abstract Class for items that are consumable
  * @author Sara Hopkins
- * @version Assignment 2
+ * @version Assignment 3
  */
 public abstract class ConsumableItem extends Item {
     ConsumeAction consumeAction;

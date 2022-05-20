@@ -9,7 +9,7 @@ import game.actors.Status;
 /**
  * Super Mushroom Class
  * @author Sara Hopkins
- * @version Assignment 2
+ * @version Assignment 3
  */
 public class SuperMushroom extends ConsumableItem implements PurchasableItem {
     /**

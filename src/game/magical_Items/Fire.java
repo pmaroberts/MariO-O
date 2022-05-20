@@ -2,10 +2,17 @@ package game.magical_Items;
 
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.Location;
-
+/**
+ * Fire Class
+ * @author Sara Hopkins
+ * @version Assignment 3
+ */
 public class Fire extends Item {
+    /**
+     * turns counter for how long fire stays on floor
+     */
     private int turns;
-    /***
+    /**
      * Constructor.
      */
     public Fire() {

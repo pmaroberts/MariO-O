@@ -9,7 +9,7 @@ import game.magical_Items.PurchasableItem;
 /**
  * Class for the Wrench
  * @author Sara Hopkins
- * @version Assignment 2
+ * @version Assignment 3
  */
 public class Wrench extends WeaponItem implements PurchasableItem {
 

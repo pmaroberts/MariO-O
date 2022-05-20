@@ -12,7 +12,7 @@ import game.reset.ResetManager;
 /**
  * Class for the coin
  * @author Sara Hopkins
- * @version Assignment 2
+ * @version Assignment 3
  */
 public class Coin extends ConsumableItem implements Resettable {
     private final int value;
@@ -42,7 +42,7 @@ public class Coin extends ConsumableItem implements Resettable {
      * @param action Action type action
      */
     public void removeActionCoin(Action action){
-        ResetManager.getInstance().cleanUp(this::resetInstance);
+        ResetManager.getInstance().cleanUp(this);
         this.removeAction(action);
     }
 

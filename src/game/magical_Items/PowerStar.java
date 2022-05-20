@@ -10,7 +10,7 @@ import game.actors.Status;
 /**
  * PowerStar Class
  * @author Sara Hopkins
- * @version Assignment 2
+ * @version Assignment 3
  */
 public class PowerStar extends ConsumableItem implements PurchasableItem{
     /**

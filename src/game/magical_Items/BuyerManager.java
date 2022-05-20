@@ -6,13 +6,13 @@ import java.util.ArrayList;
 /**
  * Singleton class to manage actors that implement the buyer interface
  * @author Sara Hopkins
- * @version Assignment 2
+ * @version Assignment 3
  */
 public class BuyerManager {
     /**
      * List of actors that implement the buyer interface
      */
-    private ArrayList<Buyer> buyers;
+    private final ArrayList<Buyer> buyers;
 
     /**
      * Single instance of this class
@@ -50,6 +50,6 @@ public class BuyerManager {
      * @return the list
      */
     public ArrayList<Buyer> buyers() {
-        return new ArrayList<Buyer>(this.buyers);
+        return new ArrayList<>(this.buyers);
     }
 }

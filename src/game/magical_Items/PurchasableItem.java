@@ -4,9 +4,9 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import game.actors.Buyer;
 
 /**
- * Interface impletented by items that are purchasable
+ * Interface implemented by items that are purchasable
  * @author Sara Hopkins
- * @version Assignment 2
+ * @version Assignment 3
  */
 public interface PurchasableItem {
 
