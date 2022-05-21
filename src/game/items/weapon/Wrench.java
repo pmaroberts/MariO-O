@@ -1,17 +1,17 @@
-package game.weapon;
+package game.items.weapon;
 
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.actors.Buyer;
 import game.actors.Status;
-import game.magical_Items.PurchasableItem;
+import game.items.Purchasable;
 
 /**
  * Class for the Wrench
  * @author Sara Hopkins
  * @version Assignment 3
  */
-public class Wrench extends WeaponItem implements PurchasableItem {
+public class Wrench extends WeaponItem implements Purchasable {
 
     /**
      * Price of Wrench

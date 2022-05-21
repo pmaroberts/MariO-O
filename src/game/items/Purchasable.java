@@ -1,4 +1,4 @@
-package game.magical_Items;
+package game.items;
 
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.actors.Buyer;
@@ -8,7 +8,7 @@ import game.actors.Buyer;
  * @author Sara Hopkins
  * @version Assignment 3
  */
-public interface PurchasableItem {
+public interface Purchasable {
 
     /**
      * general purchase method to allow purchaseAction to call general execute

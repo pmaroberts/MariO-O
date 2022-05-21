@@ -8,7 +8,7 @@ import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.displays.Menu;
 import game.actions.ResetAction;
-import game.magical_Items.magic_water.Bottle;
+import game.items.magic_water.Bottle;
 import game.reset.Resettable;
 
 /**
@@ -126,7 +126,7 @@ public class Player extends Actor implements Resettable, Buyer {
 	/**
 	 * overrides buyerManager addItemToInventory
 	 * @param item the item to be added to inventory
-	 * @see game.magical_Items.BuyerManager
+	 * @see BuyerManager
 	 */
 	@Override
 	public void addItemToInventoryBuyer(Item item) {

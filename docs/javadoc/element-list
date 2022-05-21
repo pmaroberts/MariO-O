@@ -19,6 +19,6 @@ game.behaviour
 game.actors.enemy
 game.ground
 game.ground.trees
-game.magical_Items
+game.items
 game.reset
-game.weapon
+game.items.weapon

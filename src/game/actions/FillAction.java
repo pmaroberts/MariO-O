@@ -4,8 +4,8 @@ import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.ground.fountains.Fountain;
-import game.magical_Items.magic_water.Bottle;
-import game.magical_Items.magic_water.Water;
+import game.items.magic_water.Bottle;
+import game.items.magic_water.Water;
 /**
  * Action for Bottle item
  * @author Sara Hopkins

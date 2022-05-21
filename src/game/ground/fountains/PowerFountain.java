@@ -1,6 +1,6 @@
 package game.ground.fountains;
 
-import game.magical_Items.magic_water.PowerWater;
+import game.items.magic_water.PowerWater;
 
 /**
  * Child Class for PowerFountain Ground Type

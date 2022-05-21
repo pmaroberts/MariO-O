@@ -15,8 +15,8 @@ import game.ground.Floor;
 import game.ground.Wall;
 import game.ground.fountains.HealthFountain;
 import game.ground.fountains.PowerFountain;
-import game.magical_Items.PowerStar;
-import game.magical_Items.SuperMushroom;
+import game.items.magical_items.PowerStar;
+import game.items.magical_items.SuperMushroom;
 import game.ground.trees.Sprout;
 
 import java.util.Random;

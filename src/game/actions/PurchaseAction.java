@@ -4,7 +4,7 @@ import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.actors.Buyer;
-import game.magical_Items.PurchasableItem;
+import game.items.Purchasable;
 
 /**
  * Action for purchasing items
@@ -15,7 +15,7 @@ public class PurchaseAction extends Action {
     /**
      * instance of purchasable item type
      */
-    private final PurchasableItem purchasableItem;
+    private final Purchasable purchasable;
 
     /**
      * instance of buyer purchasing the item
@@ -27,8 +27,8 @@ public class PurchaseAction extends Action {
      * @param item general purchasable item type
      * @param buyer buyer interface type (atm just player)
      */
-   public PurchaseAction(PurchasableItem item, Buyer buyer) {
-        this.purchasableItem = item;
+   public PurchaseAction(Purchasable item, Buyer buyer) {
+        this.purchasable = item;
         this.buyer = buyer;
     }
 
@@ -42,7 +42,7 @@ public class PurchaseAction extends Action {
     @Override
     public String execute(Actor actor, GameMap map) {
 
-        return purchasableItem.purchase(this.buyer,map);
+        return purchasable.purchase(this.buyer,map);
     }
 
     /**
@@ -52,7 +52,7 @@ public class PurchaseAction extends Action {
      */
     @Override
     public String menuDescription(Actor actor) {
-        return actor + " buys " + purchasableItem + " ($" + purchasableItem.getPrice() + ")";
+        return actor + " buys " + purchasable + " ($" + purchasable.getPrice() + ")";
     }
 
 }

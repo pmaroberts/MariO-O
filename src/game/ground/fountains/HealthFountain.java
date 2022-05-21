@@ -1,6 +1,6 @@
 package game.ground.fountains;
 
-import game.magical_Items.magic_water.HealthWater;
+import game.items.magic_water.HealthWater;
 
 /**
  * Child Class for HealthFountain Ground Type

@@ -8,7 +8,7 @@ import game.Utils;
 import game.actions.JumpActorAction;
 import game.actors.Status;
 import game.ground.JumpOnAble;
-import game.magical_Items.FireFlower;
+import game.items.magical_items.FireFlower;
 import game.reset.Resettable;
 
 /**

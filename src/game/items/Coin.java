@@ -1,10 +1,11 @@
-package game.magical_Items;
+package game.items;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import game.actors.Buyer;
+import game.actors.BuyerManager;
 import game.actors.Status;
 import game.reset.Resettable;
 import game.reset.ResetManager;

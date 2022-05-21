@@ -1,15 +1,17 @@
-package game.magical_Items;
+package game.items.magical_items;
 
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import game.actors.Status;
+import game.items.ConsumableItem;
+
 /**
  * FireFlower Class
  * @author Sara Hopkins
  * @version Assignment 3
  */
-public class FireFlower extends ConsumableItem{
+public class FireFlower extends ConsumableItem {
     /**
      * turns counter for fire flower ability
      */

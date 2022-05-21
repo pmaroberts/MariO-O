@@ -8,8 +8,8 @@ import game.actions.ConsumeAction;
 import game.actions.FillAction;
 import game.actors.Buyer;
 import game.actors.Status;
-import game.magical_Items.BuyerManager;
-import game.magical_Items.magic_water.Water;
+import game.actors.BuyerManager;
+import game.items.magic_water.Water;
 
 /**
  * Abstract Class for Fountain Ground Type

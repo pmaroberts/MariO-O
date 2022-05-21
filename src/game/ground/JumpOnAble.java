@@ -3,7 +3,7 @@ package game.ground;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Location;
 import game.actors.Status;
-import game.magical_Items.Coin;
+import game.items.Coin;
 
 public interface JumpOnAble {
     /**

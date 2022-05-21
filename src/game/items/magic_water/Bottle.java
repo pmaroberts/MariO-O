@@ -1,7 +1,7 @@
-package game.magical_Items.magic_water;
+package game.items.magic_water;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
-import game.magical_Items.ConsumableItem;
+import game.items.ConsumableItem;
 
 import java.util.Iterator;
 import java.util.Stack;

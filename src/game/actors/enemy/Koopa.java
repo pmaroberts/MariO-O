@@ -16,7 +16,7 @@ import game.behaviour.AttackBehaviour;
 import game.behaviour.Behaviour;
 import game.behaviour.FollowBehaviour;
 import game.behaviour.WanderBehaviour;
-import game.magical_Items.SuperMushroom;
+import game.items.magical_items.SuperMushroom;
 
 import java.util.HashMap;
 import java.util.Map;

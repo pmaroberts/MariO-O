@@ -9,11 +9,10 @@ import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.actions.PurchaseAction;
 import game.actions.SpeakAction;
-import game.magical_Items.BuyerManager;
-import game.magical_Items.PowerStar;
-import game.magical_Items.SuperMushroom;
-import game.magical_Items.magic_water.Bottle;
-import game.weapon.Wrench;
+import game.items.magical_items.PowerStar;
+import game.items.magical_items.SuperMushroom;
+import game.items.magic_water.Bottle;
+import game.items.weapon.Wrench;
 
 import java.util.List;
 import java.util.Random;

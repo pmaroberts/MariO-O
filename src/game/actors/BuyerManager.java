@@ -1,6 +1,5 @@
-package game.magical_Items;
+package game.actors;
 
-import game.actors.Buyer;
 import java.util.ArrayList;
 
 /**

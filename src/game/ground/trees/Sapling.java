@@ -4,7 +4,7 @@ import edu.monash.fit2099.engine.positions.Location;
 import game.Utils;
 import game.actors.Status;
 import game.ground.Dirt;
-import game.magical_Items.Coin;
+import game.items.Coin;
 
 /**
  * Class for Sapling Trees

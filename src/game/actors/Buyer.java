@@ -1,8 +1,7 @@
 package game.actors;
 
 import edu.monash.fit2099.engine.items.Item;
-import game.magical_Items.BuyerManager;
-import game.magical_Items.magic_water.Bottle;
+import game.items.magic_water.Bottle;
 
 /**
  * Interface implemented by actors that can buy
