@@ -4,9 +4,6 @@ import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.actors.Speakable;
-import game.actors.Status;
-
-import java.util.Random;
 
 /**
  * Action for speaking
@@ -14,10 +11,14 @@ import java.util.Random;
  * @version Assignment 3
  */
 public class SpeakAction extends Action {
-    //speakable actor type
+    /**
+     * speakable actor type
+     */
     private final Speakable speakable;
 
-    //actor instance for toad class only
+    /**
+     * actor instance for toad class only
+     */
     private Actor actor;
 
     /**
@@ -49,7 +50,6 @@ public class SpeakAction extends Action {
         return this.speakable.speak(this.actor);
     }
 
-
     /**
      * made super specific because Toad action is the only one that has a menu option
      * @param actor The actor performing the action.
@@ -59,8 +59,5 @@ public class SpeakAction extends Action {
     public String menuDescription(Actor actor) {
         return "Speak with Toad"; //technically a cheat here but the only actor that the action will come up for is Toad
     }
-
-
-
 
 }

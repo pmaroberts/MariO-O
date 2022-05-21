@@ -9,13 +9,14 @@ import game.ground.Dirt;
 /**
  * Class for Tree Sprouts
  * @author Peter Roberts
- * @version Assignment 2
+ * @author Sara Hopkins
+ * @version Assignment 3
  */
 public class Sprout extends Tree {
     /**
      * Probability of spawning Goomba
      */
-    private static final double GOOMBA_ODDS = 0.1; // Should be 0.1 as per Assignment 1.
+    private static final double GOOMBA_ODDS = 0.1;
     /**
      * Age at which to mature into a Sapling
      */
@@ -83,4 +84,5 @@ public class Sprout extends Tree {
         }
         return FALL_DAMAGE;
     }
+
 }

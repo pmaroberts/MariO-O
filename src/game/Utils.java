@@ -14,4 +14,5 @@ public class Utils {
         Random rand = new Random();
         return rand.nextDouble() < odds;
     }
+
 }

@@ -11,6 +11,9 @@ import game.actions.ConsumeAction;
  * @version Assignment 3
  */
 public abstract class ConsumableItem extends Item {
+    /**
+     * instance of consume Action for the chosen consumable item
+     */
     ConsumeAction consumeAction;
 
     /**
@@ -39,4 +42,5 @@ public abstract class ConsumableItem extends Item {
     public ConsumeAction getConsumeAction(){
         return consumeAction;
     }
+
 }

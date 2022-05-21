@@ -57,14 +57,17 @@ public class Application {
 			GameMap gameMap = new GameMap(groundFactory, map);
 			world.addGameMap(gameMap);
 
+			//Adding mario player
 			Player mario = new Player("Player", 'm', 100);
 			world.addPlayer(mario, gameMap.at(42, 9));
 
+			//adding Toad actor on base ground for testing
 			Actor toad = new Toad();
 			gameMap.at(44,10).addActor(toad);
 
+			//setting up two fountains for testing
 			gameMap.at(45,10).setGround(new HealthFountain());
-		gameMap.at(45,9).setGround(new PowerFountain());
+			gameMap.at(45,9).setGround(new PowerFountain());
 
 			Random rand = new Random();
 

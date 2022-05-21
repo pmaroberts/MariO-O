@@ -14,7 +14,6 @@ import game.actors.Status;
  * Special Action for attacking other Actors.
  */
 public class AttackAction extends Action {
-
 	/**
 	 * The Actor that is to be attacked
 	 */
@@ -99,4 +98,5 @@ public class AttackAction extends Action {
 	public String menuDescription(Actor actor) {
 		return actor + " attacks " + target + " at " + direction;
 	}
+
 }

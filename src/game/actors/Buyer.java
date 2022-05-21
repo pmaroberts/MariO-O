@@ -10,7 +10,6 @@ import game.magical_Items.magic_water.Bottle;
  * @version Assignment 3
  */
 public interface Buyer {
-
     /**
      * getter for buyer wallet balance
      * @return int amount of wallet balance
@@ -58,4 +57,5 @@ public interface Buyer {
     default void addInstance(){
         BuyerManager.getInstance().appendBuyer(this);
     }
+
 }

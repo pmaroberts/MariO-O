@@ -24,7 +24,8 @@ import java.util.Random;
 
 /**
  * Class for the Goomba Enemy
- * @author Peter Roberts, Sara Hopkins
+ * @author Peter Roberts
+ * @author Sara Hopkins
  * @version Assignment 3
  */
 public class Goomba extends Enemy implements Speakable {
@@ -94,7 +95,6 @@ public class Goomba extends Enemy implements Speakable {
 				map.removeActor(this);
 				return new DoNothingAction();
 			}
-
 			// Follows the actor that it is engaged with
 			Actor attacker = this.startFollowFromExit(map);
 			if(attacker != null){
@@ -103,7 +103,6 @@ public class Goomba extends Enemy implements Speakable {
 				}
 				catch(Exception ignored){}
 			}
-
 			for(Behaviour behaviour : behaviours.values()) {
 				Action action = behaviour.getAction(this, map);
 				if (action != null)
@@ -112,8 +111,6 @@ public class Goomba extends Enemy implements Speakable {
 			this.maybeSuicide(map);
 			return new DoNothingAction();
 		}
-
-
 	}
 
 	/**
@@ -146,4 +143,5 @@ public class Goomba extends Enemy implements Speakable {
 		Random r = new Random();
 		return dialogue[r.nextInt(3)];
 	}
+
 }

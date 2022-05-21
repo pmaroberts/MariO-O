@@ -11,10 +11,14 @@ import game.magical_Items.ConsumableItem;
  * @version Assignment 3
  */
 public class ConsumeAction extends Action {
+
+    /**
+     * Instance of consumable item interface so that execute can access specific class methods.
+     */
     ConsumableItem consumableItem;
 
     /**
-     * consumeaction constructor
+     * ConsumeAction constructor
      * @param item consumable item to instantiate the consumable item
      */
     public ConsumeAction(ConsumableItem item) {
@@ -42,5 +46,6 @@ public class ConsumeAction extends Action {
     public String menuDescription(Actor actor) {
         return actor + " consumes " + consumableItem.toString();
     }
+
 }
 

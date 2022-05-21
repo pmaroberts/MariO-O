@@ -26,8 +26,6 @@ public abstract class Water extends ConsumableItem {
      * @param map GameMap that the actor is on
      */
     @Override
-    public void toExecute(Actor actor, GameMap map){
-
-    }
+    public void toExecute(Actor actor, GameMap map){}
 
 }

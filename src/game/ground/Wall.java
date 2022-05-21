@@ -14,7 +14,6 @@ import game.actors.Status;
  * @version Assignment 2
  */
 public class Wall extends Ground implements JumpOnAble{
-
 	/**
 	 * Probability of successful jump
 	 */
@@ -82,4 +81,5 @@ public class Wall extends Ground implements JumpOnAble{
 	public void tick(Location location) {
 		this.destroyedByPowerStar(location);
 	}
+
 }

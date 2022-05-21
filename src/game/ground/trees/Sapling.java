@@ -9,7 +9,8 @@ import game.magical_Items.Coin;
 /**
  * Class for Sapling Trees
  * @author Peter Roberts
- * @version Assignment 2
+ * @author Sara Hopkins
+ * @version Assignment 3
  */
 
 public class Sapling extends Tree {

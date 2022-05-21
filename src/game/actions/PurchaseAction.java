@@ -12,11 +12,14 @@ import game.magical_Items.PurchasableItem;
  * @version Assignment 3
  */
 public class PurchaseAction extends Action {
-
-    //instance of pruchasable item type
+    /**
+     * instance of purchasable item type
+     */
     private final PurchasableItem purchasableItem;
 
-    //instance of buyer purchasing the item
+    /**
+     * instance of buyer purchasing the item
+     */
     private final Buyer buyer;
 
     /**
@@ -51,5 +54,6 @@ public class PurchaseAction extends Action {
     public String menuDescription(Actor actor) {
         return actor + " buys " + purchasableItem + " ($" + purchasableItem.getPrice() + ")";
     }
+
 }
 

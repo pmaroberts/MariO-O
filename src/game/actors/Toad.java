@@ -103,7 +103,7 @@ public class Toad extends Actor implements Speakable{
     public String speak(Actor actor) {
         Random r = new Random();
         int n;
-        String retVal = "";
+        String retVal;
         if (actor != null){
             if(actor.hasCapability(Status.WRENCH)){
                 n = getRandomWithExclusion(r, 0, 3,0);
@@ -114,13 +114,11 @@ public class Toad extends Actor implements Speakable{
             else{
                 n = r.nextInt(4);
             }
-            retVal = dialogue[n];
         }
         else{
             n = r.nextInt(4);
-            retVal = dialogue[n];
         }
-
+        retVal = dialogue[n];
 
 
         return "Toad: " + retVal;

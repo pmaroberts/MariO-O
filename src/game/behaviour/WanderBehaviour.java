@@ -10,7 +10,9 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 
 public class WanderBehaviour extends Action implements Behaviour {
-	
+	/**
+	 * instance of random to determine action
+	 */
 	private final Random random = new Random();
 
 	/**
@@ -24,30 +26,39 @@ public class WanderBehaviour extends Action implements Behaviour {
 	@Override
 	public Action getAction(Actor actor, GameMap map) {
 		ArrayList<Action> actions = new ArrayList<Action>();
-		
 		for (Exit exit : map.locationOf(actor).getExits()) {
             Location destination = exit.getDestination();
             if (destination.canActorEnter(actor)) {
             	actions.add(exit.getDestination().getMoveAction(actor, "around", exit.getHotKey()));
             }
         }
-		
 		if (!actions.isEmpty()) {
 			return actions.get(random.nextInt(actions.size()));
 		}
 		else {
 			return null;
 		}
-
 	}
 
+	/**
+	 * overriding action execute method
+	 * @param actor The actor performing the action.
+	 * @param map The map the actor is on.
+	 * @return menu description
+	 */
 	@Override
 	public String execute(Actor actor, GameMap map) {
 		return menuDescription(actor);
 	}
 
+	/**
+	 * overriding menu description to create custom string
+	 * @param actor The actor performing the action.
+	 * @return string menu description
+	 */
 	@Override
 	public String menuDescription(Actor actor) {
 		return "Raagrh...";
 	}
+
 }

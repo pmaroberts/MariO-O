@@ -17,17 +17,24 @@ import game.magical_Items.magic_water.Water;
  * @version Assignment 3
  */
 public abstract class Fountain extends Ground {
-
-    //water available at fountain
+    /**
+     * water available at fountain
+     */
     private final Water water;
 
-    // capacity of fountain
+    /**
+     * capacity of fountain
+     */
     private int count;
 
-    //recharging/refilling timer
+    /**
+     * recharging/refilling timer
+     */
     private int timer = 0;
 
-    //boolean to determine if fountain can be refilled
+    /**
+     * boolean to determine if fountain can be refilled
+     */
     private boolean empty = false;
 
     /**
@@ -64,7 +71,6 @@ public abstract class Fountain extends Ground {
                     if(!this.empty){ //if the fountain isn't refilling
                         actions.add(new FillAction(buyer.getBottle(), this.water, this));
                     } // give player a fill bottle action
-
                 }
             }
         }
@@ -110,7 +116,6 @@ public abstract class Fountain extends Ground {
      * method to be called each turn to refill the fountain capacity
      */
     public void refillFountain(){
-
         if((count + 3) > 10) {
             count = 10;
         }
@@ -119,6 +124,7 @@ public abstract class Fountain extends Ground {
         }
         timer++;
     }
+
 }
 
 

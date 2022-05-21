@@ -12,8 +12,6 @@ import game.actors.Status;
  * Behaviour implementing class to handle automatic attacks
  */
 public class AttackBehaviour implements Behaviour {
-
-
     /**
      *
      * @param actor the Actor attacking
@@ -32,12 +30,8 @@ public class AttackBehaviour implements Behaviour {
                 if(target.hasCapability(Status.HOSTILE_TO_ENEMY)){
                     return new AttackAction(target, exit.getName());
                 }
-
             }
         }
         return null;
-
-
-
     }
 }

@@ -12,14 +12,19 @@ import game.magical_Items.magic_water.Water;
  * @version Assignment 3
  */
 public class FillAction extends Action {
-
-    //instance of bottle to be filled
+    /**
+     * instance of bottle to be filled
+     */
     private final Bottle bottle;
 
-    //Water to fill the bottle with
+    /**
+     * Water to fill the bottle with
+     */
     private final Water water;
 
-    //fountain so that accurate fountain capacity can be tracked
+    /**
+     * fountain so that accurate fountain capacity can be tracked
+     */
     private final Fountain fountain;
 
     /**
@@ -56,4 +61,5 @@ public class FillAction extends Action {
     public String menuDescription(Actor actor) {
         return actor + " refill " + this.water.toString() + '(' + this.fountain.getCount() + "\\10)";
     }
+
 }

@@ -52,4 +52,5 @@ public class BuyerManager {
     public ArrayList<Buyer> buyers() {
         return new ArrayList<>(this.buyers);
     }
+
 }

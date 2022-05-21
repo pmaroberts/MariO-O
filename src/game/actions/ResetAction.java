@@ -36,6 +36,7 @@ public class ResetAction extends Action{
         reset.run();
         return "Reset complete!";
     }
+
     /**
      * Menu Description
      * @param actor The actor performing the action.

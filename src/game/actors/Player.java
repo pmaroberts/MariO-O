@@ -15,20 +15,29 @@ import game.reset.Resettable;
  * Class representing the Player.
  */
 public class Player extends Actor implements Resettable, Buyer {
-
-	//menu to be printed
+	/**
+	 * menu to be printed
+	 */
 	private final Menu menu = new Menu();
 
-	//players wallet balance
+	/**
+	 * players wallet balance
+	 */
 	private int wallet = 0;
 
-	//if reset has been done
+	/**
+	 * boolean if reset has been done
+	 */
 	private boolean resetFlag = false;
 
-	//players bottle attribute
+	/**
+	 * players bottle attribute
+	 */
 	private Bottle bottle;
 
-	//check to see if player has a bottle
+	/**
+	 * boolean check to see if player has a bottle
+	 */
 	private boolean bottleHeld = false;
 
 	/**
@@ -59,18 +68,14 @@ public class Player extends Actor implements Resettable, Buyer {
 		if(!resetFlag){
 			actions.add(new ResetAction());
 		}
-
 		if(this.hasCapability(Status.POWERSTAR)){
 			display.println("Mario is INVINCIBLE!");
 		}
 		if(this.hasCapability(Status.FIRE_ATTACK)){//fire flower power-up active
 			display.println("Mario has FIREPOWER!");
 		}
-
-
 		if (lastAction.getNextAction() != null)
 			return lastAction.getNextAction();
-
 		display.println("BALANCE: " + this.getWalletBalance());
 		display.println("HP: " + this.printHp());
 		return menu.showMenu(this, actions, display);
@@ -165,4 +170,5 @@ public class Player extends Actor implements Resettable, Buyer {
 	public boolean hasBottle() {
 		return this.bottleHeld;
 	}
+
 }

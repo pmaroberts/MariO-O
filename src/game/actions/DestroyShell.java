@@ -13,7 +13,6 @@ import game.Utils;
  * @version Assignment 2
  */
 public class DestroyShell extends Action {
-
     /**
      * Actor that is destroyed
      */
@@ -66,4 +65,5 @@ public class DestroyShell extends Action {
     public String menuDescription(Actor actor) {
         return actor + " attacks shell at " + direction + " with wrench";
     }
+
 }

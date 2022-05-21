@@ -30,4 +30,5 @@ public interface JumpOnAble {
     default void addInstance(){
         JumpOnAbleGroundManager.getInstance().appendJumpOnAbleGround(this);
     }
+
 }

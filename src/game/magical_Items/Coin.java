@@ -72,7 +72,6 @@ public class Coin extends ConsumableItem implements Resettable {
         if(this.hasCapability(Status.RESET)){
             location.removeItem(this);
         }
-
     }
 
     /**
@@ -82,6 +81,5 @@ public class Coin extends ConsumableItem implements Resettable {
     public void resetInstance() {
         this.addCapability(Status.RESET);
     }
-
 
 }

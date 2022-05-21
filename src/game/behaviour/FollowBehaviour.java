@@ -13,7 +13,9 @@ import edu.monash.fit2099.engine.actions.MoveActorAction;
  * @see edu.monash.fit2099.demo.mars.Application
  */
 public class FollowBehaviour implements Behaviour {
-
+	/**
+	 * actor who is target of follow
+	 */
 	private final Actor target;
 	/**
 	 * Constructor.
@@ -28,10 +30,8 @@ public class FollowBehaviour implements Behaviour {
 	public Action getAction(Actor actor, GameMap map) {
 		if(!map.contains(target) || !map.contains(actor))
 			return null;
-		
 		Location here = map.locationOf(actor);
 		Location there = map.locationOf(target);
-
 		int currentDistance = distance(here, there);
 		for (Exit exit : here.getExits()) {
 			Location destination = exit.getDestination();
@@ -42,7 +42,6 @@ public class FollowBehaviour implements Behaviour {
 				}
 			}
 		}
-
 		return null;
 	}
 
@@ -56,4 +55,5 @@ public class FollowBehaviour implements Behaviour {
 	private int distance(Location a, Location b) {
 		return Math.abs(a.x() - b.x()) + Math.abs(a.y() - b.y());
 	}
+
 }

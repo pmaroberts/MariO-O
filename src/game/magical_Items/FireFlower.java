@@ -56,4 +56,5 @@ public class FireFlower extends ConsumableItem{
     public int getTurns(){
         return this.turns;
     }
+
 }

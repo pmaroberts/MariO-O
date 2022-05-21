@@ -44,10 +44,8 @@ public abstract class Enemy extends Actor implements Resettable {
                 }
             }
         }
-
         return null;
     }
-
 
     /**
      * Status of RESET is added so that the tick function runs the reset function
@@ -56,6 +54,5 @@ public abstract class Enemy extends Actor implements Resettable {
     public void resetInstance() {
         this.addCapability(Status.RESET);
     }
-
 
 }

@@ -14,7 +14,6 @@ import game.ground.JumpOnAbleGroundManager;
  * @version Assignment 2
  */
 public class JumpActorAction extends Action {
-
     /**
      * Location being jumped to
      */
@@ -69,4 +68,5 @@ public class JumpActorAction extends Action {
     public String menuDescription(Actor actor) {
         return actor + " jumps on " + this.jumpToGround.getClass().getSimpleName() + " to the " + direction;
     }
+
 }

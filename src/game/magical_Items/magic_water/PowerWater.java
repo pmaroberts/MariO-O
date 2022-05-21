@@ -9,7 +9,6 @@ import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
  * @version Assignment 3
  */
 public class PowerWater extends Water{
-
     /**
      * PowerWater constructor
      */
@@ -27,4 +26,5 @@ public class PowerWater extends Water{
         int prev_damage = actor.getWeapon().damage();
         new IntrinsicWeapon(prev_damage+15, "punches");
     }
+
 }

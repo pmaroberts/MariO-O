@@ -8,11 +8,11 @@ import edu.monash.fit2099.engine.actors.Actor;
  * @version Assignment 3
  */
 public interface Speakable {
-
     /**
      * speak action general so that speak action can have specific prompts
      * @param actor if speak with toad action, this contains the player
      * @return String spoken
      */
-    public String speak(Actor actor);
+    String speak(Actor actor);
+
 }

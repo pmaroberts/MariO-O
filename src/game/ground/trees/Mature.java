@@ -14,7 +14,8 @@ import game.ground.Dirt;
 /**
  * Class for Mature Trees
  * @author Peter Roberts
- * @version Assignment 2
+ * @author Sara Hopkins
+ * @version Assignment 3
  */
 public class Mature extends Tree {
     /**
@@ -88,7 +89,6 @@ public class Mature extends Tree {
         Random rand = new Random();
         List<Exit> exits = location.getExits();
         List<Exit> dirtExits = new ArrayList<>();
-
         if(super.age%5 == 0 && this.hasCapability(Status.CAN_SPAWN)){
             for(Exit exit : exits){
                 if(exit.getDestination().getGround().hasCapability(Status.FERTILE)){
@@ -100,7 +100,6 @@ public class Mature extends Tree {
                 Exit chosenExit = dirtExits.get(rand.nextInt(dirtExits.size()));
                 chosenExit.getDestination().setGround(new Sprout());
             }
-
         }
     }
 
@@ -115,6 +114,5 @@ public class Mature extends Tree {
         }
         return FALL_DAMAGE;
     }
-
 
 }

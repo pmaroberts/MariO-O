@@ -139,4 +139,5 @@ public class PowerStar extends ConsumableItem implements PurchasableItem{
     public String toString(){
         return this.getClass().getSimpleName() + " (" + (10 - this.getTurns()) + " turns remaining)";
     }
+
 }

@@ -13,20 +13,24 @@ import java.util.Random;
 
 /**
  * Bowser class
- * @author Sara Hopkins, Peter Roberts
+ * @author Peter Roberts
+ * @author Sara Hopkins
  * @version Assignment 3
  */
 
 public class Bowser extends Enemy implements Speakable {
-
-    //string array of speak string options
+    /**
+     * string array of speak string options
+     */
     private final String[] dialogue = {"What was that sound? Oh, just a fire.",
             "Princess Peach! You are formally invited... to the creation of my new kingdom!",
             "Never gonna let you down!",
             "Wrrrrrrrrrrrrrrrryyyyyyyyyyyyyy!!!!"
     };
 
-    //bool used for counting every second turn for speak action
+    /**
+     * bool used for counting every second turn for speak action
+     */
     private boolean count = false;
 
     /**
@@ -59,7 +63,7 @@ public class Bowser extends Enemy implements Speakable {
 
     /**
      * method to pick random prompt for Bowser to speak each turn
-     * @param actor default actor, included in interface for speakwithToad
+     * @param actor default actor, included in interface for speak with Toad
      * @return the string spoken
      */
     @Override

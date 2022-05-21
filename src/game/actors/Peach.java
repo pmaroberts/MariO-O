@@ -16,16 +16,22 @@ import java.util.Random;
  * @version Assignment 3
  */
 public class Peach extends Actor implements Speakable{
-
-    //array of string speak prompts for peach
+    /**
+     * array of string speak prompts for peach
+     */
     private final String[] dialogue = {"Dear Mario, I'll be waiting for you...",
             "Never gonna give you up!",
             "Release me, or I will kick you!"
     };
 
-    // boolean to count every second turn to speak
+    /**
+     * boolean to count every second turn to speak
+     */
     private boolean count = false;
 
+    /**
+     * Constructor for Peach Actor
+     */
     public Peach(){
         super("Peach", 'P', 600000);
     }
@@ -60,4 +66,5 @@ public class Peach extends Actor implements Speakable{
         Random r = new Random();
         return dialogue[r.nextInt(3)];
     }
+
 }

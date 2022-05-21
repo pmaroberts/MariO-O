@@ -11,7 +11,7 @@ public class JumpOnAbleGroundManager {
     /**
      * List of Ground Instances that implement the interface JumpOnAble
      */
-    private ArrayList<JumpOnAble> jumpOnAbles;
+    private final ArrayList<JumpOnAble> jumpOnAbles;
 
     /**
      * Single instance of this class
@@ -47,4 +47,5 @@ public class JumpOnAbleGroundManager {
     public ArrayList<JumpOnAble> getJumpOnAbles(){
         return new ArrayList<>(this.jumpOnAbles);
     }
+
 }

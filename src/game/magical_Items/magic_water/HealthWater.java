@@ -9,13 +9,11 @@ import edu.monash.fit2099.engine.positions.GameMap;
  * @version Assignment 3
  */
 public class HealthWater extends Water{
-
     /**
      * Health Water constructor
      */
     public HealthWater(){
         super("HealthWater", 'H');
-
     }
 
     /**

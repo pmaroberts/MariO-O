@@ -13,7 +13,6 @@ public class Floor extends Ground {
 	 */
 	public Floor() {
 		super('_');
-
 	}
 
 	/**
@@ -25,5 +24,6 @@ public class Floor extends Ground {
 	public boolean canActorEnter(Actor actor){
 		return !actor.hasCapability(Status.FLOOR_BANNED);
 	}
+
 }
 

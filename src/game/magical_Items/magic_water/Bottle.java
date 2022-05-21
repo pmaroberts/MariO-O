@@ -12,7 +12,6 @@ import java.util.Stack;
  * @version Assignment 3
  */
 public class Bottle extends ConsumableItem {
-
     /**
      * stack of waters that the bottle can hold
      */
@@ -76,6 +75,5 @@ public class Bottle extends ConsumableItem {
         str += " ]";
         return "Bottle " + str;
     }
-
 
 }

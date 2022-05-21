@@ -5,6 +5,7 @@ import edu.monash.fit2099.engine.positions.Location;
 /**
  * Fire Class
  * @author Sara Hopkins
+ * @author Peter Roberts
  * @version Assignment 3
  */
 public class Fire extends Item {
@@ -35,8 +36,6 @@ public class Fire extends Item {
         else if(location.containsAnActor()){
             location.getActor().hurt(20);
         }
-
     }
-
 
 }

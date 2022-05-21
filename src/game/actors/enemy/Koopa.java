@@ -24,7 +24,8 @@ import java.util.Random;
 
 /**
  * Koopa Class
- * @author Peter Roberts, Sara Hopkins
+ * @author Peter Roberts
+ * @author Sara Hopkins
  * @version Assignment 3
  */
 public class Koopa extends Enemy implements Speakable {
@@ -33,12 +34,16 @@ public class Koopa extends Enemy implements Speakable {
      */
     private final Map<Integer, Behaviour> behaviours = new HashMap<>(); // priority, behaviour
 
-    //array of strings that Koopa can speak
+    /**
+     * array of strings that Koopa can speak
+     */
     private final String[] dialogue = {"Never gonna make you cry!",
             "Koopi koopi koopii~!"
     };
 
-    //boolean to count every second turn to speak
+    /**
+     * boolean to count every second turn to speak
+     */
     private boolean count = false;
 
     /**
@@ -96,7 +101,6 @@ public class Koopa extends Enemy implements Speakable {
                 map.removeActor(this);
                 return new DoNothingAction();
             }
-
             // Turn into a shell if dead
             if(!this.isConscious()){
                 this.becomeDormant();
@@ -116,8 +120,6 @@ public class Koopa extends Enemy implements Speakable {
             }
             return new DoNothingAction();
         }
-
-
     }
 
     /**

@@ -11,10 +11,10 @@ import game.ground.JumpOnAble;
 import game.magical_Items.FireFlower;
 import game.reset.Resettable;
 
-
 /**
  * Abstract Class for handling Trees
- * @author Peter Roberts, Sara Hopkins
+ * @author Peter Roberts
+ * @author Sara Hopkins
  * @version Assignment 3
  */
 public abstract class Tree extends Ground implements JumpOnAble, Resettable {
@@ -94,10 +94,8 @@ public abstract class Tree extends Ground implements JumpOnAble, Resettable {
         if(Utils.probReturn(RESET_ODDS))
         {
             this.addCapability(Status.RESET);
-
         }
         this.removeCapability(Status.CAN_SPAWN);
-
     }
 
 }
