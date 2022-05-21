@@ -13,7 +13,7 @@ import game.ground.JumpOnAbleGroundManager;
  * @author Peter Roberts
  * @version Assignment 2
  */
-public class JumpActorAction extends Action {
+public class JumpAction extends Action {
     /**
      * Location being jumped to
      */
@@ -32,7 +32,7 @@ public class JumpActorAction extends Action {
      * @param jumpToLocation Location being jumped to
      * @param direction Direction to jumpToLocation
      */
-    public JumpActorAction(Location jumpToLocation, String direction) {
+    public JumpAction(Location jumpToLocation, String direction) {
         this.direction = direction;
         this.jumpToLocation = jumpToLocation;
         // Gets the Ground from jumpToLocation from the JumpOnAbleGroundManager, so that JumpOnAble is definitely implemented.

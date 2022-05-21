@@ -5,7 +5,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
 import game.Utils;
-import game.actions.JumpActorAction;
+import game.actions.JumpAction;
 import game.actors.Status;
 import game.ground.JumpOnAble;
 import game.items.magical_items.FireFlower;
@@ -81,7 +81,7 @@ public abstract class Tree extends Ground implements JumpOnAble, Resettable {
     public ActionList allowableActions(Actor actor, Location location, String direction){
         ActionList actions =  new ActionList();
         if(!location.containsAnActor() && !actor.hasCapability(Status.POWERSTAR)){
-            actions.add(new JumpActorAction(location, direction));
+            actions.add(new JumpAction(location, direction));
         }
         return actions;
     }
