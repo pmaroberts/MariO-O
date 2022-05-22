@@ -6,9 +6,19 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import game.ground.PipesManager;
 
+/**
+ * Action for teleporting back and forth between maps.
+ * @author Peter Roberts
+ * @version Assignment 3
+ */
 public class WarpAction extends Action {
 
-
+    /**
+     * Executes the move
+     * @param actor The actor performing the action.
+     * @param map The map the actor is on.
+     * @return String description of the action that has just occurred.
+     */
     @Override
     public String execute(Actor actor, GameMap map) {
 
@@ -25,6 +35,11 @@ public class WarpAction extends Action {
 
     }
 
+    /**
+     * Description of the action for the menu
+     * @param actor The actor performing the action.
+     * @return String description of the action for the menu.
+     */
     @Override
     public String menuDescription(Actor actor) {
         return "Teleport through WarpPipe";

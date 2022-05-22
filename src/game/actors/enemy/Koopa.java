@@ -61,6 +61,12 @@ public class Koopa extends Enemy implements Speakable {
         this.addItemToInventory(new SuperMushroom(true));
     }
 
+    /**
+     * Second constructor, allows child classes to have different name, char and hp.
+     * @param name Name of the actor
+     * @param displayChar display character of the actor
+     * @param hitPoints hit points of the actor
+     */
     protected Koopa(String name, char displayChar, int hitPoints){
         super(name, displayChar, hitPoints);
         this.behaviours.put(10, new WanderBehaviour());

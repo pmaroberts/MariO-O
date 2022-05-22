@@ -52,9 +52,10 @@ public abstract class Tree extends Ground implements JumpOnAble, Resettable {
     }
 
     /**
-     * Method that prevents actor entry, unless the actor has PowerStar
+     *
      * @param actor the Actor to check
      * @return true if actor can enter tree, false otherwise.
+     * @see JumpOnAble replaceCanActorEnter(actor)
      */
     @Override
     public boolean canActorEnter(Actor actor) {

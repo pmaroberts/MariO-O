@@ -18,6 +18,6 @@ public enum Status {
     RESET, // used to label ground types that have just had their reset method run
     CAN_SPAWN, // used to label ground types that can spawn (removed for 1 turn when actor resets)
     FIRE_ATTACK, //used to label bowser and those with the fire flower booster.
-    FLY,
-    KEYHOLDER
+    FLY, // used to buff actors that can fly
+    KEYHOLDER // used to buff actors that have held the key
 }

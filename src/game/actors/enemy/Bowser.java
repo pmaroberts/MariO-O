@@ -17,7 +17,8 @@ import game.actors.enemy.Enemy;
 import game.behaviour.AttackBehaviour;
 import game.behaviour.Behaviour;
 import game.behaviour.FollowBehaviour;
-import game.magical_Items.Key;
+import game.items.Key;
+
 
 import java.util.Map;
 import java.util.Random;
@@ -57,9 +58,9 @@ public class Bowser extends Enemy implements Speakable {
     private int age = 0;
 
     public Bowser(Location home){
-        super("Bowser",'B',1); // Should be 500 as per assignment 3
+        super("Bowser",'B',500); // Should be 500 as per assignment 3
         this.home = home;
-        this.addItemToInventory(new Key());
+        this.addItemToInventory(new Key()); // Key for Bowser to drop when dead
         this.addCapability(Status.FIRE_ATTACK);
         this.behaviours.put(1, new AttackBehaviour());
     }
@@ -88,19 +89,15 @@ public class Bowser extends Enemy implements Speakable {
             this.removeCapability(Status.RESET);
             return new DoNothingAction();
         }
-
+        // Speak every second turn
         if(this.age % 2 == 0){
             return new SpeakAction(this);
         }
-
-
         for(Behaviour behaviour : behaviours.values()) {
             Action action = behaviour.getAction(this, map);
             if (action != null)
                 return action;
         }
-
-
         return new DoNothingAction();
     }
 
@@ -115,10 +112,13 @@ public class Bowser extends Enemy implements Speakable {
         return dialogue[r.nextInt(4)];
     }
 
-
+    /**
+     * Gets the intrinsic weapon for bowser
+     * @return IntrinsicWeapon with the characteristics of a bowser
+     */
     @Override
     protected IntrinsicWeapon getIntrinsicWeapon() {
-        return new IntrinsicWeapon(1, "punches");
-    } // Should be 80 as per assignment 3
+        return new IntrinsicWeapon(80, "punches"); // Should be 80 as per assignment 3
+    }
 
 }

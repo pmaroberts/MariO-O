@@ -24,6 +24,12 @@ public interface JumpOnAble {
         }
     }
 
+    /**
+     * Default method to manage who can get to higher ground without jumping.
+     * Currently, if you can fly, or if you have a powerstar, you can get to higher ground without jumping
+     * @param actor the actor trying to get there without jumping
+     * @return boolean whether they are allowed to or not
+     */
     default boolean replaceCanActorEnter(Actor actor){
         return actor.hasCapability(Status.POWERSTAR) || actor.hasCapability(Status.FLY);
     }

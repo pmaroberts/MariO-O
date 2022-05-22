@@ -11,7 +11,7 @@ import game.actors.Status;
 /**
  * Class for Walls
  * @author Peter Roberts
- * @version Assignment 2
+ * @version Assignment 3
  */
 public class Wall extends Ground implements JumpOnAble{
 
@@ -33,9 +33,10 @@ public class Wall extends Ground implements JumpOnAble{
 	}
 
 	/**
-	 * Method preventing actor from entering walls, unless actor has powerstar
+	 *
 	 * @param actor the Actor to check
 	 * @return false, unless actor has powerstar
+	 * @see JumpOnAble replaceCanActorEnter(actor)
 	 */
 	@Override
 	public boolean canActorEnter(Actor actor) {
