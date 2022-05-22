@@ -7,6 +7,8 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
+import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
+import edu.monash.fit2099.engine.weapons.Weapon;
 import game.actions.AttackAction;
 import game.actors.Status;
 import game.behaviour.AttackBehaviour;
@@ -30,7 +32,7 @@ public class Bowser extends Enemy{
     private final Location home;
 
     public Bowser(Location home){
-        super("Bowser",'B',500); // Should be 500 as per assignment 3
+        super("Bowser",'B',1); // Should be 500 as per assignment 3
         this.home = home;
         this.addItemToInventory(new Key());
         this.addCapability(Status.FIRE_ATTACK);
@@ -71,4 +73,10 @@ public class Bowser extends Enemy{
 
         return new DoNothingAction();
     }
+
+    @Override
+    protected IntrinsicWeapon getIntrinsicWeapon() {
+        return new IntrinsicWeapon(1, "punches");
+    } // Should be 80 as per assignment 3
+
 }

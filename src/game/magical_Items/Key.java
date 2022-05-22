@@ -20,14 +20,4 @@ public class Key extends Item {
     }
 
 
-    // Key cannot be dropped by Player once picked up (because why would you)
-    @Override
-    public DropItemAction getDropAction(Actor actor){
-        if(!actor.hasCapability(Status.HOSTILE_TO_ENEMY)){
-            return new DropItemAction(this);
-        }
-        return null;
-    }
-
-
 }
