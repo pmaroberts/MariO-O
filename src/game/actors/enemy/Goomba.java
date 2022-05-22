@@ -13,13 +13,10 @@ import game.actions.AttackAction;
 import game.actions.SpeakAction;
 import game.actors.Speakable;
 import game.actors.Status;
-import game.actors.enemy.Enemy;
 import game.behaviour.AttackBehaviour;
 import game.behaviour.Behaviour;
 import game.behaviour.FollowBehaviour;
 import game.behaviour.WanderBehaviour;
-
-import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -137,7 +134,7 @@ public class Goomba extends Enemy implements Speakable {
 	}
 
 	/**
-	 * method to pick random prompt for Bowser to speak each turn
+	 * method to pick random prompt for Goomba to speak each turn
 	 * @param actor default actor, included in interface for speak with Toad
 	 * @return the string spoken
 	 */

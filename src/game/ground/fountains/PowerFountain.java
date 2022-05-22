@@ -12,7 +12,7 @@ public class PowerFountain extends Fountain{
      * constructor for PowerFountain
      */
     public PowerFountain(){
-        super('P', new PowerWater());
+        super('A', new PowerWater());
     }
 
 }

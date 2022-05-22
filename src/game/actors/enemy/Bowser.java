@@ -8,12 +8,10 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
-import edu.monash.fit2099.engine.weapons.Weapon;
 import game.actions.AttackAction;
 import game.actions.SpeakAction;
 import game.actors.Speakable;
 import game.actors.Status;
-import game.actors.enemy.Enemy;
 import game.behaviour.AttackBehaviour;
 import game.behaviour.Behaviour;
 import game.behaviour.FollowBehaviour;
@@ -93,11 +91,15 @@ public class Bowser extends Enemy implements Speakable {
         if(this.age % 2 == 0){
             return new SpeakAction(this);
         }
+
+
         for(Behaviour behaviour : behaviours.values()) {
             Action action = behaviour.getAction(this, map);
             if (action != null)
                 return action;
         }
+
+
         return new DoNothingAction();
     }
 
