@@ -9,7 +9,7 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.weapons.Weapon;
 import game.actors.Status;
-import game.magical_Items.Fire;
+import game.items.magical_items.Fire;
 
 /**
  * Special Action for attacking other Actors.

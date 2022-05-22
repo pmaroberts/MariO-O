@@ -1,4 +1,4 @@
-package game.enemy;
+package game.actors.enemy;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
@@ -12,6 +12,7 @@ import game.actions.DestroyShell;
 import game.actions.SpeakAction;
 import game.actors.Speakable;
 import game.actors.Status;
+import game.actors.enemy.Enemy;
 import game.behaviour.AttackBehaviour;
 import game.behaviour.Behaviour;
 import game.behaviour.FollowBehaviour;

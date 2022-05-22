@@ -1,8 +1,9 @@
-package game.enemy;
+package game.actors.enemy;
 
 import game.actors.Status;
 
-public class FlyingKoopa extends Koopa{
+
+public class FlyingKoopa extends Koopa {
 
     public FlyingKoopa(){
         super("Flying Koopa", 'F', 1);

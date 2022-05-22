@@ -5,16 +5,24 @@ import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actions.DoNothingAction;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
-import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.GameMap;
+import edu.monash.fit2099.engine.positions.Location;
+import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
+import edu.monash.fit2099.engine.weapons.Weapon;
+import game.actions.AttackAction;
 import game.actions.SpeakAction;
 import game.actors.Speakable;
 import game.actors.Status;
+import game.actors.enemy.Enemy;
+import game.behaviour.AttackBehaviour;
+import game.behaviour.Behaviour;
 import game.behaviour.FollowBehaviour;
-import game.reset.Resettable;
+import game.magical_Items.Key;
 
-import java.util.List;
+import java.util.Map;
 import java.util.Random;
+import java.util.TreeMap;
+
 
 /**
  * Bowser class
@@ -22,8 +30,8 @@ import java.util.Random;
  * @author Sara Hopkins
  * @version Assignment 3
  */
+public class Bowser extends Enemy implements Speakable {
 
-public class Bowser extends Enemy implements Speakable, Resettable {
     /**
      * string array of speak string options
      */
@@ -34,50 +42,66 @@ public class Bowser extends Enemy implements Speakable, Resettable {
     };
 
     /**
-     * bool used for counting every second turn for speak action
+     * Behaviours treemap
      */
-    private boolean count = false;
+    private final Map<Integer, Behaviour> behaviours = new TreeMap<>(); // priority,
 
     /**
-     * Constructor for Bowser
+     * Allows the Bowser to return home on reset
      */
-    public Bowser() {
-        super("Bowser", 'B', 500);
-        this.registerInstance();
+    private final Location home;
+
+    /**
+     * Age of bowser, used to allow the bowser to speak every second turn
+     */
+    private int age = 0;
+
+    public Bowser(Location home){
+        super("Bowser",'B',1); // Should be 500 as per assignment 3
+        this.home = home;
+        this.addItemToInventory(new Key());
+        this.addCapability(Status.FIRE_ATTACK);
+        this.behaviours.put(1, new AttackBehaviour());
     }
 
-    /**
-     * The Bowser's playturn method, overwritten from actor
-     * @param actions    collection of possible Actions for this Actor
-     * @param lastAction The Action this Actor took last turn. Can do interesting things in conjunction with Action.getNextAction()
-     * @param map        the map containing the Actor
-     * @param display    the I/O object to which messages may be written
-     * @return the action for Bowser to take
-     */
+
+    @Override
+    public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
+        ActionList actions = new ActionList();
+        // it can be attacked only by the HOSTILE opponent, and this action will not attack the HOSTILE enemy back.
+        if(otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)) {
+            behaviours.put(2,new FollowBehaviour(otherActor));
+            actions.add(new AttackAction(this,direction));
+        }
+        return actions;
+    }
+
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
-       /*
-        List<Exit> exits = map.locationOf(this).getExits();
-        for(Exit exit : exits) {
-            if(exit.getDestination().containsAnActor()){
-                if(exit.getDestination().getActor().hasCapability(Status.HOSTILE_TO_ENEMY)){
-                    this.behaviours.put(2, new FollowBehaviour(attacker));
 
-                }
-            }
-        }
-
-        */
-
-        if(this.count){ //place all bowser play turn stuff inside this if else
-            //this if is responsible for Bowser speaking every second turn
-            this.count = false; //update bool
-            return new SpeakAction(this); //speak
-        }
-        else{
-            this.count = true; //update bool
+        this.age++;
+        // Go home and heal if reset has been run
+        if(this.hasCapability(Status.RESET)){
+            map.moveActor(this,home);
+            this.heal(99999);
+            this.behaviours.clear();
+            this.removeCapability(Status.RESET);
             return new DoNothingAction();
         }
+
+        if(this.age % 2 == 0){
+            return new SpeakAction(this);
+        }
+
+
+        for(Behaviour behaviour : behaviours.values()) {
+            Action action = behaviour.getAction(this, map);
+            if (action != null)
+                return action;
+        }
+
+
+        return new DoNothingAction();
     }
 
     /**
@@ -91,10 +115,10 @@ public class Bowser extends Enemy implements Speakable, Resettable {
         return dialogue[r.nextInt(4)];
     }
 
+
     @Override
-    public void resetInstance() {
-        this.resetMaxHp(getMaxHp());
-        //store original spawn location as a final variable and set bowser location to there through reset status?
-        //remove the behaviour for following
-    }
+    protected IntrinsicWeapon getIntrinsicWeapon() {
+        return new IntrinsicWeapon(1, "punches");
+    } // Should be 80 as per assignment 3
+
 }

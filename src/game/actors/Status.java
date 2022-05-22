@@ -17,9 +17,7 @@ public enum Status {
     WRENCH, // used to label actors that hold a wrench
     RESET, // used to label ground types that have just had their reset method run
     CAN_SPAWN, // used to label ground types that can spawn (removed for 1 turn when actor resets)
-    FIRE_ATTACK //used to label bowser and those with the fire flower booster.
+    FIRE_ATTACK, //used to label bowser and those with the fire flower booster.
     FLY,
-    KEYHOLDER,
-    FIRE_ATTACK,
-    CAN_SPAWN // used to label ground types that can spawn (removed for 1 turn when actor resets)
+    KEYHOLDER
 }

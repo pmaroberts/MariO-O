@@ -4,10 +4,10 @@ import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
-import game.actions.JumpActorAction;
+import game.actions.JumpAction;
 import game.actions.WarpAction;
 import game.actors.Status;
-import game.enemy.PiranhaPlant;
+import game.actors.enemy.PiranhaPlant;
 import game.reset.Resettable;
 
 // Needs to implement resettable.
@@ -34,7 +34,7 @@ public class WarpPipe extends Ground implements JumpOnAble, Resettable {
 
         // Jumping
         if(!location.containsAnActor() && !replaceCanActorEnter(actor)){
-            actions.add(new JumpActorAction(location, direction));
+            actions.add(new JumpAction(location, direction));
         }
 
         // Teleporting
