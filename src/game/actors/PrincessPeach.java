@@ -77,7 +77,7 @@ public class PrincessPeach extends Actor implements Speakable{
     @Override
     public String speak(Actor actor) {
         Random r = new Random();
-        return dialogue[r.nextInt(3)];
+        return this.name + ": " + dialogue[r.nextInt(3)];
     }
 
 }

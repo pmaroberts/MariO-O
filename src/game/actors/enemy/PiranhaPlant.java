@@ -123,7 +123,7 @@ public class PiranhaPlant extends Enemy implements Speakable{
     @Override
     public String speak(Actor actor) {
         Random r = new Random();
-        return dialogue[r.nextInt(2)];
+        return this.name + ": " + dialogue[r.nextInt(2)];
     }
 
 }

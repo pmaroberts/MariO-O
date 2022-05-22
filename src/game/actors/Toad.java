@@ -120,7 +120,7 @@ public class Toad extends Actor implements Speakable{
         retVal = dialogue[n];
 
 
-        return "Toad: " + retVal;
+        return this.name + ": " + retVal;
     }
 
 

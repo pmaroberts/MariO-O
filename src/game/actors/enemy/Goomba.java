@@ -141,7 +141,7 @@ public class Goomba extends Enemy implements Speakable {
 	@Override
 	public String speak(Actor actor) {
 		Random r = new Random();
-		return dialogue[r.nextInt(3)];
+		return this.name + ": " +dialogue[r.nextInt(3)];
 	}
 
 }

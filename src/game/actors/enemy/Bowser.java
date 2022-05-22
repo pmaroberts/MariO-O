@@ -111,7 +111,7 @@ public class Bowser extends Enemy implements Speakable {
     @Override
     public String speak(Actor actor) {
         Random r = new Random();
-        return dialogue[r.nextInt(4)];
+        return this.name + ": " +dialogue[r.nextInt(4)];
     }
 
     /**

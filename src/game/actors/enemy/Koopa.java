@@ -166,6 +166,6 @@ public class Koopa extends Enemy implements Speakable {
     @Override
     public String speak(Actor actor) {
         Random r = new Random();
-        return dialogue[r.nextInt(this.bound)];
+        return this.name + ": " +dialogue[r.nextInt(this.bound)];
     }
 }
