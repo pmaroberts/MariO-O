@@ -61,12 +61,12 @@ public class PrincessPeach extends Actor implements Speakable{
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
         if(this.count){
             this.count = false;
-            return new SpeakAction(this);
+            display.println(this.speak(this));
         }
-        else{
-            this.count = true;
-            return new DoNothingAction();
-        }
+
+        this.count = true;
+        return new DoNothingAction();
+
     }
 
     /**

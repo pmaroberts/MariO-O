@@ -86,31 +86,31 @@ public class Goomba extends Enemy implements Speakable {
 	public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
 		if(this.count){ //run all turn code in this if-else loop so that every 2nd turn Goomba speaks
 			this.count = false; //update so next turn won't speak
-			return new SpeakAction(this);
+			display.println(this.speak(this));
 		}
-		else{
-			this.count = true; //update so next turn will speak
-			// Removes itself if reset has been run
-			if(this.hasCapability(Status.RESET)){
-				map.removeActor(this);
-				return new DoNothingAction();
-			}
-			// Follows the actor that it is engaged with
-			Actor attacker = this.startFollowFromExit(map);
-			if(attacker != null){
-				try{
-					this.behaviours.put(2, new FollowBehaviour(attacker));
-				}
-				catch(Exception ignored){}
-			}
-			for(Behaviour behaviour : behaviours.values()) {
-				Action action = behaviour.getAction(this, map);
-				if (action != null)
-					return action;
-			}
-			this.maybeSuicide(map);
+
+		this.count = true; //update so next turn will speak
+		// Removes itself if reset has been run
+		if(this.hasCapability(Status.RESET)){
+			map.removeActor(this);
 			return new DoNothingAction();
 		}
+		// Follows the actor that it is engaged with
+		Actor attacker = this.startFollowFromExit(map);
+		if(attacker != null){
+			try{
+				this.behaviours.put(2, new FollowBehaviour(attacker));
+			}
+			catch(Exception ignored){}
+		}
+		for(Behaviour behaviour : behaviours.values()) {
+			Action action = behaviour.getAction(this, map);
+			if (action != null)
+				return action;
+		}
+		this.maybeSuicide(map);
+		return new DoNothingAction();
+
 	}
 
 	/**

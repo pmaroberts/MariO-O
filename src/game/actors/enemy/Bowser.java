@@ -89,7 +89,7 @@ public class Bowser extends Enemy implements Speakable {
         }
         // Speak every second turn
         if(this.age % 2 == 0){
-            return new SpeakAction(this);
+            display.println(this.speak(this));
         }
 
 

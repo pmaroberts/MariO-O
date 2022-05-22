@@ -109,34 +109,34 @@ public class Koopa extends Enemy implements Speakable {
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
         if(this.count){ //speak action every second turn
             this.count = false;
-            return new SpeakAction(this);
+            display.println(this.speak(this));
+
         }
-        else {
-            this.count = true;
-            // Remove the actor on reset
-            if(this.hasCapability(Status.RESET)){
-                map.removeActor(this);
-                return new DoNothingAction();
-            }
-            // Turn into a shell if dead
-            if(!this.isConscious()){
-                this.becomeDormant();
-            }
-            // Allows Koopa to follow whatever attacks it
-            Actor attacker = this.startFollowFromExit(map);
-            if(attacker != null && this.hasCapability(Status.VALID_CORPSE)){
-                try{
-                    this.behaviours.put(2, new FollowBehaviour(attacker));
-                }
-                catch(Exception ignored){}
-            }
-            for(Behaviour behaviour : behaviours.values()) {
-                Action action = behaviour.getAction(this, map);
-                if (action != null)
-                    return action;
-            }
+
+        this.count = true;
+        // Remove the actor on reset
+        if(this.hasCapability(Status.RESET)){
+            map.removeActor(this);
             return new DoNothingAction();
         }
+        // Turn into a shell if dead
+        if(!this.isConscious()){
+            this.becomeDormant();
+        }
+        // Allows Koopa to follow whatever attacks it
+        Actor attacker = this.startFollowFromExit(map);
+        if(attacker != null && this.hasCapability(Status.VALID_CORPSE)){
+            try{
+                this.behaviours.put(2, new FollowBehaviour(attacker));
+            }
+            catch(Exception ignored){}
+        }
+        for(Behaviour behaviour : behaviours.values()) {
+            Action action = behaviour.getAction(this, map);
+            if (action != null)
+                return action;
+        }
+        return new DoNothingAction();
     }
 
     /**

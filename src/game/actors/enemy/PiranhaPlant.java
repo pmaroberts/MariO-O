@@ -95,7 +95,7 @@ public class PiranhaPlant extends Enemy implements Speakable{
         }
 
         if(this.age % 2 == 0){
-            return new SpeakAction(this);
+            display.println(this.speak(this));
         }
 
         for(Behaviour behaviour : behaviours.values()) {
