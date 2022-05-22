@@ -117,3 +117,44 @@ Peter - I accept this Work Breakdown Agreement
         - JumpOnAble
         - JumpOnAbleGroundManager
 
+-----------------------------------------------------------------------------------
+Assignment 3 WBA
+
+
+Tim -
+
+Peter -
+
+Sara - I accept the tasks listed as completed under my name
+- Code completed for the following:
+
+    - Magical Fountain req3
+        - Bottle
+        - Health Fountain
+        - Abstract Fountain
+        - Power Fountain
+        - Power Water
+        - Health Water
+        - Abstract Water
+        - FillAction
+    - FireFlower req4
+        - Fire
+        - FireFlower
+        - abstract Trees
+    - Speaking req5
+        - Speakable interface
+        - SpeakAction
+        implemented in the following classes
+            + Peach
+            + Koopa
+            + FlyingKoopa
+            + Bowser
+            + Toad
+            + Speak with Toad (action for player)
+            + Goomba
+    - went through all given feedback and made necessary changes
+    - edited and formatted and completed design rationale for above listed sections
+    - completed UML diagrams and fixed previous UML diagrams to be in line with changes
+    - completed javadoc and commenting for all classes in game as the game stands currently
+
+
