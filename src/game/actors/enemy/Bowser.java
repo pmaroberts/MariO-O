@@ -5,10 +5,15 @@ import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actions.DoNothingAction;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
+import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.actions.SpeakAction;
 import game.actors.Speakable;
+import game.actors.Status;
+import game.behaviour.FollowBehaviour;
+import game.reset.Resettable;
 
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -18,7 +23,7 @@ import java.util.Random;
  * @version Assignment 3
  */
 
-public class Bowser extends Enemy implements Speakable {
+public class Bowser extends Enemy implements Speakable, Resettable {
     /**
      * string array of speak string options
      */
@@ -38,6 +43,7 @@ public class Bowser extends Enemy implements Speakable {
      */
     public Bowser() {
         super("Bowser", 'B', 500);
+        this.registerInstance();
     }
 
     /**
@@ -50,6 +56,19 @@ public class Bowser extends Enemy implements Speakable {
      */
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
+       /*
+        List<Exit> exits = map.locationOf(this).getExits();
+        for(Exit exit : exits) {
+            if(exit.getDestination().containsAnActor()){
+                if(exit.getDestination().getActor().hasCapability(Status.HOSTILE_TO_ENEMY)){
+                    this.behaviours.put(2, new FollowBehaviour(attacker));
+
+                }
+            }
+        }
+
+        */
+
         if(this.count){ //place all bowser play turn stuff inside this if else
             //this if is responsible for Bowser speaking every second turn
             this.count = false; //update bool
@@ -72,4 +91,10 @@ public class Bowser extends Enemy implements Speakable {
         return dialogue[r.nextInt(4)];
     }
 
+    @Override
+    public void resetInstance() {
+        this.resetMaxHp(getMaxHp());
+        //store original spawn location as a final variable and set bowser location to there through reset status?
+        //remove the behaviour for following
+    }
 }
