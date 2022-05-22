@@ -1,6 +1,9 @@
 package game.actors.enemy;
 
+import edu.monash.fit2099.engine.actors.Actor;
 import game.actors.Status;
+
+import java.util.Random;
 
 /**
  * Flying Koopa Class
@@ -23,8 +26,14 @@ public class FlyingKoopa extends Koopa {
      * Constructor
      */
     public FlyingKoopa(){
-        super("Flying Koopa", 'F', 1);
+        super("Flying Koopa", 'F', 150); // Should be 150 as per assignment 3
         this.addCapability(Status.FLY);
+    }
+
+    @Override
+    public String speak(Actor actor) {
+        Random r = new Random();
+        return dialogue[r.nextInt(this.bound)];
     }
 
 }

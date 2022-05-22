@@ -23,7 +23,7 @@ import java.util.TreeMap;
  * @author Peter Roberts
  * @version Assignment 3
  */
-public class PiranhaPlant extends Enemy{
+public class PiranhaPlant extends Enemy implements Speakable{
 
     /**
      * The amount PiranhaPlant's HP is increased by on reset.
