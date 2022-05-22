@@ -3,6 +3,8 @@ package game.ground.trees;
 import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.Location;
 import game.actors.enemy.Koopa;
+import game.enemy.FlyingKoopa;
+import game.enemy.Koopa;
 import game.Utils;
 
 import java.util.ArrayList;
@@ -22,6 +24,11 @@ public class Mature extends Tree {
      * Probability of Spawning Koopa
      */
     private static final double KOOPA_ODDS = 0.15;
+
+    /**
+     * Given the decision to spawn koopa, probability of said Koopa being able to fly.
+     */
+    private static final double KOOPA_FLY_ODDS = 0.5;
     /**
      * Probability of Suicide
      */
@@ -67,7 +74,12 @@ public class Mature extends Tree {
      */
     public void spawnKoopa(Location location){
         if(Utils.probReturn(KOOPA_ODDS) && !location.containsAnActor() && this.hasCapability(Status.CAN_SPAWN)){
-            location.addActor(new Koopa());
+            if(Utils.probReturn(KOOPA_FLY_ODDS)){
+                location.addActor(new FlyingKoopa());
+            }
+            else{
+                location.addActor(new Koopa());
+            }
         }
     }
 
@@ -114,5 +126,6 @@ public class Mature extends Tree {
         }
         return FALL_DAMAGE;
     }
+
 
 }

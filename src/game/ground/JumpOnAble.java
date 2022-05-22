@@ -24,10 +24,14 @@ public interface JumpOnAble {
         }
     }
 
+    default boolean replaceCanActorEnter(Actor actor){
+        return actor.hasCapability(Status.POWERSTAR) || actor.hasCapability(Status.FLY);
+    }
+
     /**
      * Method for adding instances of Ground objects that implement JumpOnAble interface (to avoid casting)
      */
-    default void addInstance(){
+    default void addJumpInstance(){
         JumpOnAbleGroundManager.getInstance().appendJumpOnAbleGround(this);
     }
 

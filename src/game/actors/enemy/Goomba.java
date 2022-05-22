@@ -1,4 +1,4 @@
-package game.actors.enemy;
+package game.enemy;
 
 
 import edu.monash.fit2099.engine.actions.Action;
@@ -20,6 +20,8 @@ import game.behaviour.WanderBehaviour;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
+
 import java.util.Random;
 
 /**
@@ -30,9 +32,9 @@ import java.util.Random;
  */
 public class Goomba extends Enemy implements Speakable {
 	/**
-	 * Behaviours hashmap
+	 * Behaviours treemap
 	 */
-	private final Map<Integer, Behaviour> behaviours = new HashMap<>(); // priority,
+	private final Map<Integer, Behaviour> behaviours = new TreeMap<>(); // priority,
 	/**
 	 * Probability of Suicide
 	 */

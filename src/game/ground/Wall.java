@@ -14,6 +14,7 @@ import game.actors.Status;
  * @version Assignment 2
  */
 public class Wall extends Ground implements JumpOnAble{
+
 	/**
 	 * Probability of successful jump
 	 */
@@ -28,7 +29,7 @@ public class Wall extends Ground implements JumpOnAble{
 	 */
 	public Wall() {
 		super('#');
-		this.addInstance(); // Walls can be jumped on
+		this.addJumpInstance(); // Walls can be jumped on
 	}
 
 	/**
@@ -38,7 +39,7 @@ public class Wall extends Ground implements JumpOnAble{
 	 */
 	@Override
 	public boolean canActorEnter(Actor actor) {
-		return actor.hasCapability(Status.POWERSTAR);
+		return replaceCanActorEnter(actor);
 	}
 	
 	@Override
@@ -67,7 +68,7 @@ public class Wall extends Ground implements JumpOnAble{
 	@Override
 	public ActionList allowableActions(Actor actor, Location location, String direction){
 		ActionList actions =  new ActionList();
-		if(!location.containsAnActor() && !actor.hasCapability(Status.POWERSTAR)){
+		if(!location.containsAnActor() && !replaceCanActorEnter(actor)){
 			actions.add(new JumpAction(location, direction));
 		}
 		return actions;
@@ -81,5 +82,4 @@ public class Wall extends Ground implements JumpOnAble{
 	public void tick(Location location) {
 		this.destroyedByPowerStar(location);
 	}
-
 }

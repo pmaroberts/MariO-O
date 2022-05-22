@@ -1,4 +1,4 @@
-package game.actors.enemy;
+package game.enemy;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
@@ -21,6 +21,8 @@ import game.items.magical_items.SuperMushroom;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
+import java.util.TreeMap;
+
 
 /**
  * Koopa Class
@@ -30,9 +32,9 @@ import java.util.Random;
  */
 public class Koopa extends Enemy implements Speakable {
     /**
-     * Hash Map for storing behaviours
+     * Tree Map for storing behaviours
      */
-    private final Map<Integer, Behaviour> behaviours = new HashMap<>(); // priority, behaviour
+    protected final Map<Integer, Behaviour> behaviours = new TreeMap<>(); // priority, behaviour
 
     /**
      * array of strings that Koopa can speak
@@ -51,6 +53,15 @@ public class Koopa extends Enemy implements Speakable {
      */
     public Koopa() {
         super("Koopa", 'K', 100);
+        this.behaviours.put(10, new WanderBehaviour());
+        this.behaviours.put(1, new AttackBehaviour());
+        this.addCapability(Status.VALID_CORPSE);
+        // Give Koopa a Super Mushroom to drop when it is destroyed
+        this.addItemToInventory(new SuperMushroom(true));
+    }
+
+    protected Koopa(String name, char displayChar, int hitPoints){
+        super(name, displayChar, hitPoints);
         this.behaviours.put(10, new WanderBehaviour());
         this.behaviours.put(1, new AttackBehaviour());
         this.addCapability(Status.VALID_CORPSE);
