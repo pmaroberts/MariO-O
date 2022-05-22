@@ -123,7 +123,19 @@ Assignment 3 WBA
 
 Tim -
 
-Peter -
+Peter - I accept the tasks listed as completed under my name
+- Requirement 1
+    - New map created
+    - Teleportation functionality developed using PipesManager
+    - Built the WarpAction
+- Requirement 2
+    - Created the new enemies
+        - Bowser
+        - Piranha Plant
+        - Flying Koopa
+    - Created Princess Peach
+    - Created the Key Item
+    - Developed the UnlockCuffs action in order to finish the game
 
 Sara - I accept the tasks listed as completed under my name
 - Code completed for the following:
