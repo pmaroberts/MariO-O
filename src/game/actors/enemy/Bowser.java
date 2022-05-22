@@ -8,16 +8,13 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
-import edu.monash.fit2099.engine.weapons.Weapon;
 import game.actions.AttackAction;
 import game.actions.SpeakAction;
 import game.actors.Speakable;
 import game.actors.Status;
-import game.actors.enemy.Enemy;
 import game.behaviour.AttackBehaviour;
 import game.behaviour.Behaviour;
 import game.behaviour.FollowBehaviour;
-import game.magical_Items.Key;
 
 import java.util.Map;
 import java.util.Random;
@@ -59,7 +56,7 @@ public class Bowser extends Enemy implements Speakable {
     public Bowser(Location home){
         super("Bowser",'B',1); // Should be 500 as per assignment 3
         this.home = home;
-        this.addItemToInventory(new Key());
+        this.addItemToInventory(new game.magical_Items.Key());
         this.addCapability(Status.FIRE_ATTACK);
         this.behaviours.put(1, new AttackBehaviour());
     }

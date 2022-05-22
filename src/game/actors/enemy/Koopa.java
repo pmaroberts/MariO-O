@@ -12,14 +12,11 @@ import game.actions.DestroyShell;
 import game.actions.SpeakAction;
 import game.actors.Speakable;
 import game.actors.Status;
-import game.actors.enemy.Enemy;
 import game.behaviour.AttackBehaviour;
 import game.behaviour.Behaviour;
 import game.behaviour.FollowBehaviour;
 import game.behaviour.WanderBehaviour;
 import game.items.magical_items.SuperMushroom;
-
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 import java.util.TreeMap;
@@ -48,6 +45,8 @@ public class Koopa extends Enemy implements Speakable {
      * boolean to count every second turn to speak
      */
     private boolean count = false;
+
+    private final int bound = 2;
 
     /**
      * Constructor.
@@ -154,13 +153,13 @@ public class Koopa extends Enemy implements Speakable {
     }
 
     /**
-     * method to pick random prompt for Bowser to speak each turn
+     * method to pick random prompt for Koopa to speak each turn
      * @param actor default actor, included in interface for speak with Toad
      * @return the string spoken
      */
     @Override
     public String speak(Actor actor) {
         Random r = new Random();
-        return dialogue[r.nextInt(2)];
+        return dialogue[r.nextInt(this.bound)];
     }
 }

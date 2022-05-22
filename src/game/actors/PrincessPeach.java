@@ -10,10 +10,10 @@ import game.actions.SpeakAction;
 import game.actions.UnlockCuffs;
 
 import java.util.Random;
-
 /**
- * Peach Actor
- * @author Peter Roberts, Sara Hopkins
+ * Koopa Class
+ * @author Peter Roberts
+ * @author Sara Hopkins
  * @version Assignment 3
  */
 public class PrincessPeach extends Actor implements Speakable{
